@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66341753-98ed-48b3-b429-62a7e2c7adf7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BO/Alerte.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BO/Alerte.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BO/Bilan.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BO/Bilan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BO/Bilan1.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BO/Bilan1.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BO/Bilan2.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BO/Bilan2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BO/Classe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BO/Classe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BO/Entreprise.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BO/Entreprise.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BO/MaitreAprentissage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BO/MaitreAprentissage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BO/Spécialité.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BO/Specialite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BO/TypeUtilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BO/TypeUtilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BO/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BO/Utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BO/Tuteur.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DAO/TuteurDAO.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,20 +43,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "BackEnd",
-    "last_opened_file_path": "C:/wamp64/www/FSI_PHP",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;BackEnd&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/wamp64/www/FSI_PHP&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\combo\Laravel\FSI_PHP" />
@@ -72,6 +85,9 @@
       <workItem from="1731586823286" duration="7000" />
       <workItem from="1731664045066" duration="615000" />
       <workItem from="1732004637209" duration="2005000" />
+      <workItem from="1732011700527" duration="6000" />
+      <workItem from="1732127367741" duration="254000" />
+      <workItem from="1732127683048" duration="147000" />
     </task>
     <servers />
   </component>
