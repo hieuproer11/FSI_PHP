@@ -10,7 +10,7 @@ class Utilisateur {
     private string $cpUti;
     private string $villeUti;
     private string $mdpUti;
-
+ 
     // Constructeur
     public function __construct(
         int $idUti,
