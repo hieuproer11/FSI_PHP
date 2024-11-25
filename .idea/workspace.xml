@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66341753-98ed-48b3-b429-62a7e2c7adf7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/DAO/BilanDAO.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/DAO/ClasseDAO.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/DAO/EntrepriseDAO.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/DAO/MaitreApprentissageDAO.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/DAO/SpecialiteDAO.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/DAO/TypeUtilisateurDAO.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/DAO/UtilisateurDAO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BO/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BO/Utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testAjout.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/DAO/AlerteDAO.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,20 +39,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "BackEnd",
-    "last_opened_file_path": "C:/wamp64/www/FSI_PHP",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;BackEnd&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/wamp64/www/FSI_PHP&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\combo\Laravel\FSI_PHP" />
@@ -72,6 +81,13 @@
       <workItem from="1731586823286" duration="7000" />
       <workItem from="1731664045066" duration="615000" />
       <workItem from="1732004637209" duration="2005000" />
+      <workItem from="1732011700527" duration="6000" />
+      <workItem from="1732127367741" duration="254000" />
+      <workItem from="1732127683048" duration="147000" />
+      <workItem from="1732127941233" duration="233000" />
+      <workItem from="1732177038379" duration="2147000" />
+      <workItem from="1732190822191" duration="243000" />
+      <workItem from="1732453023596" duration="764000" />
     </task>
     <servers />
   </component>
