@@ -5,35 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fefbef9b-65a3-4800-801e-3cc7cf9b5911" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BDD/CreateTable.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BDD/InsertJeuDonnee.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BDD/dictionnaire_donnees_projet_tutorat.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/BO/Alerte.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/BO/Bilan.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/BO/Bilan1.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/BO/Bilan2.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/BO/Classe.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/BO/Entreprise.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/BO/MaitreApprentissage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/BO/Specialite.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/BO/TypeUtilisateur.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/BO/Utilisateur.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/AlerteDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/BilanDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/ClasseDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/EntrepriseDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/MaitreApprentissageDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/SpecialiteDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/TypeUtilisateurDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/UtilisateurDAO.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonctionUtile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/appConfig.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/appConfig.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/BO/Tuteur.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DAO/TuteurDAO.php" beforeDir="false" afterPath="$PROJECT_DIR$/test/testBOUtilisateur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testAjout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/db/sqlscript.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/DAO/BilanDAO.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/DAO/BilanDAO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/DAO/UtilisateurDAO.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/DAO/UtilisateurDAO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testBOUtilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/test/testBOUtilisateur.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +52,11 @@
     ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\FSI_PHP\public" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -85,7 +67,9 @@
       <updated>1732522933072</updated>
       <workItem from="1732522934854" duration="2228000" />
       <workItem from="1732609450006" duration="228000" />
-      <workItem from="1732610278585" duration="391000" />
+      <workItem from="1732610278585" duration="1207000" />
+      <workItem from="1732613434824" duration="3257000" />
+      <workItem from="1732629587998" duration="38000" />
     </task>
     <servers />
   </component>

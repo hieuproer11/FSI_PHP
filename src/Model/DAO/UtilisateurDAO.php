@@ -1,14 +1,45 @@
 <?php
+namespace DAO;
 
-require_once 'Utilisateur.php'; // Inclure la classe Utilisateur
-require_once 'config/appConfig.php';
-require_once 'config/globalConfig.php';
+use BO\Utilisateur; // Inclure la classe Utilisateur
+
 class UtilisateurDAO {
-    private PDO $db;
+    protected \PDO $db;
 
     public function __construct(PDO $db) {
         $this->db = $db;
     }
+/*
+    public function getALl_Uti(): ?array
+    {
+        $resultset = null;
+        $query = 'SELECT * FROM Utilisateur';
+        $res = $this->bdd->query($query);
+        if ($res) {
+            while($row = $res->fetch(\PDO::FETCH_ASSOC)){
+                $data = [
+                    'idUti'=> $row['idUti'],
+                    'nomUti'=> $row['nomUti'],
+                    'preUti'=> $row['preUti'],
+                    'mailUti'=> $row['mailUti'],
+                    'altUti'=> $row['altUti'],
+                    'telUti'=> $row['telUti'],
+                    'adrUti'=> $row['adrUti'],
+                    'cpUti'=> $row['adrUti'],
+                    'vilUti'=> $row['adrUti'],
+                    'logUti'=>$row['logUti'],
+                    'mdpUti'=>$row['mdpUti']
+                ];
+                $resultset[] = new Utilisateur($data);
+            }
+        }
+        return $resultset;
+    }
+
+*/
+
+
+
 
     public function addUtilisateur(Utilisateur $utilisateur): void {
         $sql = "INSERT INTO Utilisateur (nom_Uti, pre_Uti, mail_Uti, tel_Uti, ad_Uti, vl_Uti, ioh_Uti, mdp_Uti) 
@@ -95,4 +126,5 @@ class UtilisateurDAO {
 
         return $utilisateurs;
     }
+
 }

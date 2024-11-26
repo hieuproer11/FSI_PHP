@@ -1,5 +1,6 @@
 <?php
-
+include 'config/appConfig.php';
+include 'config/globalConfig.php';
 require_once 'Bilan.php';
 require_once 'Bilan1.php';
 require_once 'Bilan2.php';
