@@ -2,8 +2,8 @@
 
 namespace BO;
 class Classe {
-    private $idCla;
-    private $nomCla;
+    private int $idCla;
+    private string $nomCla;
 
     public function __construct($idCla, $nomCla) {
         $this->idCla = $idCla;

@@ -2,23 +2,23 @@
 namespace BO;
 
 class Utilisateur {
-    private $idUti;
-    private $nomUti;
-    private $preUti;
-    private $mailUti;
-    private $altUti;
-    private $telUti;
-    private $adrUti;
-    private $cpUti;
-    private $vilUti;
-    private $logUti;
-    private $mdpUti;
-    private $idTut;
-    private $idSpe;
-    private $idTypeuti;
-    private $idMaitapp;
-    private $idEnt;
-    private $idCla;
+    private int $idUti;
+    private string $nomUti;
+    private string $preUti;
+    private string $mailUti;
+    private bool $altUti;
+    private string $telUti;
+    private string $adrUti;
+    private string $cpUti;
+    private string $vilUti;
+    private string $logUti;
+    private string $mdpUti;
+    private int $idTut;
+    private int $idSpe;
+    private int $idTypeuti;
+    private int $idMaitapp;
+    private int $idEnt;
+    private int $idCla;
 
     public function __construct($idUti, $nomUti, $preUti, $mailUti, $altUti, $telUti, $adrUti, $cpUti, $vilUti, $logUti, $mdpUti, $idTut, $idSpe, $idTypeuti, $idMaitapp, $idEnt, $idCla) {
         $this->idUti = $idUti;

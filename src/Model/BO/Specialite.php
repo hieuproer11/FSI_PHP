@@ -2,8 +2,8 @@
 
 namespace BO;
 class Specialite {
-    private $idSpe;
-    private $nomSpe;
+    private int $idSpe;
+    private string $nomSpe;
 
     public function __construct($idSpe, $nomSpe) {
         $this->idSpe = $idSpe;

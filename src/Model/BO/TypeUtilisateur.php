@@ -3,8 +3,8 @@
 namespace BO;
 
 class Type_d_utilisateur {
-    private $idTypeuti;
-    private $typeutiTypeuti;
+    private int $idTypeuti;
+    private string $typeutiTypeuti;
 
     public function __construct($idTypeuti, $typeutiTypeuti) {
         $this->idTypeuti = $idTypeuti;

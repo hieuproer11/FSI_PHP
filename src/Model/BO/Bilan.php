@@ -3,13 +3,13 @@
 namespace BO;
 
 class Bilan {
-    protected $idBil;
-    protected $notentBil;
-    protected $notdossBil;
-    protected $notorBil;
-    protected $moyBil;
-    protected $remarqueBil;
-    protected $datevisiteBil;
+    protected int $idBil;
+    protected float $notentBil;
+    protected float $notdossBil;
+    protected float $notorBil;
+    protected float $moyBil;
+    protected string $remarqueBil;
+    protected \DateTime $datevisiteBil;
 
     public function __construct($idBil, $notentBil, $notdossBil, $notorBil, $moyBil, $remarqueBil, $datevisiteBil) {
         $this->idBil = $idBil;

@@ -5,8 +5,8 @@ namespace BO;
 
 class Realiser2
 {
-    private $idUti;
-    private $idBil2;
+    private int $idUti;
+    private int $idBil2;
 
     public function __construct($idUti, $idBil2)
     {

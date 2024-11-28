@@ -3,9 +3,9 @@
 namespace BO;
 
 class Gerer {
-    private $idCla;
-    private $idTut;
-    private $nbmaxetuTut;
+    private int $idCla;
+    private int $idTut;
+    private int $nbmaxetuTut;
 
     public function __construct($idCla, $idTut, $nbmaxetuTut) {
         $this->idCla = $idCla;

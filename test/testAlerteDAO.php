@@ -17,13 +17,10 @@ $alerteDAO = new DAO\AlerteDAO($conn);
 
 // Tester la méthode create()
 echo "Test de la méthode create :\n";
-// Passer directement les valeurs aux setters
-$alerte = new BO\Alerte();  // Utilisation d'un constructeur sans paramètres
+// Créer une alerte avec des valeurs spécifiques
+$alerte = new BO\Alerte('4664', '2024-11-01', '2024-12-15');
 
-$alerte->setIdAl('4664');
-$alerte->setDatelimbil1Al('2024-11-01');
-$alerte->setDatelimbil2Al('2024-12-15');
-
+// Vérifier si la création de l'alerte réussit
 if ($alerteDAO->create($alerte)) {
     echo "Alerte créée avec succès.\n";
 } else {
@@ -46,14 +43,18 @@ if ($retrievedAlerte) {
 
 // Tester la méthode update()
 echo "\nTest de la méthode update :\n";
-$alerteToUpdate = $retrievedAlerte;
-$alerteToUpdate->setDatelimbil1Al('2025-01-01');
-$alerteToUpdate->setDatelimbil2Al('2025-02-01');
+if ($retrievedAlerte) {
+    $alerteToUpdate = $retrievedAlerte;
+    $alerteToUpdate->setDatelimbil1Al('2025-01-01');
+    $alerteToUpdate->setDatelimbil2Al('2025-02-01');
 
-if ($alerteDAO->update($alerteToUpdate)) {
-    echo "Alerte mise à jour avec succès.\n";
+    if ($alerteDAO->update($alerteToUpdate)) {
+        echo "Alerte mise à jour avec succès.\n";
+    } else {
+        echo "Échec de la mise à jour de l'alerte.\n";
+    }
 } else {
-    echo "Échec de la mise à jour de l'alerte.\n";
+    echo "Alerte à mettre à jour non trouvée.\n";
 }
 
 // Tester la méthode delete()

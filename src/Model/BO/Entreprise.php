@@ -2,11 +2,11 @@
 namespace BO;
 
 class Entreprise {
-    private $idEnt;
-    private $nomEnt;
-    private $adrEnt;
-    private $vilEnt;
-    private $cpEnt;
+    private int $idEnt;
+    private string $nomEnt;
+    private string $adrEnt;
+    private string $vilEnt;
+    private string $cpEnt;
 
     public function __construct($idEnt, $nomEnt, $adrEnt, $vilEnt, $cpEnt) {
         $this->idEnt = $idEnt;

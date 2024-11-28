@@ -1,7 +1,7 @@
 <?php
 
 namespace DAO;
-
+use BO\Alerte;
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';  // Connexion à la base de données
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Alerte.php';    // Classe modèle Alerte
 
@@ -137,7 +137,7 @@ class AlerteDAO {
             $alertes = [];
 
             // Récupération des résultats sous forme d'objets Alerte
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
                 $alerte = new Alerte();
                 $alerte->setIdAl($row['idAl']);
                 $alerte->setDatelimbil1Al($row['datelimbil1Al']);

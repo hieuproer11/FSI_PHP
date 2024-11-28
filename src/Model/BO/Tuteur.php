@@ -3,11 +3,11 @@
 namespace BO;
 
 class Tuteur {
-    private $idTut;
-    private $preTut;
-    private $nomTut;
-    private $telTut;
-    private $mailTut;
+    private int $idTut;
+    private string $preTut;
+    private string $nomTut;
+    private string $telTut;
+    private string $mailTut;
 
     public function __construct($idTut, $preTut, $nomTut, $telTut, $mailTut) {
         $this->idTut = $idTut;

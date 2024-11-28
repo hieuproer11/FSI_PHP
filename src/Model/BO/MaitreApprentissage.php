@@ -3,12 +3,12 @@
 namespace BO;
 
 class MaitreApprentissage {
-    private $idMaitapp;
-    private $nomMaitapp;
-    private $preMaitapp;
-    private $mailMaitapp;
-    private $telMaitapp;
-    private $idEnt;
+    private int $idMaitapp;
+    private string $nomMaitapp;
+    private string $preMaitapp;
+    private string $mailMaitapp;
+    private string $telMaitapp;
+    private int $idEnt;
 
     public function __construct($idMaitapp, $nomMaitapp, $preMaitapp, $mailMaitapp, $telMaitapp, $idEnt) {
         $this->idMaitapp = $idMaitapp;
