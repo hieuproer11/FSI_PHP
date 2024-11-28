@@ -15,5 +15,4 @@ class Bilan1 extends Bilan {
         parent::__construct($idBil, $notorBil, $moyBil, $remarqueBil, $sujMenBil, $datBil, $datLimBil);
     }
 
-    // Ajoute des méthodes spécifiques à Bilan1 si nécessaire.
 }
