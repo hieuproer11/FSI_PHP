@@ -3,8 +3,8 @@ namespace BO;
 
 class Alerte {
     private int $idAl;
-    private \DateTime $datelimbil1Al;
-    private \DateTime $datelimbil2Al;
+    private string $datelimbil1Al;
+    private string $datelimbil2Al;
 
     // Le constructeur qui nécessite des arguments
     public function __construct($idAl, $datelimbil1Al, $datelimbil2Al) {

@@ -24,8 +24,8 @@ class AlerteDAO {
             $stmt = $this->connexion->prepare($query);
 
             // Liaison des paramètres avec les valeurs de l'objet Alerte
-            $stmt->bindValue(':datelimbil1Al', $alerte->getDatelimbil1Al(), PDO::PARAM_STR);
-            $stmt->bindValue(':datelimbil2Al', $alerte->getDatelimbil2Al(), PDO::PARAM_STR);
+            $stmt->bindValue(':datelimbil1Al', $alerte->getDatelimbil1Al(), \PDO::PARAM_STR);
+            $stmt->bindValue(':datelimbil2Al', $alerte->getDatelimbil2Al(), \PDO::PARAM_STR);
 
             // Exécution de la requête et gestion du résultat
             if ($stmt->execute()) {
@@ -41,24 +41,24 @@ class AlerteDAO {
 
     // Méthode pour obtenir une alerte par son ID
     public function getById($idAl) {
-        $query = "SELECT * FROM Alerte WHERE idAl = :idAl";
+        $query = "SELECT * FROM Alerte WHERE idAl = ?";
 
         try {
             // Préparation de la requête
             $stmt = $this->connexion->prepare($query);
 
             // Liaison du paramètre ID
-            $stmt->bindValue(':idAl', $idAl, PDO::PARAM_INT);
+            $stmt->bindValue(':idAl', $idAl, \PDO::PARAM_INT);
 
             // Exécution de la requête
             $stmt->execute();
 
             // Récupération du résultat sous forme de tableau associatif
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $row = $stmt->fetch(\PDO::FETCH_ASSOC);
 
             // Si l'alerte existe, la retourner sous forme d'objet Alerte
             if ($row) {
-                $alerte = new Alerte();
+                $alerte = new Alerte($row['datelimbil1Al'], $row['datelimbil2Al'], $row['idAl'] );
                 $alerte->setIdAl($row['idAl']);
                 $alerte->setDatelimbil1Al($row['datelimbil1Al']);
                 $alerte->setDatelimbil2Al($row['datelimbil2Al']);
@@ -84,8 +84,8 @@ class AlerteDAO {
 
             // Liaison des paramètres avec les valeurs de l'objet Alerte
             $stmt->bindValue(':idAl', $alerte->getIdAl(), PDO::PARAM_INT);
-            $stmt->bindValue(':datelimbil1Al', $alerte->getDatelimbil1Al(), PDO::PARAM_STR);
-            $stmt->bindValue(':datelimbil2Al', $alerte->getDatelimbil2Al(), PDO::PARAM_STR);
+            $stmt->bindValue(':datelimbil1Al', $alerte->getDatelimbil1Al(), \PDO::PARAM_STR);
+            $stmt->bindValue(':datelimbil2Al', $alerte->getDatelimbil2Al(), \PDO::PARAM_STR);
 
             // Exécution de la requête
             if ($stmt->execute()) {
@@ -108,7 +108,7 @@ class AlerteDAO {
             $stmt = $this->connexion->prepare($query);
 
             // Liaison du paramètre ID
-            $stmt->bindValue(':idAl', $idAl, PDO::PARAM_INT);
+            $stmt->bindValue(':idAl', $idAl, \PDO::PARAM_INT);
 
             // Exécution de la requête
             if ($stmt->execute()) {
