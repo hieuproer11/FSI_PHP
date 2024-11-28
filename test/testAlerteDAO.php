@@ -1,38 +1,81 @@
 <?php
 
-require_once('../src/Model/bddManager.php');
-require_once('../src/Model/BO/Alerte.php');
-require_once('../src/Model/DAO/AlerteDAO.php');
+// Inclure la connexion et le DAO de Alerte
+use BO\Alerte;
+use DAO\AlerteDAO;
 
-// Initialisation de la connexion à la base de données
-$bdd = ConnexionBDD();
+// Inclure les fichiers nécessaires
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\AlerteDAO.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Alerte.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
 
-$alerteDAO = new \DAO\AlerteDAO($bdd);
+// Créer une instance de la connexion PDO
+$conn = ConnexionBDD();
 
-// Création d'objets Alerte pour les tests
-$alerte1 = new \BO\Alerte(1, new \DateTime('2024-11-01'), new \DateTime('2024-12-15'), new \DateTime('2024-11-10'), new \DateTime('2024-12-20'));
-$alerte2 = new \BO\Alerte(2, new \DateTime('2024-10-05'), new \DateTime('2024-11-15'), new \DateTime('2024-10-20'), new \DateTime('2024-12-01'));
+// Créer une instance de AlerteDAO
+$alerteDAO = new DAO\AlerteDAO($conn);
 
-// ----------------- Tests de récupération -----------------
-$monAlerte = $alerteDAO->getAlerte(1);
-var_dump($monAlerte); // Devrait afficher les détails de l'alerte avec l'ID 1
+// Tester la méthode create()
+echo "Test de la méthode create :\n";
+// Passer directement les valeurs aux setters
+$alerte = new BO\Alerte();  // Utilisation d'un constructeur sans paramètres
 
-// ----------------- Tests de création -----------------
-// $testCreateAlerte = $alerteDAO->createAlerte($alerte2);
-// var_dump($testCreateAlerte); // Devrait retourner `true` si l'insertion a réussi
+$alerte->setIdAl('4664');
+$alerte->setDatelimbil1Al('2024-11-01');
+$alerte->setDatelimbil2Al('2024-12-15');
 
-// ----------------- Tests de mise à jour -----------------
-// $alerte1->setDatelim1Al(new \DateTime('2024-11-15'));
-// $testUpdateAlerte = $alerteDAO->updateAlerte($alerte1);
-// var_dump($testUpdateAlerte); // Devrait retourner `true` si la mise à jour a réussi
+if ($alerteDAO->create($alerte)) {
+    echo "Alerte créée avec succès.\n";
+} else {
+    echo "Échec de la création de l'alerte.\n";
+}
 
-// ----------------- Tests de suppression -----------------
-// $testDeleteAlerte = $alerteDAO->deleteAlerte(2);
-// var_dump($testDeleteAlerte); // Devrait retourner `true` si la suppression a réussi
+// Tester la méthode getById()
+echo "\nTest de la méthode getById :\n";
+$alerteId = 1; // ID à tester, assurez-vous que l'ID existe dans la base de données
+$retrievedAlerte = $alerteDAO->getById($alerteId);
 
-// ----------------- Tests pour toutes les alertes -----------------
-// $allAlertes = $alerteDAO->getAllAlertes();
-// var_dump($allAlertes); // Devrait afficher un tableau avec toutes les alertes existantes
+if ($retrievedAlerte) {
+    echo "Alerte récupérée avec succès : \n";
+    echo "ID : " . $retrievedAlerte->getIdAl() . "\n";
+    echo "Date limite 1 : " . $retrievedAlerte->getDatelimbil1Al() . "\n";
+    echo "Date limite 2 : " . $retrievedAlerte->getDatelimbil2Al() . "\n";
+} else {
+    echo "Alerte non trouvée.\n";
+}
 
-?>
+// Tester la méthode update()
+echo "\nTest de la méthode update :\n";
+$alerteToUpdate = $retrievedAlerte;
+$alerteToUpdate->setDatelimbil1Al('2025-01-01');
+$alerteToUpdate->setDatelimbil2Al('2025-02-01');
 
+if ($alerteDAO->update($alerteToUpdate)) {
+    echo "Alerte mise à jour avec succès.\n";
+} else {
+    echo "Échec de la mise à jour de l'alerte.\n";
+}
+
+// Tester la méthode delete()
+echo "\nTest de la méthode delete :\n";
+$alerteIdToDelete = 1; // ID à tester, assurez-vous que l'ID existe dans la base de données
+if ($alerteDAO->delete($alerteIdToDelete)) {
+    echo "Alerte supprimée avec succès.\n";
+} else {
+    echo "Échec de la suppression de l'alerte.\n";
+}
+
+// Tester la méthode getAll()
+echo "\nTest de la méthode getAll :\n";
+$alertes = $alerteDAO->getAll();
+
+if (!empty($alertes)) {
+    echo "Alertes récupérées avec succès :\n";
+    foreach ($alertes as $alerte) {
+        echo "ID : " . $alerte->getIdAl() . " - ";
+        echo "Date limite 1 : " . $alerte->getDatelimbil1Al() . " - ";
+        echo "Date limite 2 : " . $alerte->getDatelimbil2Al() . "\n";
+    }
+} else {
+    echo "Aucune alerte trouvée.\n";
+}

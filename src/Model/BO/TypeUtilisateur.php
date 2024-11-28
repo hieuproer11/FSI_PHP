@@ -1,24 +1,48 @@
 <?php
 
-namespace Model\BO;
-class TypeUtilisateur
-{
-    private int $idTypeUti;
-    private string $typeUti;
+namespace BO;
 
-    public function __construct(int $idTypeUti, string $typeUti)
-    {
-        $this->idTypeUti = $idTypeUti;
-        $this->typeUti = $typeUti;
+class Type_d_utilisateur {
+    private $idTypeuti;
+    private $typeutiTypeuti;
+
+    public function __construct($idTypeuti, $typeutiTypeuti) {
+        $this->idTypeuti = $idTypeuti;
+        $this->typeutiTypeuti = $typeutiTypeuti;
     }
 
-    public function getIdTypeUti(): int
+    // Getters et setters
+
+    /**
+     * @return mixed
+     */
+    public function getIdTypeuti()
     {
-        return $this->idTypeUti;
+        return $this->idTypeuti;
     }
 
-    public function getTypeUti(): string
+    /**
+     * @param mixed $idTypeuti
+     */
+    public function setIdTypeuti($idTypeuti): void
     {
-        return $this->typeUti;
+        $this->idTypeuti = $idTypeuti;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTypeutiTypeuti()
+    {
+        return $this->typeutiTypeuti;
+    }
+
+    /**
+     * @param mixed $typeutiTypeuti
+     */
+    public function setTypeutiTypeuti($typeutiTypeuti): void
+    {
+        $this->typeutiTypeuti = $typeutiTypeuti;
     }
 }
+

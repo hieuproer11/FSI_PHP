@@ -1,57 +1,67 @@
 <?php
+namespace BO;
 
-namespace Model\BO;
+class Alerte {
+    private $idAl;
+    private $datelimbil1Al;
+    private $datelimbil2Al;
 
-class Alerte
-{
-    private int $idAl;
-    private DateTime $dateVisiteBilan1Al;
-    private DateTime $dateVisiteBilan2Al;
-    private DateTime $datelim1_Al;
-    private DateTime $datelim2_Al;
-
-
-    public function __construct(int $idAl, DateTime $dateVisiteBilan1Al, DateTime $dateVisiteBilan2Al, DateTime $datelim1_Al, DateTime $datelim2_Al)
-    {
+    // Le constructeur qui nécessite des arguments
+    public function __construct($idAl, $datelimbil1Al, $datelimbil2Al) {
         $this->idAl = $idAl;
-        $this->dateVisiteBilan1Al = $dateVisiteBilan1Al;
-        $this->dateVisiteBilan2Al = $dateVisiteBilan2Al;
-        $this->datelim1_Al = $datelim1_Al;
-        $this->datelim2_Al = $datelim2_Al;
+        $this->datelimbil1Al = $datelimbil1Al;
+        $this->datelimbil2Al = $datelimbil2Al;
     }
 
-    public function getIdAl(): int
+
+    // Getters et setters
+
+    /**
+     * @return mixed
+     */
+    public function getIdAl()
     {
         return $this->idAl;
     }
 
-    public function getDateVisiteBilan1Al(): DateTime
+    /**
+     * @param mixed $idAl
+     */
+    public function setIdAl($idAl): void
     {
-        return $this->dateVisiteBilan1Al;
+        $this->idAl = $idAl;
     }
 
-    public function getDateVisiteBilan2Al(): DateTime
+    /**
+     * @return mixed
+     */
+    public function getDatelimbil1Al()
     {
-        return $this->dateVisiteBilan2Al;
+        return $this->datelimbil1Al;
     }
 
-    public function getDatelim1Al(): DateTime
+    /**
+     * @param mixed $datelimbil1Al
+     */
+    public function setDatelimbil1Al($datelimbil1Al): void
     {
-        return $this->datelim1_Al;
+        $this->datelimbil1Al = $datelimbil1Al;
     }
 
-    public function setDatelim1Al(DateTime $datelim1_Al): void
+    /**
+     * @return mixed
+     */
+    public function getDatelimbil2Al()
     {
-        $this->datelim1_Al = $datelim1_Al;
+        return $this->datelimbil2Al;
     }
 
-    public function getDatelim2Al(): DateTime
+    /**
+     * @param mixed $datelimbil2Al
+     */
+    public function setDatelimbil2Al($datelimbil2Al): void
     {
-        return $this->datelim2_Al;
-    }
-
-    public function setDatelim2Al(DateTime $datelim2_Al): void
-    {
-        $this->datelim2_Al = $datelim2_Al;
+        $this->datelimbil2Al = $datelimbil2Al;
     }
 }
+

@@ -1,75 +1,53 @@
 <?php
+namespace DAO;
 
-namespace Model\DAO;
+class EntrepriseDAO  {
+    private $conn;
 
-use Model\BO\Entreprise;
-
-require_once 'Entreprise.php';
-
-class EntrepriseDAO
-{
-    private PDO $db;
-
-    public function __construct(PDO $db)
-    {
-        $this->db = $db;
+    public function __construct($conn) {
+        $this->conn = $conn;
     }
 
-    public function addEntreprise(Entreprise $entreprise): void
-    {
-        $sql = "INSERT INTO Entreprise (nom_Ent, vl_Ent, cp_Ent) VALUES (?, ?, ?)";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([
-            $entreprise->getNomEnt(),
-            $entreprise->getVlEnt(),
-            $entreprise->getCpEnt()
-        ]);
+    public function create($entreprise) {
+        $query = "INSERT INTO Entreprise (idEnt, nomEnt, adrEnt, vilEnt, cpEnt) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("issss", $entreprise->getIdEnt(), $entreprise->getNomEnt(), $entreprise->getAdrEnt(), $entreprise->getVilEnt(), $entreprise->getCpEnt());
+        return $stmt->execute();
     }
 
-    public function getEntreprise(int $idEnt): ?Entreprise
-    {
-        $sql = "SELECT * FROM Entreprise WHERE id_Ent = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([$idEnt]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if (!$row) {
-            return null;
+    public function read($id) {
+        $query = "SELECT * FROM Entreprise WHERE idEnt = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            return new Entreprise($row['idEnt'], $row['nomEnt'], $row['adrEnt'], $row['vilEnt'], $row['cpEnt']);
         }
-
-        return new Entreprise($row['id_Ent'], $row['nom_Ent'], $row['vl_Ent'], $row['cp_Ent']);
+        return null;
     }
 
-    public function updateEntreprise(Entreprise $entreprise): void
-    {
-        $sql = "UPDATE Entreprise SET nom_Ent = ?, vl_Ent = ?, cp_Ent = ? WHERE id_Ent = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([
-            $entreprise->getNomEnt(),
-            $entreprise->getVlEnt(),
-            $entreprise->getCpEnt(),
-            $entreprise->getIdEnt()
-        ]);
+    public function update($entreprise) {
+        $query = "UPDATE Entreprise SET nomEnt = ?, adrEnt = ?, vilEnt = ?, cpEnt = ? WHERE idEnt = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("ssssi", $entreprise->getNomEnt(), $entreprise->getAdrEnt(), $entreprise->getVilEnt(), $entreprise->getCpEnt(), $entreprise->getIdEnt());
+        return $stmt->execute();
     }
 
-    public function deleteEntreprise(int $idEnt): void
-    {
-        $sql = "DELETE FROM Entreprise WHERE id_Ent = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([$idEnt]);
+    public function delete($id) {
+        $query = "DELETE FROM Entreprise WHERE idEnt = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
     }
 
-    public function getAllEntreprises(): array
-    {
-        $sql = "SELECT * FROM Entreprise";
-        $stmt = $this->db->query($sql);
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    public function findAll() {
+        $query = "SELECT * FROM Entreprise";
+        $result = $this->conn->query($query);
         $entreprises = [];
-        foreach ($rows as $row) {
-            $entreprises[] = new Entreprise($row['id_Ent'], $row['nom_Ent'], $row['vl_Ent'], $row['cp_Ent']);
+        while ($row = $result->fetch_assoc()) {
+            $entreprises[] = new Entreprise($row['idEnt'], $row['nomEnt'], $row['adrEnt'], $row['vilEnt'], $row['cpEnt']);
         }
-
         return $entreprises;
     }
 }

@@ -1,31 +1,47 @@
 <?php
 
-namespace Model\BO;
-class Classe
-{
-    private int $idCla;
-    private string $nomCla;
-    private int $nbMaxCla;
+namespace BO;
+class Classe {
+    private $idCla;
+    private $nomCla;
 
-    public function __construct(int $idCla, string $nomCla, int $nbMaxCla)
-    {
+    public function __construct($idCla, $nomCla) {
         $this->idCla = $idCla;
         $this->nomCla = $nomCla;
-        $this->nbMaxCla = $nbMaxCla;
     }
 
-    public function getIdCla(): int
+    // Getters et setters
+
+    /**
+     * @return mixed
+     */
+    public function getIdCla()
     {
         return $this->idCla;
     }
 
-    public function getNomCla(): string
+    /**
+     * @param mixed $idCla
+     */
+    public function setIdCla($idCla): void
+    {
+        $this->idCla = $idCla;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNomCla()
     {
         return $this->nomCla;
     }
 
-    public function getNbMaxCla(): int
+    /**
+     * @param mixed $nomCla
+     */
+    public function setNomCla($nomCla): void
     {
-        return $this->nbMaxCla;
+        $this->nomCla = $nomCla;
     }
 }
+
