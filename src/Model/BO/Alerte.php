@@ -1,25 +1,66 @@
 <?php
+namespace BO;
 
 class Alerte {
     private int $idAl;
-    private DateTime $dateVisiteBilan1Al;
-    private DateTime $dateVisiteBilan2Al;
+    private string $datelimbil1Al;
+    private string $datelimbil2Al;
 
-    public function __construct(int $idAl, DateTime $dateVisiteBilan1Al, DateTime $dateVisiteBilan2Al) {
+    // Le constructeur qui nécessite des arguments
+    public function __construct($idAl, $datelimbil1Al, $datelimbil2Al) {
         $this->idAl = $idAl;
-        $this->dateVisiteBilan1Al = $dateVisiteBilan1Al;
-        $this->dateVisiteBilan2Al = $dateVisiteBilan2Al;
+        $this->datelimbil1Al = $datelimbil1Al;
+        $this->datelimbil2Al = $datelimbil2Al;
     }
 
-    public function getIdAl(): int {
+
+    // Getters et setters
+
+    /**
+     * @return mixed
+     */
+    public function getIdAl()
+    {
         return $this->idAl;
     }
 
-    public function getDateVisiteBilan1Al(): DateTime {
-        return $this->dateVisiteBilan1Al;
+    /**
+     * @param mixed $idAl
+     */
+    public function setIdAl($idAl): void
+    {
+        $this->idAl = $idAl;
     }
 
-    public function getDateVisiteBilan2Al(): DateTime {
-        return $this->dateVisiteBilan2Al;
+    /**
+     * @return mixed
+     */
+    public function getDatelimbil1Al()
+    {
+        return $this->datelimbil1Al;
+    }
+
+    /**
+     * @param mixed $datelimbil1Al
+     */
+    public function setDatelimbil1Al($datelimbil1Al): void
+    {
+        $this->datelimbil1Al = $datelimbil1Al;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDatelimbil2Al()
+    {
+        return $this->datelimbil2Al;
+    }
+
+    /**
+     * @param mixed $datelimbil2Al
+     */
+    public function setDatelimbil2Al($datelimbil2Al): void
+    {
+        $this->datelimbil2Al = $datelimbil2Al;
     }
 }

@@ -4,16 +4,6 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66341753-98ed-48b3-b429-62a7e2c7adf7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/pages/AccueilTuteur.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/HeaderTuteur.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/InformationsTuteurs.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/PageConnexion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/FSI_logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/img" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/HeaderTuteur-styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,26 +28,6 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\wamp64\bin\php\php8.2.0\php.exe" />
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
-}</component>
-  <component name="ProjectId" id="2oOEcsGChwITuI9wnDLaQR7DC9t" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "FrontEnd",
-    "last_opened_file_path": "C:/wamp64/www/FSI_PHP",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -70,7 +40,6 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-php-predefined-ba97393d7c68-b4dcf6bb9de9-com.jetbrains.php.sharedIndexes-PS-233.13135.108" />
       </set>
     </attachedChunks>
   </component>
@@ -81,15 +50,6 @@
       <created>1730732304863</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1730732304863</updated>
-      <workItem from="1730732307921" duration="62000" />
-      <workItem from="1730732530211" duration="10000" />
-      <workItem from="1731332859048" duration="77000" />
-      <workItem from="1731405773648" duration="754000" />
-      <workItem from="1731574319182" duration="1201000" />
-      <workItem from="1731586823286" duration="7000" />
-      <workItem from="1731664045066" duration="615000" />
-      <workItem from="1732004637209" duration="2005000" />
     </task>
     <servers />
   </component>
