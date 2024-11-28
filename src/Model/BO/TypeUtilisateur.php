@@ -1,28 +1,8 @@
 <?php
-<<<<<<< Updated upstream
+
 namespace BO;
+
 class TypeUtilisateur {
-    private int $idTypeUti;
-    private string $typeUti;
-
-    public function __construct(int $idTypeUti, string $typeUti) {
-        $this->idTypeUti = $idTypeUti;
-        $this->typeUti = $typeUti;
-    }
-
-    public function getIdTypeUti(): int {
-        return $this->idTypeUti;
-    }
-
-    public function getTypeUti(): string {
-        return $this->typeUti;
-    }
-}
-=======
-
-namespace BO;
-
-class Type_d_utilisateur {
     private int $idTypeuti;
     private string $typeutiTypeuti;
 
@@ -65,5 +45,3 @@ class Type_d_utilisateur {
         $this->typeutiTypeuti = $typeutiTypeuti;
     }
 }
-
->>>>>>> Stashed changes

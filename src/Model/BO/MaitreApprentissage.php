@@ -1,64 +1,21 @@
 <?php
-<<<<<<< Updated upstream
-namespace BO;
-=======
 
 namespace BO;
 
->>>>>>> Stashed changes
 class MaitreApprentissage {
     private int $idMaitapp;
     private string $nomMaitapp;
     private string $preMaitapp;
     private string $mailMaitapp;
     private string $telMaitapp;
-<<<<<<< Updated upstream
-
-    public function __construct(
-        int $idMaitapp,
-        string $nomMaitapp,
-        string $preMaitapp,
-        string $mailMaitapp,
-        string $telMaitapp
-    ) {
-=======
     private int $idEnt;
 
     public function __construct($idMaitapp, $nomMaitapp, $preMaitapp, $mailMaitapp, $telMaitapp, $idEnt) {
->>>>>>> Stashed changes
         $this->idMaitapp = $idMaitapp;
         $this->nomMaitapp = $nomMaitapp;
         $this->preMaitapp = $preMaitapp;
         $this->mailMaitapp = $mailMaitapp;
         $this->telMaitapp = $telMaitapp;
-<<<<<<< Updated upstream
-    }
-
-    public function getIdMaitapp(): int {
-        return $this->idMaitapp;
-    }
-
-    public function getNomMaitapp(): string {
-        return $this->nomMaitapp;
-    }
-
-    public function getPreMaitapp(): string {
-        return $this->preMaitapp;
-    }
-
-    public function getMailMaitapp(): string {
-        return $this->mailMaitapp;
-    }
-
-    public function getTelMaitapp(): string {
-        return $this->telMaitapp;
-    }
-
-    public function afficherDetails(): string {
-        return "Nom : {$this->nomMaitapp}, Prénom : {$this->preMaitapp}, Email : {$this->mailMaitapp}, Téléphone : {$this->telMaitapp}";
-    }
-}
-=======
         $this->idEnt = $idEnt;
     }
 
@@ -165,5 +122,3 @@ class MaitreApprentissage {
         $this->idEnt = $idEnt;
     }
 }
-
->>>>>>> Stashed changes

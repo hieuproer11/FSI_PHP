@@ -1,32 +1,15 @@
 <?php
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 namespace BO;
 class Specialite {
     private int $idSpe;
     private string $nomSpe;
 
-<<<<<<< Updated upstream
-    public function __construct(int $idSpe, string $nomSpe) {
-=======
     public function __construct($idSpe, $nomSpe) {
->>>>>>> Stashed changes
         $this->idSpe = $idSpe;
         $this->nomSpe = $nomSpe;
     }
 
-<<<<<<< Updated upstream
-    public function getIdSpe(): int {
-        return $this->idSpe;
-    }
-
-    public function getNomSpe(): string {
-        return $this->nomSpe;
-    }
-}
-=======
     // Getters et setters
 
     /**
@@ -61,5 +44,3 @@ class Specialite {
         $this->nomSpe = $nomSpe;
     }
 }
-
->>>>>>> Stashed changes
