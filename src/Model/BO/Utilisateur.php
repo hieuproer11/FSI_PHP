@@ -1,6 +1,8 @@
 <?php
 
-class Utilisateur {
+namespace Model\BO;
+class Utilisateur
+{
     private int $idUti;
     private string $nomUti;
     private string $prenomUti;
@@ -12,10 +14,10 @@ class Utilisateur {
     private string $villeUti;
     private string $logUti;
     private string $mdpUti;
- 
+
     // Constructeur
     public function __construct(
-        int $idUti,
+        int    $idUti,
         string $nomUti,
         string $prenomUti,
         string $mailUti,
@@ -24,9 +26,10 @@ class Utilisateur {
         string $cpUti,
         string $villeUti,
         string $logUti,
-        bool $altUti,
+        bool   $altUti,
         string $mdpUti
-    ) {
+    )
+    {
         $this->idUti = $idUti;
         $this->nomUti = $nomUti;
         $this->prenomUti = $prenomUti;
@@ -41,21 +44,27 @@ class Utilisateur {
     }
 
     // Getters et setters
-    public function getIdUti(): int {
+    public function getIdUti(): int
+    {
         return $this->idUti;
     }
-    public function setIdUti(int $idUti): void {
+
+    public function setIdUti(int $idUti): void
+    {
         $this->idUti = $idUti;
     }
 
-    public function getNomUti(): string {
+    public function getNomUti(): string
+    {
         return $this->nomUti;
     }
-    public function setNomUti(string $nomUti): void {
+
+    public function setNomUti(string $nomUti): void
+    {
         $this->nomUti = $nomUti;
     }
 
-   public function isAltUti(): bool
+    public function isAltUti(): bool
     {
         return $this->altUti;
     }

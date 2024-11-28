@@ -1,4 +1,9 @@
 <?php
+
+namespace Model\DAO;
+
+use Model\BO\Bilan;
+
 include 'config/appConfig.php';
 include 'config/globalConfig.php';
 require_once 'Bilan.php';
@@ -6,14 +11,17 @@ require_once 'Bilan1.php';
 require_once 'Bilan2.php';
 
 
-class BilanDAO {
+class BilanDAO
+{
     private PDO $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(PDO $db)
+    {
         $this->db = $db;
     }
 
-    public function addBilan(Bilan $bilan): void {
+    public function addBilan(Bilan $bilan): void
+    {
         $sql = "INSERT INTO Bilan (notor_Bil, moy_Bil, remarque_Bil, sujmen_Bil, dat_Bil, datlim_Bil) 
                 VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);
@@ -27,7 +35,8 @@ class BilanDAO {
         ]);
     }
 
-    public function getBilan(int $idBil): ?Bilan {
+    public function getBilan(int $idBil): ?Bilan
+    {
         $sql = "SELECT * FROM Bilan WHERE id_Bil = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idBil]);
@@ -48,7 +57,8 @@ class BilanDAO {
         );
     }
 
-    public function updateBilan(Bilan $bilan): void {
+    public function updateBilan(Bilan $bilan): void
+    {
         $sql = "UPDATE Bilan SET notor_Bil = ?, moy_Bil = ?, remarque_Bil = ?, sujmen_Bil = ?, dat_Bil = ?, datlim_Bil = ? 
                 WHERE id_Bil = ?";
         $stmt = $this->db->prepare($sql);
@@ -63,13 +73,15 @@ class BilanDAO {
         ]);
     }
 
-    public function deleteBilan(int $idBil): void {
+    public function deleteBilan(int $idBil): void
+    {
         $sql = "DELETE FROM Bilan WHERE id_Bil = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idBil]);
     }
 
-    public function getAllBilans(): array {
+    public function getAllBilans(): array
+    {
         $sql = "SELECT * FROM Bilan";
         $stmt = $this->db->query($sql);
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -1,8 +1,8 @@
 <?php
 
 require_once('../src/Model/bddManager.php');
-require_once ('../src/Model/BO/Alerte.php');
-require_once ('../src/Model/DAO/AlerteDAO.php');
+require_once('../src/Model/BO/Alerte.php');
+require_once('../src/Model/DAO/AlerteDAO.php');
 
 // Initialisation de la connexion à la base de données
 $bdd = ConnexionBDD();

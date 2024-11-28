@@ -1,21 +1,29 @@
 <?php
 
+namespace Model\DAO;
+
+use Model\BO\Specialite;
+
 require_once 'Specialite.php'; // Inclure la classe Specialite
 
-class SpecialiteDAO {
+class SpecialiteDAO
+{
     private PDO $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(PDO $db)
+    {
         $this->db = $db;
     }
 
-    public function addSpecialite(Specialite $specialite): void {
+    public function addSpecialite(Specialite $specialite): void
+    {
         $sql = "INSERT INTO Specialite (nom_Spe) VALUES (?)";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$specialite->getNomSpe()]);
     }
 
-    public function getSpecialite(int $idSpe): ?Specialite {
+    public function getSpecialite(int $idSpe): ?Specialite
+    {
         $sql = "SELECT * FROM Specialite WHERE id_Spe = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idSpe]);
@@ -28,7 +36,8 @@ class SpecialiteDAO {
         return new Specialite($row['id_Spe'], $row['nom_Spe']);
     }
 
-    public function updateSpecialite(Specialite $specialite): void {
+    public function updateSpecialite(Specialite $specialite): void
+    {
         $sql = "UPDATE Specialite SET nom_Spe = ? WHERE id_Spe = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([
@@ -37,13 +46,15 @@ class SpecialiteDAO {
         ]);
     }
 
-    public function deleteSpecialite(int $idSpe): void {
+    public function deleteSpecialite(int $idSpe): void
+    {
         $sql = "DELETE FROM Specialite WHERE id_Spe = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idSpe]);
     }
 
-    public function getAllSpecialites(): array {
+    public function getAllSpecialites(): array
+    {
         $sql = "SELECT * FROM Specialite";
         $resultat = $this->db->query($sql);
         $rows = $resultat->fetchAll(PDO::FETCH_ASSOC);

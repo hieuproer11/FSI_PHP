@@ -1,7 +1,10 @@
 <?php
-namespace DAO;
+namespace Model\DAO;
 
-use BO\Utilisateur; // Inclure la classe Utilisateur
+use BO\Utilisateur;
+use DAO\PDO;
+
+// Inclure la classe Utilisateur
 
 class UtilisateurDAO {
     protected \PDO $db;

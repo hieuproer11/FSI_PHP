@@ -1,15 +1,22 @@
 <?php
 
-require_once 'Alerte.php';
+namespace Model\DAO;
 
-class AlerteDAO {
+use Model\BO\Alerte;
+
+require_once 'src/Model/BO/Alerte.php';
+
+class AlerteDAO
+{
     private PDO $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(PDO $db)
+    {
         $this->db = $db;
     }
 
-    public function addAlerte(Alerte $alerte): void {
+    public function addAlerte(Alerte $alerte): void
+    {
         $sql = "INSERT INTO Alerte (datevisitebilan1_Al, datevisitebilan2_Al, datelim1_Al, datelim2_Al) 
                 VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);
@@ -21,7 +28,8 @@ class AlerteDAO {
         ]);
     }
 
-    public function getAlerte(int $idAl): ?Alerte {
+    public function getAlerte(int $idAl): ?Alerte
+    {
         $sql = "SELECT * FROM Alerte WHERE id_Al = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idAl]);
@@ -40,7 +48,8 @@ class AlerteDAO {
         );
     }
 
-    public function updateAlerte(Alerte $alerte): void {
+    public function updateAlerte(Alerte $alerte): void
+    {
         $sql = "UPDATE Alerte SET datevisitebilan1_Al = ?, datevisitebilan2_Al = ?, datelim1_Al = ?, datelim2_Al = ? 
                 WHERE id_Al = ?";
         $stmt = $this->db->prepare($sql);
@@ -53,13 +62,15 @@ class AlerteDAO {
         ]);
     }
 
-    public function deleteAlerte(int $idAl): void {
+    public function deleteAlerte(int $idAl): void
+    {
         $sql = "DELETE FROM Alerte WHERE id_Al = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idAl]);
     }
 
-    public function getAllAlertes(): array {
+    public function getAllAlertes(): array
+    {
         $sql = "SELECT * FROM Alerte";
         $stmt = $this->db->query($sql);
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
