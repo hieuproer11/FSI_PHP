@@ -1,80 +1,78 @@
 <?php
 
-require_once 'Alerte.php';
+namespace DAO;
+use BO\Alerte;
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';  // Connexion à la base de données
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Alerte.php';    // Classe modèle Alerte
 
-class AlerteDAO {
-    private PDO $db;
+class AlerteDAO
+{
 
-    public function __construct(PDO $db) {
-        $this->db = $db;
+    private $connexion;
+
+    // Constructeur qui reçoit une connexion PDO
+    public function __construct($conn)
+    {
+        $this->connexion = $conn;
     }
 
-    public function addAlerte(Alerte $alerte): void {
-        $sql = "INSERT INTO Alerte (datevisitebilan1_Al, datevisitebilan2_Al, datelim1_Al, datelim2_Al) 
-                VALUES (?, ?, ?, ?)";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([
-            $alerte->getDateVisiteBilan1(),
-            $alerte->getDateVisiteBilan2(),
-            $alerte->getDateLim1(),
-            $alerte->getDateLim2()
-        ]);
-    }
+    // Méthode pour créer une alerte
+    public function create(Alerte $alerte)
+    {
+        $query = "INSERT INTO Alerte (datelimbil1Al, datelimbil2Al) 
+                  VALUES (:datelimbil1Al, :datelimbil2Al)";
 
-    public function getAlerte(int $idAl): ?Alerte {
-        $sql = "SELECT * FROM Alerte WHERE id_Al = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([$idAl]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        try {
+            // Préparation de la requête
+            $stmt = $this->connexion->prepare($query);
 
-        if (!$row) {
-            return null;
+            // Liaison des paramètres avec les valeurs de l'objet Alerte
+            $stmt->bindValue(':datelimbil1Al', $alerte->getDatelimbil1Al(), \PDO::PARAM_STR);
+            $stmt->bindValue(':datelimbil2Al', $alerte->getDatelimbil2Al(), \PDO::PARAM_STR);
+
+            // Exécution de la requête et gestion du résultat
+            if ($stmt->execute()) {
+                return true;  // Si l'exécution réussit
+            }
+        } catch (PDOException $e) {
+            echo "Erreur lors de la création de l'alerte: " . $e->getMessage();
         }
 
-        return new Alerte(
-            $row['id_Al'],
-            $row['datevisitebilan1_Al'],
-            $row['datevisitebilan2_Al'],
-            $row['datelim1_Al'],
-            $row['datelim2_Al']
-        );
+        // Si une erreur se produit, retourne false
+        return false;
     }
 
-    public function updateAlerte(Alerte $alerte): void {
-        $sql = "UPDATE Alerte SET datevisitebilan1_Al = ?, datevisitebilan2_Al = ?, datelim1_Al = ?, datelim2_Al = ? 
-                WHERE id_Al = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([
-            $alerte->getDateVisiteBilan1(),
-            $alerte->getDateVisiteBilan2(),
-            $alerte->getDateLim1(),
-            $alerte->getDateLim2(),
-            $alerte->getIdAl()
-        ]);
-    }
+    // Méthode pour obtenir une alerte par son ID
+    public function getById($idAl)
+    {
+        $query = "SELECT * FROM Alerte WHERE idAl = ?";
 
-    public function deleteAlerte(int $idAl): void {
-        $sql = "DELETE FROM Alerte WHERE id_Al = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([$idAl]);
-    }
+        try {
+            // Préparation de la requête
+            $stmt = $this->connexion->prepare($query);
 
-    public function getAllAlertes(): array {
-        $sql = "SELECT * FROM Alerte";
-        $stmt = $this->db->query($sql);
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // Liaison du paramètre ID
+            $stmt->bindValue(':idAl', $idAl, \PDO::PARAM_INT);
 
-        $alertes = [];
-        foreach ($rows as $row) {
-            $alertes[] = new Alerte(
-                $row['id_Al'],
-                $row['datevisitebilan1_Al'],
-                $row['datevisitebilan2_Al'],
-                $row['datelim1_Al'],
-                $row['datelim2_Al']
-            );
+            // Exécution de la requête
+            $stmt->execute();
+
+            // Récupération du résultat sous forme de tableau associatif
+            $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+            // Si l'alerte existe, la retourner sous forme d'objet Alerte
+            if ($row) {
+                $alerte = new Alerte($row['datelimbil1Al'], $row['datelimbil2Al'], $row['idAl']);
+                $alerte->setIdAl($row['idAl']);
+                $alerte->setDatelimbil1Al($row['datelimbil1Al']);
+                $alerte->setDatelimbil2Al($row['datelimbil2Al']);
+                return $alerte;
+            }
+        } catch (PDOException $e) {
+            echo "Erreur lors de la récupération de l'alerte: " . $e->getMessage();
         }
 
-        return $alertes;
+        // Retourne null si l'alerte n'est pas trouvée
+        return null;
     }
 }

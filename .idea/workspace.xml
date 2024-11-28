@@ -4,17 +4,6 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66341753-98ed-48b3-b429-62a7e2c7adf7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/BilanDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/ClasseDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/EntrepriseDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/MaitreApprentissageDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/SpecialiteDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/TypeUtilisateurDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DAO/UtilisateurDAO.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/BO/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BO/Utilisateur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testAjout.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/DAO/AlerteDAO.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +13,13 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -32,36 +28,18 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\wamp64\bin\php\php8.2.0\php.exe" />
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
-}</component>
-  <component name="ProjectId" id="2oOEcsGChwITuI9wnDLaQR7DC9t" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;BackEnd&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/wamp64/www/FSI_PHP&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\FSI_PHP\src\img" />
+      <recent name="C:\wamp64\www\FSI_PHP\public\css" />
       <recent name="C:\Users\combo\Laravel\FSI_PHP" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-php-predefined-ba97393d7c68-b4dcf6bb9de9-com.jetbrains.php.sharedIndexes-PS-233.13135.108" />
       </set>
     </attachedChunks>
   </component>
@@ -72,22 +50,6 @@
       <created>1730732304863</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1730732304863</updated>
-      <workItem from="1730732307921" duration="62000" />
-      <workItem from="1730732530211" duration="10000" />
-      <workItem from="1731332859048" duration="77000" />
-      <workItem from="1731405773648" duration="754000" />
-      <workItem from="1731574319182" duration="1201000" />
-      <workItem from="1731586823286" duration="7000" />
-      <workItem from="1731664045066" duration="615000" />
-      <workItem from="1732004637209" duration="2005000" />
-      <workItem from="1732011700527" duration="6000" />
-      <workItem from="1732127367741" duration="254000" />
-      <workItem from="1732127683048" duration="147000" />
-      <workItem from="1732127941233" duration="233000" />
-      <workItem from="1732177038379" duration="2147000" />
-      <workItem from="1732190822191" duration="243000" />
-      <workItem from="1732453023596" duration="764000" />
     </task>
     <servers />
   </component>
