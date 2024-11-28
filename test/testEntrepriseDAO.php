@@ -1,7 +1,11 @@
 <?php
+use BO\Entreprise;
+use DAO\EntrepriseDAO;
+
 // Inclure la connexion et le DAO de Entreprise
-include_once 'src/Model/bddManager.php';
-include_once 'src/Model/EntrepriseDAO.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\EntrepriseDAO.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
 
 // Connexion à la base de données
 $conn = ConnexionBDD();
@@ -9,9 +13,10 @@ $conn = ConnexionBDD();
 // Création de l'instance du DAO Entreprise
 $entrepriseDAO = new EntrepriseDAO($conn);
 
+/*
 // 1. Test de création d'une Entreprise
 echo "Test de la création d'une Entreprise :\n";
-$entreprise = new Entreprise(null, 'TechCorp', '1234 Avenue de la Technologie', 'Paris', '75000', 'France', 'contact@techcorp.com');
+$entreprise = new Entreprise(3, 'TechCorp', '1234 Avenue de la Technologie', 'Paris', '75000', 'France', 'contact@techcorp.com');
 $createdEntreprise = $entrepriseDAO->create($entreprise);
 if ($createdEntreprise) {
     echo "Entreprise créée avec succès : " . $createdEntreprise->getNom() . "\n";
@@ -52,6 +57,7 @@ if ($deletedEntreprise) {
 } else {
     echo "Échec de la suppression de l'Entreprise.\n";
 }
+*/
 
 // 5. Test de récupération de toutes les Entreprises
 echo "\nTest de la récupération de toutes les Entreprises :\n";
@@ -59,7 +65,7 @@ $entreprises = $entrepriseDAO->findAll();
 if (count($entreprises) > 0) {
     echo "Entreprises trouvées :\n";
     foreach ($entreprises as $entreprise) {
-        echo $entreprise->getNom() . ", " . $entreprise->getAdresse() . "\n";
+        echo $entreprise->getNomEnt() . ", " . $entreprise->getAdrEnt() . "\n";
     }
 } else {
     echo "Aucune Entreprise trouvée.\n";

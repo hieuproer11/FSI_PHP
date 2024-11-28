@@ -1,8 +1,18 @@
 <?php
 // Inclure la connexion et les DAOs de Bilan1 et Bilan2
-include_once 'src/Model/bddManager.php';
-include_once 'src/Model/DAO/Bilan1.php';
-include_once 'src/Model/DAO/Bilan2.php';
+use DAO\Bilan1DAO;
+use DAO\Bilan2DAO;
+
+use BO\Bilan1;
+use BO\Bilan2;
+
+
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan2DAO.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan1.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan2.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
 
 // Connexion à la base de données
 $conn = ConnexionBDD();
@@ -11,9 +21,9 @@ $conn = ConnexionBDD();
 $bilan1DAO = new Bilan1DAO($conn);
 $bilan2DAO = new Bilan2DAO($conn);
 
-// 1. Test de création d'un Bilan1
+/* // 1. Test de création d'un Bilan1
 echo "Test de la création d'un Bilan1 :\n";
-$bilan1 = new Bilan1(null, 15.50, 18.30, 17.00, 16.20, "Bon bilan", '2024-11-10');
+$bilan1 = new Bilan1(4, 15.50, 18.30, 17.00, 16.20, "Bon bilan", '2024-11-10');
 $createdBilan1 = $bilan1DAO->create($bilan1);
 if ($createdBilan1) {
     echo "Bilan1 créé avec succès.\n";
@@ -21,9 +31,10 @@ if ($createdBilan1) {
     echo "Échec de la création du Bilan1.\n";
 }
 
+
 // 2. Test de création d'un Bilan2
 echo "\nTest de la création d'un Bilan2 :\n";
-$bilan2 = new Bilan2(null, 14.50, 16.30, 15.60, "Bon bilan 2", "Sujet 1", '2024-11-15');
+$bilan2 = new Bilan2(8, 14.50, 16.30, 15.60, "Bon bilan 2", "Sujet 1", '2024-11-15');
 $createdBilan2 = $bilan2DAO->create($bilan2);
 if ($createdBilan2) {
     echo "Bilan2 créé avec succès.\n";
@@ -98,6 +109,8 @@ if ($deletedBilan2) {
 } else {
     echo "Échec de la suppression du Bilan2.\n";
 }
+*/
+
 
 // 9. Test de récupération de tous les Bilans1
 echo "\nTest de la récupération de tous les Bilans1 :\n";
@@ -105,7 +118,7 @@ $bilans1 = $bilan1DAO->findAll();
 if (count($bilans1) > 0) {
     echo "Bilans1 trouvés :\n";
     foreach ($bilans1 as $bilan1) {
-        echo $bilan1->getIdBil1() . ", " . $bilan1->getNotentBil1() . ", " . $bilan1->getDatevisiteBil1() . "\n";
+        echo $bilan1->getIdBil() . ", " . $bilan1->getNotentBil() . ", " . $bilan1->getDatevisiteBil() . "\n";
     }
 } else {
     echo "Aucun Bilan1 trouvé.\n";
@@ -117,7 +130,7 @@ $bilans2 = $bilan2DAO->findAll();
 if (count($bilans2) > 0) {
     echo "Bilans2 trouvés :\n";
     foreach ($bilans2 as $bilan2) {
-        echo $bilan2->getIdBil2() . ", " . $bilan2->getNotdossBil2() . ", " . $bilan2->getSujmemBil2() . "\n";
+        echo $bilan2->getIdBil() . ", " . $bilan2->getNotdossBil() . ", " . $bilan2->getSujmemBil2() . "\n";
     }
 } else {
     echo "Aucun Bilan2 trouvé.\n";

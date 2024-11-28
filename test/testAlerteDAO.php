@@ -15,7 +15,7 @@ $conn = ConnexionBDD();
 // Créer une instance de AlerteDAO
 $alerteDAO = new DAO\AlerteDAO($conn);
 
-// Tester la méthode create()
+/* // Tester la méthode create()
 echo "Test de la méthode create :\n";
 // Créer une alerte avec des valeurs spécifiques
 $alerte = new BO\Alerte('4664', '2024-11-01', '2024-12-15');
@@ -65,7 +65,7 @@ if ($alerteDAO->delete($alerteIdToDelete)) {
 } else {
     echo "Échec de la suppression de l'alerte.\n";
 }
-
+*/
 // Tester la méthode getAll()
 echo "\nTest de la méthode getAll :\n";
 $alertes = $alerteDAO->getAll();

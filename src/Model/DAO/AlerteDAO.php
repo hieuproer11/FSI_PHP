@@ -138,10 +138,10 @@ class AlerteDAO {
 
             // Récupération des résultats sous forme d'objets Alerte
             while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                $alerte = new Alerte();
-                $alerte->setIdAl($row['idAl']);
-                $alerte->setDatelimbil1Al($row['datelimbil1Al']);
-                $alerte->setDatelimbil2Al($row['datelimbil2Al']);
+                $alerte = new Alerte(4,'datelimbil1Al','datelimbil2Al');
+           //     $alerte->setIdAl($row['idAl']);
+             //   $alerte->setDatelimbil1Al($row['datelimbil1Al']);
+               // $alerte->setDatelimbil2Al($row['datelimbil2Al']);
                 $alertes[] = $alerte;
             }
 

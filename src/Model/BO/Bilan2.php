@@ -3,11 +3,10 @@
 namespace BO;
 
 class Bilan2 extends Bilan {
-    private $sujmemBil2;
 
     public function __construct($idBil2, $notdossBil2, $notorBil2, $moyBil2, $remarqueBil2, $sujmemBil2, $datevisiteBil2) {
         // Appel du constructeur parent
-        parent::__construct($idBil2, null, $notdossBil2, $notorBil2, $moyBil2, $remarqueBil2, $datevisiteBil2);
+        parent::__construct($idBil2, $notdossBil2, $notdossBil2, $notorBil2, $moyBil2, $remarqueBil2, $datevisiteBil2);
         $this->sujmemBil2 = $sujmemBil2;
     }
 

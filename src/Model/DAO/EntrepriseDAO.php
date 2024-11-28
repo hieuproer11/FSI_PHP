@@ -1,7 +1,9 @@
 <?php
 namespace DAO;
 
-class EntrepriseDAO  {
+use BO\Entreprise;
+
+class EntrepriseDAO {
     private $conn;
 
     public function __construct($conn) {
@@ -11,17 +13,21 @@ class EntrepriseDAO  {
     public function create($entreprise) {
         $query = "INSERT INTO Entreprise (idEnt, nomEnt, adrEnt, vilEnt, cpEnt) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("issss", $entreprise->getIdEnt(), $entreprise->getNomEnt(), $entreprise->getAdrEnt(), $entreprise->getVilEnt(), $entreprise->getCpEnt());
+        $stmt->bindValue(':idEnt', $entreprise->getIdEnt(), \PDO::PARAM_INT);
+        $stmt->bindValue(':nomEnt', $entreprise->getNomEnt(), \PDO::PARAM_STR);
+        $stmt->bindValue(':adrEnt', $entreprise->getAdrEnt(), \PDO::PARAM_STR);
+        $stmt->bindValue(':vilEnt', $entreprise->getVilEnt(), \PDO::PARAM_STR);
+        $stmt->bindValue(':cpEnt', $entreprise->getCpEnt(), \PDO::PARAM_STR);
         return $stmt->execute();
     }
 
     public function read($id) {
         $query = "SELECT * FROM Entreprise WHERE idEnt = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $id);
+        $stmt->bindValue(':idEnt', $id, \PDO::PARAM_INT);
         $stmt->execute();
-        $result = $stmt->get_result();
-        if ($row = $result->fetch_assoc()) {
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if ($row) {
             return new Entreprise($row['idEnt'], $row['nomEnt'], $row['adrEnt'], $row['vilEnt'], $row['cpEnt']);
         }
         return null;
@@ -30,22 +36,26 @@ class EntrepriseDAO  {
     public function update($entreprise) {
         $query = "UPDATE Entreprise SET nomEnt = ?, adrEnt = ?, vilEnt = ?, cpEnt = ? WHERE idEnt = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("ssssi", $entreprise->getNomEnt(), $entreprise->getAdrEnt(), $entreprise->getVilEnt(), $entreprise->getCpEnt(), $entreprise->getIdEnt());
+        $stmt->bindValue(':nomEnt', $entreprise->getNomEnt(), \PDO::PARAM_STR);
+        $stmt->bindValue(':adrEnt', $entreprise->getAdrEnt(), \PDO::PARAM_STR);
+        $stmt->bindValue(':vilEnt', $entreprise->getVilEnt(), \PDO::PARAM_STR);
+        $stmt->bindValue(':cpEnt', $entreprise->getCpEnt(), \PDO::PARAM_STR);
+        $stmt->bindValue(':idEnt', $entreprise->getIdEnt(), \PDO::PARAM_INT);
         return $stmt->execute();
     }
 
     public function delete($id) {
         $query = "DELETE FROM Entreprise WHERE idEnt = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $id);
+        $stmt->bindValue(':idEnt', $id, \PDO::PARAM_INT);
         return $stmt->execute();
     }
 
     public function findAll() {
         $query = "SELECT * FROM Entreprise";
-        $result = $this->conn->query($query);
+        $stmt = $this->conn->query($query);
         $entreprises = [];
-        while ($row = $result->fetch_assoc()) {
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
             $entreprises[] = new Entreprise($row['idEnt'], $row['nomEnt'], $row['adrEnt'], $row['vilEnt'], $row['cpEnt']);
         }
         return $entreprises;

@@ -9,7 +9,7 @@ class Bilan {
     protected float $notorBil;
     protected float $moyBil;
     protected string $remarqueBil;
-    protected \DateTime $datevisiteBil;
+    protected string $datevisiteBil;
 
     public function __construct($idBil, $notentBil, $notdossBil, $notorBil, $moyBil, $remarqueBil, $datevisiteBil) {
         $this->idBil = $idBil;
