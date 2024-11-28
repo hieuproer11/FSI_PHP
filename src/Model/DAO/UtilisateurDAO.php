@@ -9,7 +9,7 @@ class UtilisateurDAO {
     public function __construct(PDO $db) {
         $this->db = $db;
     }
-/*
+
     public function getALl_Uti(): ?array
     {
         $resultset = null;
@@ -36,14 +36,14 @@ class UtilisateurDAO {
         return $resultset;
     }
 
-*/
+
 
 
 
 
     public function addUtilisateur(Utilisateur $utilisateur): void {
-        $sql = "INSERT INTO Utilisateur (nom_Uti, pre_Uti, mail_Uti, tel_Uti, ad_Uti, vl_Uti, ioh_Uti, mdp_Uti) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO Utilisateur (nom_Uti, pre_Uti, mail_Uti, alt_uti, tel_Uti, ad_Uti, vl_Uti, ioh_Uti,log_uti, mdp_Uti) 
+                VALUES (?, ?, ?,?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([
             $utilisateur->getNomUti(),
@@ -53,6 +53,8 @@ class UtilisateurDAO {
             $utilisateur->getAdUti(),
             $utilisateur->getVlUti(),
             $utilisateur->getIohUti(),
+            $utilisateur->getLog_Uti(),
+            $utilisateur->getAlt_Uti(),
             $utilisateur->getMdpUti()
         ]);
     }
@@ -76,6 +78,7 @@ class UtilisateurDAO {
             $row['ad_Uti'],
             $row['vl_Uti'],
             $row['ioh_Uti'],
+            $row['log_Uti'],
             $row['mdp_Uti']
         );
     }
@@ -120,6 +123,8 @@ class UtilisateurDAO {
                 $row['ad_Uti'],
                 $row['vl_Uti'],
                 $row['ioh_Uti'],
+                $row['log_Uti'],
+                $row['alt_Uti'],
                 $row['mdp_Uti']
             );
         }

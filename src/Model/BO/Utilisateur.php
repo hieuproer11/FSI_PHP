@@ -4,11 +4,13 @@ class Utilisateur {
     private int $idUti;
     private string $nomUti;
     private string $prenomUti;
+    private bool $altUti;
     private string $mailUti;
     private string $telUti;
     private string $adrUti;
     private string $cpUti;
     private string $villeUti;
+    private string $logUti;
     private string $mdpUti;
  
     // Constructeur
@@ -21,6 +23,8 @@ class Utilisateur {
         string $adrUti,
         string $cpUti,
         string $villeUti,
+        string $logUti,
+        bool $altUti,
         string $mdpUti
     ) {
         $this->idUti = $idUti;
@@ -32,6 +36,8 @@ class Utilisateur {
         $this->cpUti = $cpUti;
         $this->villeUti = $villeUti;
         $this->mdpUti = $mdpUti;
+        $this->logUti = $logUti;
+        $this->altUti = $altUti;
     }
 
     // Getters et setters
@@ -49,5 +55,23 @@ class Utilisateur {
         $this->nomUti = $nomUti;
     }
 
-    // (Ajoute les autres getters et setters pour les autres attributs)
+   public function isAltUti(): bool
+    {
+        return $this->altUti;
+    }
+
+    public function setAltUti(bool $altUti): void
+    {
+        $this->altUti = $altUti;
+    }
+
+    public function getLogUti(): string
+    {
+        return $this->logUti;
+    }
+
+    public function setLogUti(string $logUti): void
+    {
+        $this->logUti = $logUti;
+    }
 }
