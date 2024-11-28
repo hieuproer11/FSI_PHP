@@ -13,6 +13,13 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -21,36 +28,26 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\wamp64\bin\php\php8.2.0\php.exe" />
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 1
-}</component>
-  <component name="ProjectId" id="2pKm1ozMqD5n3Zdw77WrL2mB96r" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-    <option name="sortByType" value="true" />
-    <option name="sortKey" value="BY_TYPE" />
-  </component>
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\FSI_PHP\public" />
+      <recent name="C:\wamp64\www\FSI_PHP\src\img" />
+      <recent name="C:\wamp64\www\FSI_PHP\public\css" />
+      <recent name="C:\Users\combo\Laravel\FSI_PHP" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PS-242.23726.107" />
-        <option value="bundled-php-predefined-a98d8de5180a-90914f2295cb-com.jetbrains.php.sharedIndexes-PS-242.23726.107" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fefbef9b-65a3-4800-801e-3cc7cf9b5911" name="Changes" comment="" />
-      <created>1732522933072</created>
+      <changelist id="66341753-98ed-48b3-b429-62a7e2c7adf7" name="Changes" comment="" />
+      <created>1730732304863</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
     </task>
