@@ -4,11 +4,6 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fefbef9b-65a3-4800-801e-3cc7cf9b5911" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Model/bddManager.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/TestConnexionBDD.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/testBOUtilisateur.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,26 +31,6 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "PHP Script.TestConnexionBDD.php.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "BDD",
-    "last_opened_file_path": "C:/wamp64/www/projetphp",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
-    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -78,13 +53,6 @@
       <created>1732522933072</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1732522933072</updated>
-      <workItem from="1732522934854" duration="2228000" />
-      <workItem from="1732609450006" duration="228000" />
-      <workItem from="1732610278585" duration="1207000" />
-      <workItem from="1732613434824" duration="3257000" />
-      <workItem from="1732629587998" duration="38000" />
-      <workItem from="1732629943788" duration="3470000" />
     </task>
     <servers />
   </component>
