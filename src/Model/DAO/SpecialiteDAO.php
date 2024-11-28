@@ -1,11 +1,11 @@
 <?php
-
-require_once 'Specialite.php'; // Inclure la classe Specialite
+namespace DAO;
+use Specialite; // Inclure la classe Specialite
 
 class SpecialiteDAO {
-    private PDO $db;
+    private \PDO $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(\PDO $db) {
         $this->db = $db;
     }
 
@@ -19,7 +19,7 @@ class SpecialiteDAO {
         $sql = "SELECT * FROM Specialite WHERE id_Spe = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idSpe]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if (!$row) {
             return null;
@@ -46,7 +46,7 @@ class SpecialiteDAO {
     public function getAllSpecialites(): array {
         $sql = "SELECT * FROM Specialite";
         $resultat = $this->db->query($sql);
-        $rows = $resultat->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $resultat->fetchAll(\PDO::FETCH_ASSOC);
 
         $specialites = [];
         foreach ($rows as $row) {

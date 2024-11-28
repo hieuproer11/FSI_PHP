@@ -1,11 +1,11 @@
 <?php
-
-require_once 'Entreprise.php';
+namespace DAO;
+use Entreprise;
 
 class EntrepriseDAO {
-    private PDO $db;
+    private \PDO $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(\PDO $db) {
         $this->db = $db;
     }
 
@@ -23,7 +23,7 @@ class EntrepriseDAO {
         $sql = "SELECT * FROM Entreprise WHERE id_Ent = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idEnt]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if (!$row) {
             return null;
@@ -52,7 +52,7 @@ class EntrepriseDAO {
     public function getAllEntreprises(): array {
         $sql = "SELECT * FROM Entreprise";
         $stmt = $this->db->query($sql);
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
         $entreprises = [];
         foreach ($rows as $row) {

@@ -1,5 +1,5 @@
 <?php
-
+namespace BO;
 class Classe {
     private int $idCla;
     private string $nomCla;

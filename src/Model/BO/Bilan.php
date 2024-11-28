@@ -1,5 +1,5 @@
 <?php
-
+namespace BO;
 class Bilan {
     protected int $idBil;
     protected string $notorBil;

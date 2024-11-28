@@ -1,5 +1,5 @@
 <?php
-
+namespace BO;
 class MaitreApprentissage {
     private int $idMaitapp;
     private string $nomMaitapp;

@@ -1,5 +1,5 @@
 <?php
-
+namespace BO;
 class TypeUtilisateur {
     private int $idTypeUti;
     private string $typeUti;

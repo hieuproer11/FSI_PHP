@@ -1,5 +1,5 @@
 <?php
-
+namespace BO;
 class Alerte {
     private int $idAl;
     private DateTime $dateVisiteBilan1Al;

@@ -1,11 +1,11 @@
 <?php
-
-require_once 'TypeUtilisateur.php';
+namespace DAO;
+use TypeUtilisateur;
 
 class TypeUtilisateurDAO {
-    private PDO $db;
+    private \PDO $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(\PDO $db) {
         $this->db = $db;
     }
 
@@ -43,7 +43,7 @@ class TypeUtilisateurDAO {
     public function getAllTypesUtilisateur(): array {
         $sql = "SELECT * FROM TypeUtilisateur";
         $resultat = $this->db->query($sql);
-        $rows = $resultat->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $resultat->fetchAll(\PDO::FETCH_ASSOC);
 
         $types = [];
         foreach ($rows as $row) {

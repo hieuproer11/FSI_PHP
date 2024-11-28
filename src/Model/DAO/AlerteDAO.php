@@ -1,11 +1,11 @@
 <?php
-
-require_once 'Alerte.php';
+namespace DAO;
+use Alerte;
 
 class AlerteDAO {
-    private PDO $db;
+    private \PDO $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(\PDO $db) {
         $this->db = $db;
     }
 
@@ -25,7 +25,7 @@ class AlerteDAO {
         $sql = "SELECT * FROM Alerte WHERE id_Al = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idAl]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if (!$row) {
             return null;
@@ -62,7 +62,7 @@ class AlerteDAO {
     public function getAllAlertes(): array {
         $sql = "SELECT * FROM Alerte";
         $stmt = $this->db->query($sql);
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
         $alertes = [];
         foreach ($rows as $row) {

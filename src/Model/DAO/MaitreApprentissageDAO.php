@@ -1,11 +1,12 @@
 <?php
+namespace  DAO;
+use MaitreApprentissage;
 
-require_once 'MaitreApprentissage.php';
 
 class MaitreApprentissageDAO {
-    private PDO $db;
+    private \PDO $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(\PDO $db) {
         $this->db = $db;
     }
 
@@ -24,7 +25,7 @@ class MaitreApprentissageDAO {
         $sql = "SELECT * FROM MaitreApprentissage WHERE id_Maitapp = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idMaitapp]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if (!$row) {
             return null;
@@ -62,7 +63,7 @@ class MaitreApprentissageDAO {
     public function getAllMaitresApprentissage(): array {
         $sql = "SELECT * FROM MaitreApprentissage";
         $resultat = $this->db->query($sql);
-        $rows = $resultat->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $resultat->fetchAll(\PDO::FETCH_ASSOC);
 
         $maitres = [];
         foreach ($rows as $row) {

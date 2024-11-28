@@ -6,15 +6,15 @@ use BO\Utilisateur; // Inclure la classe Utilisateur
 class UtilisateurDAO {
     protected \PDO $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(\PDO $db) {
         $this->db = $db;
     }
-/*
-    public function getALl_Uti(): ?array
+
+    public function getAllUtilisateur(): ?array
     {
         $resultset = null;
         $query = 'SELECT * FROM Utilisateur';
-        $res = $this->bdd->query($query);
+        $res = $this->db->query($query);
         if ($res) {
             while($row = $res->fetch(\PDO::FETCH_ASSOC)){
                 $data = [
@@ -36,7 +36,7 @@ class UtilisateurDAO {
         return $resultset;
     }
 
-*/
+
 
 
 
@@ -103,11 +103,11 @@ class UtilisateurDAO {
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idUti]);
     }
-
+/*
     public function getAllUtilisateurs(): array {
         $sql = "SELECT * FROM Utilisateur";
         $resultat = $this->db->query($sql);
-        $rows = $resultat->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $resultat->fetchAll(\PDO::FETCH_ASSOC);
 
         $utilisateurs = [];
         foreach ($rows as $row) {
@@ -126,5 +126,5 @@ class UtilisateurDAO {
 
         return $utilisateurs;
     }
-
+*/
 }

@@ -1,5 +1,5 @@
 <?php
-
+namespace BO;
 class Entreprise {
     private int $idEnt;
     private string $nomEnt;

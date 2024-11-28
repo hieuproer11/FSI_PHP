@@ -11,7 +11,6 @@ function ConnexionBDD() {
     } catch(Exception $e) {
         die('Erreur connexion BDD : '.$e->POSTMessage());
     }
-
     return $bdd;
 }
 

@@ -1,15 +1,15 @@
 <?php
-include 'config/appConfig.php';
-include 'config/globalConfig.php';
-require_once 'Bilan.php';
-require_once 'Bilan1.php';
-require_once 'Bilan2.php';
+namespace DAO;
+
+use Bilan;
+use Bilan1;
+use Bilan2;
 
 
 class BilanDAO {
-    private PDO $db;
+    private \PDO $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(\PDO $db) {
         $this->db = $db;
     }
 
@@ -31,7 +31,7 @@ class BilanDAO {
         $sql = "SELECT * FROM Bilan WHERE id_Bil = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idBil]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if (!$row) {
             return null;
@@ -72,7 +72,7 @@ class BilanDAO {
     public function getAllBilans(): array {
         $sql = "SELECT * FROM Bilan";
         $stmt = $this->db->query($sql);
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
         $bilans = [];
         foreach ($rows as $row) {

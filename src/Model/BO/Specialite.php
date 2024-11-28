@@ -1,5 +1,5 @@
 <?php
-
+namespace BO;
 class Specialite {
     private int $idSpe;
     private string $nomSpe;

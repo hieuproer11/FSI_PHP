@@ -1,11 +1,11 @@
 <?php
-
-require_once 'Classe.php';
+namespace DAO;
+use Classe;
 
 class ClasseDAO {
-    private PDO $db;
+    private \PDO $db;
 
-    public function __construct(PDO $db) {
+    public function __construct(\PDO $db) {
         $this->db = $db;
     }
 
@@ -22,7 +22,7 @@ class ClasseDAO {
         $sql = "SELECT * FROM Classe WHERE id_Cla = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idCla]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if (!$row) {
             return null;
@@ -50,7 +50,7 @@ class ClasseDAO {
     public function getAllClasses(): array {
         $sql = "SELECT * FROM Classe";
         $stmt = $this->db->query($sql);
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
         $classes = [];
         foreach ($rows as $row) {

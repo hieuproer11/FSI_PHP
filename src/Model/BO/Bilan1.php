@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Bilan.php';
-
+namespace BO;
+use Bilan;
 class Bilan1 extends Bilan {
     public function __construct(
         int $idBil,
