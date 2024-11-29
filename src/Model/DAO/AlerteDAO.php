@@ -5,20 +5,17 @@ use BO\Alerte;
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';  // Connexion à la base de données
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Alerte.php';    // Classe modèle Alerte
 
-class AlerteDAO
-{
+class AlerteDAO {
 
     private $connexion;
 
     // Constructeur qui reçoit une connexion PDO
-    public function __construct($conn)
-    {
+    public function __construct($conn) {
         $this->connexion = $conn;
     }
 
     // Méthode pour créer une alerte
-    public function create(Alerte $alerte)
-    {
+    public function create(Alerte $alerte) {
         $query = "INSERT INTO Alerte (datelimbil1Al, datelimbil2Al) 
                   VALUES (:datelimbil1Al, :datelimbil2Al)";
 
@@ -43,8 +40,7 @@ class AlerteDAO
     }
 
     // Méthode pour obtenir une alerte par son ID
-    public function getById($idAl)
-    {
+    public function getById($idAl) {
         $query = "SELECT * FROM Alerte WHERE idAl = ?";
 
         try {
@@ -62,7 +58,7 @@ class AlerteDAO
 
             // Si l'alerte existe, la retourner sous forme d'objet Alerte
             if ($row) {
-                $alerte = new Alerte($row['datelimbil1Al'], $row['datelimbil2Al'], $row['idAl']);
+                $alerte = new Alerte($row['datelimbil1Al'], $row['datelimbil2Al'], $row['idAl'] );
                 $alerte->setIdAl($row['idAl']);
                 $alerte->setDatelimbil1Al($row['datelimbil1Al']);
                 $alerte->setDatelimbil2Al($row['datelimbil2Al']);
@@ -74,5 +70,88 @@ class AlerteDAO
 
         // Retourne null si l'alerte n'est pas trouvée
         return null;
+    }
+
+    // Méthode pour mettre à jour une alerte existante
+    public function update(Alerte $alerte) {
+        $query = "UPDATE Alerte 
+                  SET datelimbil1Al = :datelimbil1Al, datelimbil2Al = :datelimbil2Al 
+                  WHERE idAl = :idAl";
+
+        try {
+            // Préparation de la requête
+            $stmt = $this->connexion->prepare($query);
+
+            // Liaison des paramètres avec les valeurs de l'objet Alerte
+            $stmt->bindValue(':idAl', $alerte->getIdAl(), PDO::PARAM_INT);
+            $stmt->bindValue(':datelimbil1Al', $alerte->getDatelimbil1Al(), \PDO::PARAM_STR);
+            $stmt->bindValue(':datelimbil2Al', $alerte->getDatelimbil2Al(), \PDO::PARAM_STR);
+
+            // Exécution de la requête
+            if ($stmt->execute()) {
+                return true;  // Retourne true si la mise à jour réussit
+            }
+        } catch (PDOException $e) {
+            echo "Erreur lors de la mise à jour de l'alerte: " . $e->getMessage();
+        }
+
+        // Retourne false en cas d'échec
+        return false;
+    }
+
+    // Méthode pour supprimer une alerte par son ID
+    public function delete($idAl) {
+        $query = "DELETE FROM Alerte WHERE idAl = :idAl";
+
+        try {
+            // Préparation de la requête
+            $stmt = $this->connexion->prepare($query);
+
+            // Liaison du paramètre ID
+            $stmt->bindValue(':idAl', $idAl, \PDO::PARAM_INT);
+
+            // Exécution de la requête
+            if ($stmt->execute()) {
+                return true;  // Retourne true si la suppression réussit
+            }
+        } catch (PDOException $e) {
+            echo "Erreur lors de la suppression de l'alerte: " . $e->getMessage();
+        }
+
+        // Retourne false en cas d'échec
+        return false;
+    }
+
+    // Méthode pour récupérer toutes les alertes
+    public function getAll() {
+        $query = "SELECT * FROM Alerte";
+
+        try {
+            // Préparation de la requête
+            $stmt = $this->connexion->prepare($query);
+
+            // Exécution de la requête
+            $stmt->execute();
+
+            // Tableau pour stocker toutes les alertes
+            $alertes = [];
+
+            // Récupération des résultats sous forme d'objets Alerte
+            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                $alerte = new Alerte(4,'datelimbil1Al','datelimbil2Al');
+                //     $alerte->setIdAl($row['idAl']);
+                //   $alerte->setDatelimbil1Al($row['datelimbil1Al']);
+                // $alerte->setDatelimbil2Al($row['datelimbil2Al']);
+                $alertes[] = $alerte;
+            }
+
+            // Retourne le tableau d'alertes
+            return $alertes;
+        } catch (PDOException $e) {
+            echo "Erreur lors de la récupération des alertes: " . $e->getMessage();
+        }
+
+        // Retourne un tableau vide si une erreur se produit
+        return [];
     }
 }

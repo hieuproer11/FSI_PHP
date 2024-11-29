@@ -16,6 +16,7 @@ class Entreprise {
         $this->cpEnt = $cpEnt;
     }
 
+
     // Getters et setters pour chaque propriété
     public function getIdEnt() { return $this->idEnt; }
     public function setIdEnt($idEnt) { $this->idEnt = $idEnt; }

@@ -25,7 +25,7 @@ if ($alerteDAO->create($alerte)) {
 } else {
     echo "Échec de la création de l'alerte.\n";
 }
-// Tester la méthode getById()
+
 echo "\nTest de la méthode getById :\n";
 $alerteId = 1; // ID à tester, assurez-vous que l'ID existe dans la base de données
 $retrievedAlerte = $alerteDAO->getById($alerteId);
