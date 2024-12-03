@@ -9,8 +9,7 @@
       </a>
     </div>
     <div class="disconnect-btn">
-        <i class="fa-solid fa-right-from-bracket"></i>
-      <a href="#">Se déconnecter</a>
+      <a href="#"> <i class="fa-solid fa-right-from-bracket"></i> Se déconnecter</a>
     </div>
   </div>
 </header>

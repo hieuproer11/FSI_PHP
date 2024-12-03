@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66341753-98ed-48b3-b429-62a7e2c7adf7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/pages/AccueilTuteur.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/HeaderTuteur.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/InformationsTuteurs.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pages/PageConnexion.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/img/FSI_logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pages/EditInformations.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pages/HeaderAdmin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pages/HeaderEleve.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pages/SidebarEleve.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pages/SidebarTuteur_Admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/HeaderTuteur-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/Header-styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/img/img" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/HeaderTuteur-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pages/AccueilTuteur.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/AccueilTuteur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pages/HeaderTuteur.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/HeaderTuteur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pages/InformationsTuteurs.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/pages/InformationsTuteurs.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
