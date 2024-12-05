@@ -15,10 +15,10 @@ try {
 
     // Créer une instance de AlerteDAO
     $alerteDAO = new DAO\AlerteDAO($conn);
-/*
+
    // --- TEST : Création d'une nouvelle alerte ---
     echo "TEST: Création d'une alerte\n";
-    $alerte = new Alerte(3, "2024-12-11", "2024-12-22");
+    $alerte = new Alerte(5, "2024-12-11", "2024-12-22");
     if ($alerteDAO->create($alerte)) {
         echo "Erreur : échec de la création de l'alerte.\n";
     } else {
@@ -102,7 +102,7 @@ try {
     } else {
         echo "Erreur : échec de la suppression de l'alerte.\n";
     }
-*/
+
 
     // --- TEST : Récupération de toutes les alertes ---
     echo "\nTEST: Récupération de toutes les alertes\n";
@@ -116,10 +116,7 @@ try {
     }
 
 
-
-
-
-
+    
 
 
 
