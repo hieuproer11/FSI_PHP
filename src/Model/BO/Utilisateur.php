@@ -1,4 +1,5 @@
 <?php
+
 namespace BO;
 
 class Utilisateur {
@@ -13,11 +14,11 @@ class Utilisateur {
     private string $vilUti;
     private string $logUti;
     private string $mdpUti;
-    private Tuteur $idTut;
-    private Specialite $idSpe;
-    private TypeUtilisateur $idTypeuti;
-    private MaitreApprentissage $idMaitapp;
-    private Entreprise $idEnt;
+    private int $idTut;
+    private int $idSpe;
+    private int $idTypeuti;
+    private int $idMaitapp;
+    private int $idEnt;
     private int $idCla;
 
     public function __construct($idUti, $nomUti, $preUti, $mailUti, $altUti, $telUti, $adrUti, $cpUti, $vilUti, $logUti, $mdpUti, $idTut, $idSpe, $idTypeuti, $idMaitapp, $idEnt, $idCla) {

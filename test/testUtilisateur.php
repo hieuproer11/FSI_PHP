@@ -105,6 +105,8 @@ try {
         echo "Utilisateur supprimé avec succès !\n";
     }
 */
+
+
 } catch (Exception $e) {
     echo "Erreur : " . $e->getMessage() . "\n";
 }

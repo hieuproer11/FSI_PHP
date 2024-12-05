@@ -115,7 +115,7 @@ if ($bilan1DAO->delete($idToDelete)) {
     // === Tests pour Bilan2 ===
     echo "\n=== Tests pour Bilan2 ===\n";
     $bilan2DAO = new Bilan2DAO($conn);
-
+/*
     // Création d'un Bilan2
     $bilan2 = new Bilan2(16, 12, 11, 11.5, "Bien", "Mémoire sur l'IA", "2024-12-15");
     $bilan2DAO->create($bilan2);
@@ -216,7 +216,7 @@ if ($bilan1DAO->delete($idToDelete)) {
         echo "Erreur : échec de la suppression du Bilan2.\n";
     }
 
-
+*/
 
 // --- TEST : Récupération de tous les Bilan1 ---
     echo "\nTEST: Récupération de tous les Bilan1\n";

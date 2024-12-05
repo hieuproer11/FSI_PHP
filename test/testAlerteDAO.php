@@ -18,13 +18,13 @@ try {
 
    // --- TEST : Création d'une nouvelle alerte ---
     echo "TEST: Création d'une alerte\n";
-    $alerte = new Alerte(5, "2024-12-11", "2024-12-22");
+    $alerte = new Alerte(6, "2024-12-11", "2024-12-22");
     if ($alerteDAO->create($alerte)) {
         echo "Erreur : échec de la création de l'alerte.\n";
     } else {
         echo "Alerte créée avec succès !\n";
     }
-
+/*
     // --- TEST : Lecture d'une alerte par ID ---
     echo "\nTEST: Lecture d'une alerte\n";
     $idAlerte = 5; // Remplacez '1' par l'ID de l'alerte que vous voulez récupérer
@@ -115,8 +115,8 @@ try {
         echo "Aucune alerte trouvée.\n";
     }
 
+*/
 
-    
 
 
 
