@@ -1,5 +1,5 @@
 CREATE TABLE Entreprise(
-   idEnt INT,
+   idEnt INT NOT NULL AUTO_INCREMENT,
    nomEnt VARCHAR(50),
    adrEnt VARCHAR(50),
    vilEnt VARCHAR(50),
@@ -8,7 +8,7 @@ CREATE TABLE Entreprise(
    ENGINE=INNODB;
 
 CREATE TABLE Bilan1(
-   idBil1 INT,
+   idBil1 INT NOT NULL AUTO_INCREMENT,
    notentBil1 DECIMAL(5,2),
    notdossBil1 DECIMAL(5,2),
    notorBil1 DECIMAL(5,2),
@@ -19,7 +19,7 @@ CREATE TABLE Bilan1(
    ENGINE=INNODB;
 
 CREATE TABLE Bilan2(
-   idBil2 INT,
+   idBil2 INT NOT NULL AUTO_INCREMENT,
    notdossBil2 DECIMAL(5,2),
    notorBil2 DECIMAL(5,2),
    moyBil2 DECIMAL(5,2),
@@ -30,13 +30,13 @@ CREATE TABLE Bilan2(
    ENGINE=INNODB;
 
 CREATE TABLE Type_d_utilisateur(
-   idTypeuti INT,
+   idTypeuti INT NOT NULL AUTO_INCREMENT,
    typeutiTypeuti VARCHAR(50),
    CONSTRAINT type_d_utilisateur_PK PRIMARY KEY(idTypeuti))
    ENGINE=INNODB;
 
 CREATE TABLE Maitre_d_apprentissage(
-   idMaitapp INT,
+   idMaitapp INT NOT NULL AUTO_INCREMENT,
    nomMaitapp VARCHAR(50),
    preMaitapp VARCHAR(50),
    mailMaitapp VARCHAR(50),
@@ -47,26 +47,26 @@ CREATE TABLE Maitre_d_apprentissage(
    ENGINE=INNODB;
 
 CREATE TABLE Specialite(
-   idSpe INT,
+   idSpe INT NOT NULL AUTO_INCREMENT,
    nomSpe VARCHAR(50),
    CONSTRAINT specialite_PK PRIMARY KEY(idSpe))
    ENGINE=INNODB;
 
 CREATE TABLE Classe(
-   idCla INT,
+   idCla INT NOT NULL AUTO_INCREMENT,
    nomCla VARCHAR(50),
    CONSTRAINT classe_PK PRIMARY KEY(idCla))
    ENGINE=INNODB;
 
 CREATE TABLE Alerte(
-   idAl INT,
+   idAl INT NOT NULL AUTO_INCREMENT,
    datelimbil1Al DATE,
    datelimbil2Al DATE,
    CONSTRAINT alerte_PK PRIMARY KEY(idAl))
    ENGINE=INNODB;
 
 CREATE TABLE Tuteur(
-   idTut INT,
+   idTut INT NOT NULL AUTO_INCREMENT,
    preTut VARCHAR(50),
    nomTut VARCHAR(50),
    telTut VARCHAR(15),
@@ -75,7 +75,7 @@ CREATE TABLE Tuteur(
    ENGINE=INNODB;
 
 CREATE TABLE Utilisateur(
-   idUti INT,
+   idUti INT NOT NULL AUTO_INCREMENT,
    nomUti VARCHAR(50),
    preUti VARCHAR(50),
    mailUti VARCHAR(50),
