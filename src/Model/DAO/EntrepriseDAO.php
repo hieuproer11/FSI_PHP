@@ -1,63 +1,88 @@
 <?php
+
 namespace DAO;
 
 use BO\Entreprise;
+use PDO;
 
 class EntrepriseDAO {
-    private $conn;
 
-    public function __construct($conn) {
-        $this->conn = $conn;
+    private PDO $db;
+
+    public function __construct(PDO $db) {
+        $this->db = $db;
     }
 
-    public function create($entreprise) {
-        $query = "INSERT INTO Entreprise (idEnt, nomEnt, adrEnt, vilEnt, cpEnt) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':idEnt', $entreprise->getIdEnt(), \PDO::PARAM_INT);
-        $stmt->bindValue(':nomEnt', $entreprise->getNomEnt(), \PDO::PARAM_STR);
-        $stmt->bindValue(':adrEnt', $entreprise->getAdrEnt(), \PDO::PARAM_STR);
-        $stmt->bindValue(':vilEnt', $entreprise->getVilEnt(), \PDO::PARAM_STR);
-        $stmt->bindValue(':cpEnt', $entreprise->getCpEnt(), \PDO::PARAM_STR);
-        return $stmt->execute();
+    // Méthode pour créer une entreprise
+    public function create(Entreprise $entreprise): void {
+        $sql = "INSERT INTO Entreprise (idEnt, nomEnt, adrEnt, vilEnt, cpEnt) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            $entreprise->getIdEnt(),
+            $entreprise->getNomEnt(),
+            $entreprise->getAdrEnt(),
+            $entreprise->getVilEnt(),
+            $entreprise->getCpEnt()
+        ]);
     }
 
-    public function read($id) {
-        $query = "SELECT * FROM Entreprise WHERE idEnt = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':idEnt', $id, \PDO::PARAM_INT);
-        $stmt->execute();
-        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-        if ($row) {
-            return new Entreprise($row['idEnt'], $row['nomEnt'], $row['adrEnt'], $row['vilEnt'], $row['cpEnt']);
+    // Méthode pour récupérer une entreprise par ID
+    public function getById(int $idEnt): ?Entreprise {
+        $sql = "SELECT * FROM Entreprise WHERE idEnt = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$idEnt]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return null;
         }
-        return null;
+
+        return new Entreprise(
+            $row['idEnt'],
+            $row['nomEnt'],
+            $row['adrEnt'],
+            $row['vilEnt'],
+            $row['cpEnt']
+        );
     }
 
-    public function update($entreprise) {
-        $query = "UPDATE Entreprise SET nomEnt = ?, adrEnt = ?, vilEnt = ?, cpEnt = ? WHERE idEnt = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':nomEnt', $entreprise->getNomEnt(), \PDO::PARAM_STR);
-        $stmt->bindValue(':adrEnt', $entreprise->getAdrEnt(), \PDO::PARAM_STR);
-        $stmt->bindValue(':vilEnt', $entreprise->getVilEnt(), \PDO::PARAM_STR);
-        $stmt->bindValue(':cpEnt', $entreprise->getCpEnt(), \PDO::PARAM_STR);
-        $stmt->bindValue(':idEnt', $entreprise->getIdEnt(), \PDO::PARAM_INT);
-        return $stmt->execute();
+    // Méthode pour mettre à jour une entreprise existante
+    public function update(Entreprise $entreprise): void {
+        $sql = "UPDATE Entreprise SET nomEnt = ?, adrEnt = ?, vilEnt = ?, cpEnt = ? WHERE idEnt = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            $entreprise->getNomEnt(),
+            $entreprise->getAdrEnt(),
+            $entreprise->getVilEnt(),
+            $entreprise->getCpEnt(),
+            $entreprise->getIdEnt()
+        ]);
     }
 
-    public function delete($id) {
-        $query = "DELETE FROM Entreprise WHERE idEnt = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':idEnt', $id, \PDO::PARAM_INT);
-        return $stmt->execute();
+    // Méthode pour supprimer une entreprise par ID
+    public function delete(int $idEnt): void {
+        $sql = "DELETE FROM Entreprise WHERE idEnt = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$idEnt]);
     }
 
-    public function findAll() {
-        $query = "SELECT * FROM Entreprise";
-        $stmt = $this->conn->query($query);
+    // Méthode pour récupérer toutes les entreprises
+    public function getAll(): array {
+        $sql = "SELECT * FROM Entreprise";
+        $result = $this->db->query($sql);
+        $entreprisesData = $result->fetchAll(PDO::FETCH_ASSOC);
+
         $entreprises = [];
-        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $entreprises[] = new Entreprise($row['idEnt'], $row['nomEnt'], $row['adrEnt'], $row['vilEnt'], $row['cpEnt']);
+        foreach ($entreprisesData as $row) {
+            $entreprises[] = new Entreprise(
+                $row['idEnt'],
+                $row['nomEnt'],
+                $row['adrEnt'],
+                $row['vilEnt'],
+                $row['cpEnt']
+            );
         }
+
         return $entreprises;
     }
 }

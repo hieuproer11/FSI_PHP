@@ -2,7 +2,7 @@
 
 namespace BO;
 
-class Type_d_utilisateur {
+class TypeUtilisateur {
     private int $idTypeuti;
     private string $typeutiTypeuti;
 

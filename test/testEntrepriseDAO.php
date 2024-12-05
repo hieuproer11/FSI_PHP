@@ -1,72 +1,114 @@
 <?php
+
+// Inclure la connexion et le DAO d'Entreprise
 use BO\Entreprise;
 use DAO\EntrepriseDAO;
 
-// Inclure la connexion et le DAO de Entreprise
+// Inclure les fichiers nécessaires
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\EntrepriseDAO.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
 
-// Connexion à la base de données
-$conn = ConnexionBDD();
+try {
+    // Créer une instance de la connexion PDO
+    $conn = ConnexionBDD();
 
-// Création de l'instance du DAO Entreprise
-$entrepriseDAO = new EntrepriseDAO($conn);
+    // Créer une instance de EntrepriseDAO
+    $entrepriseDAO = new DAO\EntrepriseDAO($conn);
 
-/*
-// 1. Test de création d'une Entreprise
-echo "Test de la création d'une Entreprise :\n";
-$entreprise = new Entreprise(3, 'TechCorp', '1234 Avenue de la Technologie', 'Paris', '75000', 'France', 'contact@techcorp.com');
-$createdEntreprise = $entrepriseDAO->create($entreprise);
-if ($createdEntreprise) {
-    echo "Entreprise créée avec succès : " . $createdEntreprise->getNom() . "\n";
-} else {
-    echo "Échec de la création de l'Entreprise.\n";
-}
-
-// 2. Test de lecture d'une Entreprise par ID
-echo "\nTest de la lecture d'une Entreprise par ID :\n";
-$entrepriseToRead = $entrepriseDAO->read(1); // Assurez-vous qu'un enregistrement avec cet ID existe
-if ($entrepriseToRead) {
-    echo "Entreprise lue : " . $entrepriseToRead->getNom() . ", " . $entrepriseToRead->getAdresse() . "\n";
-} else {
-    echo "Entreprise non trouvée.\n";
-}
-
-// 3. Test de mise à jour d'une Entreprise
-echo "\nTest de la mise à jour d'une Entreprise :\n";
-$entrepriseToUpdate = $entrepriseDAO->read(1); // Assurez-vous qu'un enregistrement avec cet ID existe
-if ($entrepriseToUpdate) {
-    // Mise à jour des informations de l'entreprise
-    $entrepriseToUpdate->setAdresse('5678 Boulevard de l\'Innovation');
-    $updatedEntreprise = $entrepriseDAO->update($entrepriseToUpdate);
-    if ($updatedEntreprise) {
-        echo "Entreprise mise à jour avec succès : " . $entrepriseToUpdate->getNom() . "\n";
+    // --- TEST : Création d'une nouvelle entreprise ---
+    echo "TEST: Création d'une entreprise\n";
+    $entreprise = new Entreprise(17, "Test Entreprise", "123 Rue Exemple", "75000", "Paris", "0123456789", "contact@exemple.com");
+    if ($entrepriseDAO->create($entreprise)) {
+        echo "Erreur : échec de la création de l'entreprise.\n";
     } else {
-        echo "Échec de la mise à jour de l'Entreprise.\n";
+        echo "Entreprise créée avec succès !\n";
     }
-} else {
-    echo "Entreprise non trouvée pour mise à jour.\n";
-}
 
-// 4. Test de suppression d'une Entreprise
-echo "\nTest de la suppression d'une Entreprise :\n";
-$deletedEntreprise = $entrepriseDAO->delete(1); // Assurez-vous qu'un enregistrement avec cet ID existe
-if ($deletedEntreprise) {
-    echo "Entreprise supprimée avec succès.\n";
-} else {
-    echo "Échec de la suppression de l'Entreprise.\n";
-}
-*/
 
-// 5. Test de récupération de toutes les Entreprises
-echo "\nTest de la récupération de toutes les Entreprises :\n";
-$entreprises = $entrepriseDAO->findAll();
-if (count($entreprises) > 0) {
-    echo "Entreprises trouvées :\n";
-    foreach ($entreprises as $entreprise) {
-        echo $entreprise->getNomEnt() . ", " . $entreprise->getAdrEnt() . "\n";
+    // --- TEST : Lecture d'une entreprise par ID ---
+    echo "\nTEST: Lecture d'une entreprise\n";
+    $idEntreprise = 1; // Remplacez '1' par l'ID de l'entreprise que vous voulez récupérer
+    $retrievedEntreprise = $entrepriseDAO->getById($idEntreprise);
+    if ($retrievedEntreprise) {
+        echo "Entreprise récupérée : \n";
+        echo "ID: " . $retrievedEntreprise->getIdEnt() . "\n";
+        echo "Nom: " . $retrievedEntreprise->getNomEnt() . "\n";
+        echo "Adresse: " . $retrievedEntreprise->getAdrEnt() . "\n";
+    } else {
+        echo "Erreur : Entreprise avec l'ID " . $idEntreprise . " non trouvée.\n";
     }
-} else {
-    echo "Aucune Entreprise trouvée.\n";
+
+    // --- TEST : Mise à jour d'une entreprise ---
+    echo "\nTEST: Mise à jour d'une entreprise\n";
+
+    // Spécifiez ici l'ID de l'entreprise à mettre à jour
+    $idEntreprise = 1; // Remplacez par l'ID de l'entreprise que vous souhaitez tester
+
+    // Récupération de l'entreprise à mettre à jour
+    $entrepriseToUpdate = $entrepriseDAO->getById($idEntreprise);
+
+    if ($entrepriseToUpdate) {
+        // Afficher les données actuelles avant mise à jour
+        echo "Entreprise avant mise à jour :\n";
+        echo "ID: " . $entrepriseToUpdate->getIdEnt() . "\n";
+        echo "Nom: " . $entrepriseToUpdate->getNomEnt() . "\n";
+        echo "Adresse: " . $entrepriseToUpdate->getAdrEnt() . "\n";
+
+        // Modification des données de l'entreprise
+        $entrepriseToUpdate->setNomEnt("Entreprise Modifiée");
+        $entrepriseToUpdate->setAdrEnt("456 Rue Modifiée");
+
+        // Mise à jour dans la base de données
+        if ($entrepriseDAO->update($entrepriseToUpdate)) {
+            echo "Erreur : La mise à jour de l'entreprise a échoué.\n";
+
+            // Vérification des nouvelles données
+            $updatedEntreprise = $entrepriseDAO->getById($idEntreprise);
+            if ($updatedEntreprise) {
+                echo "Entreprise après mise à jour :\n";
+                echo "ID: " . $updatedEntreprise->getIdEnt() . "\n";
+                echo "Nom: " . $updatedEntreprise->getNomEnt() . "\n";
+                echo "Adresse: " . $updatedEntreprise->getAdrEnt() . "\n";
+            } else {
+                echo "Erreur : Impossible de récupérer les données après la mise à jour.\n";
+            }
+        } else {
+            echo "Mise à jour effectuée avec succès !\n";
+        }
+    } else {
+        echo "Erreur : Entreprise avec l'ID $idEntreprise non trouvée.\n";
+    }
+
+    // --- TEST : Suppression d'une entreprise ---
+    echo "\nTEST: Suppression d'une entreprise\n";
+    $idToDelete = 1; // Remplacez '1' par l'ID de l'entreprise que vous voulez supprimer
+    if ($entrepriseDAO->delete($idToDelete)) {
+        echo "Entreprise supprimée avec succès !\n";
+
+        // Vérification de la suppression
+        $deletedEntreprise = $entrepriseDAO->getById($idToDelete);
+        if ($deletedEntreprise) {
+            echo "Erreur : L'entreprise n'a pas été supprimée.\n";
+        } else {
+            echo "L'entreprise a bien été supprimée.\n";
+        }
+    } else {
+        echo "Erreur : échec de la suppression de l'entreprise.\n";
+    }
+
+    // --- TEST : Récupération de toutes les entreprises ---
+    echo "\nTEST: Récupération de toutes les entreprises\n";
+    $allEntreprises = $entrepriseDAO->getAll();
+    if (!empty($allEntreprises)) {
+        foreach ($allEntreprises as $entreprise) {
+            echo "ID: " . $entreprise->getIdEnt() . " | Nom: " . $entreprise->getNomEnt() . " | Adresse: " . $entreprise->getAdrEnt() . "\n";
+        }
+    } else {
+        echo "Aucune entreprise trouvée.\n";
+    }
+
+
+} catch (Exception $e) {
+    echo "Erreur : " . $e->getMessage() . "\n";
 }

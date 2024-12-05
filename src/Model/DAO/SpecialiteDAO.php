@@ -2,54 +2,72 @@
 
 namespace DAO;
 
+use BO\Specialite;
+use PDO;
+
 class SpecialiteDAO {
-    private $conn;
 
-    public function __construct($conn) {
-        $this->conn = $conn;
+    private PDO $db;
+
+    public function __construct(PDO $db) {
+        $this->db = $db;
     }
 
-    public function create($specialite) {
-        $query = "INSERT INTO Specialite (nomSpe) VALUES (?)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("s", $specialite->getNomSpe());
-        return $stmt->execute();
+    // Méthode pour créer une spécialité
+    public function create(Specialite $specialite): void {
+        $sql = "INSERT INTO Specialite (nomSpe) VALUES (?)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$specialite->getNomSpe()]);
     }
 
-    public function read($idSpe) {
-        $query = "SELECT * FROM Specialite WHERE idSpe = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $idSpe);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($row = $result->fetch_assoc()) {
-            return new Specialite($row['idSpe'], $row['nomSpe']);
+    // Méthode pour récupérer une spécialité par ID
+    public function getById(int $idSpe): ?Specialite {
+        $sql = "SELECT * FROM Specialite WHERE idSpe = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$idSpe]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return null;
         }
-        return null;
+
+        return new Specialite(
+            $row['idSpe'],
+            $row['nomSpe']
+        );
     }
 
-    public function update($specialite) {
-        $query = "UPDATE Specialite SET nomSpe = ? WHERE idSpe = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("si", $specialite->getNomSpe(), $specialite->getIdSpe());
-        return $stmt->execute();
+    // Méthode pour mettre à jour une spécialité existante
+    public function update(Specialite $specialite): void {
+        $sql = "UPDATE Specialite SET nomSpe = ? WHERE idSpe = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            $specialite->getNomSpe(),
+            $specialite->getIdSpe()
+        ]);
     }
 
-    public function delete($idSpe) {
-        $query = "DELETE FROM Specialite WHERE idSpe = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $idSpe);
-        return $stmt->execute();
+    // Méthode pour supprimer une spécialité par ID
+    public function delete(int $idSpe): void {
+        $sql = "DELETE FROM Specialite WHERE idSpe = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$idSpe]);
     }
 
-    public function findAll() {
-        $query = "SELECT * FROM Specialite";
-        $result = $this->conn->query($query);
-        $specialiteList = [];
-        while ($row = $result->fetch_assoc()) {
-            $specialiteList[] = new Specialite($row['idSpe'], $row['nomSpe']);
+    // Méthode pour récupérer toutes les spécialités
+    public function getAll(): array {
+        $sql = "SELECT * FROM Specialite";
+        $result = $this->db->query($sql);
+        $specialitesData = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        $specialites = [];
+        foreach ($specialitesData as $row) {
+            $specialites[] = new Specialite(
+                $row['idSpe'],
+                $row['nomSpe']
+            );
         }
-        return $specialiteList;
+
+        return $specialites;
     }
 }
-

@@ -1,6 +1,8 @@
 <?php
 
 namespace BO;
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan.php'; // Chemin exact vers la classe Bilan
+
 
 class Bilan1 extends Bilan {
     // Ajoute des propriétés spécifiques à Bilan1, si nécessaire

@@ -3,56 +3,74 @@
 namespace DAO;
 
 use BO\Classe;
+use PDO;
 
 class ClasseDAO {
-    private $conn;
 
-    public function __construct($conn) {
-        $this->conn = $conn;
+    private PDO $db;
+
+    public function __construct(PDO $db) {
+        $this->db = $db;
     }
 
-    public function create($classe) {
-        $query = "INSERT INTO Classe (idCla, nomCla) VALUES (:idCla, :nomCla)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':idCla', $classe->getIdCla(), \PDO::PARAM_INT);
-        $stmt->bindValue(':nomCla', $classe->getNomCla(), \PDO::PARAM_STR);
-        return $stmt->execute();
+    // Méthode pour créer une classe
+    public function create(Classe $classe): void {
+        $sql = "INSERT INTO Classe (idCla, nomCla) VALUES (?, ?)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            $classe->getIdCla(),
+            $classe->getNomCla()
+        ]);
     }
 
-    public function read($id) {
-        $query = "SELECT * FROM Classe WHERE idCla = :idCla";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':idCla', $id, \PDO::PARAM_INT);
-        $stmt->execute();
-        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-        if ($row) {
-            return new Classe($row['idCla'], $row['nomCla']);
+    // Méthode pour récupérer une classe par ID
+    public function getById(int $idCla): ?Classe {
+        $sql = "SELECT * FROM Classe WHERE idCla = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$idCla]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return null;
         }
-        return null;
+
+        return new Classe(
+            $row['idCla'],
+            $row['nomCla']
+        );
     }
 
-    public function update($classe) {
-        $query = "UPDATE Classe SET nomCla = :nomCla WHERE idCla = :idCla";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':nomCla', $classe->getNomCla(), \PDO::PARAM_STR);
-        $stmt->bindValue(':idCla', $classe->getIdCla(), \PDO::PARAM_INT);
-        return $stmt->execute();
+    // Méthode pour mettre à jour une classe existante
+    public function update(Classe $classe): void {
+        $sql = "UPDATE Classe SET nomCla = ? WHERE idCla = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            $classe->getNomCla(),
+            $classe->getIdCla()
+        ]);
     }
 
-    public function delete($id) {
-        $query = "DELETE FROM Classe WHERE idCla = :idCla";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':idCla', $id, \PDO::PARAM_INT);
-        return $stmt->execute();
+    // Méthode pour supprimer une classe par ID
+    public function delete(int $idCla): void {
+        $sql = "DELETE FROM Classe WHERE idCla = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$idCla]);
     }
 
-    public function findAll() {
-        $query = "SELECT * FROM Classe";
-        $stmt = $this->conn->query($query);
+    // Méthode pour récupérer toutes les classes
+    public function getAll(): array {
+        $sql = "SELECT * FROM Classe";
+        $result = $this->db->query($sql);
+        $classesData = $result->fetchAll(PDO::FETCH_ASSOC);
+
         $classes = [];
-        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-            $classes[] = new Classe($row['idCla'], $row['nomCla']);
+        foreach ($classesData as $row) {
+            $classes[] = new Classe(
+                $row['idCla'],
+                $row['nomCla']
+            );
         }
+
         return $classes;
     }
 }

@@ -2,19 +2,25 @@
 
 namespace DAO;
 
-class UtilisateurDAO  {
-    private $conn;
+use BO\Utilisateur;
+use PDO;
 
-    public function __construct($conn) {
-        $this->conn = $conn;
+class UtilisateurDAO {
+
+    private PDO $db;
+
+    public function __construct(PDO $db) {
+        $this->db = $db;
     }
 
-    public function create($utilisateur) {
-        $query = "INSERT INTO Utilisateur (idUti, nomUti, preUti, mailUti, altUti, telUti, adrUti, cpUti, vilUti, logUti, mdpUti, idTut, idSpe, idTypeuti, idMaitapp, idEnt, idCla) 
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param(
-            "isssssssssssiiiii",
+    // Méthode pour créer un utilisateur
+    public function create(Utilisateur $utilisateur): void {
+        $sql = "INSERT INTO Utilisateur 
+                (idUti, nomUti, preUti, mailUti, altUti, telUti, adrUti, cpUti, vilUti, logUti, mdpUti, idTut, idSpe, idTypeuti, idMaitapp, idEnt, idCla)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
             $utilisateur->getIdUti(),
             $utilisateur->getNomUti(),
             $utilisateur->getPreUti(),
@@ -32,48 +38,50 @@ class UtilisateurDAO  {
             $utilisateur->getIdMaitapp(),
             $utilisateur->getIdEnt(),
             $utilisateur->getIdCla()
-        );
-        return $stmt->execute();
+        ]);
     }
 
-    public function read($id) {
-        $query = "SELECT * FROM Utilisateur WHERE idUti = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($row = $result->fetch_assoc()) {
-            return new Utilisateur(
-                $row['idUti'],
-                $row['nomUti'],
-                $row['preUti'],
-                $row['mailUti'],
-                $row['altUti'],
-                $row['telUti'],
-                $row['adrUti'],
-                $row['cpUti'],
-                $row['vilUti'],
-                $row['logUti'],
-                $row['mdpUti'],
-                $row['idTut'],
-                $row['idSpe'],
-                $row['idTypeuti'],
-                $row['idMaitapp'],
-                $row['idEnt'],
-                $row['idCla']
-            );
+    // Méthode pour récupérer un utilisateur par son ID
+    public function getById(int $id): ?Utilisateur {
+        $sql = "SELECT * FROM Utilisateur WHERE idUti = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$id]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return null;
         }
-        return null;
+
+        return new Utilisateur(
+            $row['idUti'],
+            $row['nomUti'],
+            $row['preUti'],
+            $row['mailUti'],
+            $row['altUti'],
+            $row['telUti'],
+            $row['adrUti'],
+            $row['cpUti'],
+            $row['vilUti'],
+            $row['logUti'],
+            $row['mdpUti'],
+            $row['idTut'],
+            $row['idSpe'],
+            $row['idTypeuti'],
+            $row['idMaitapp'],
+            $row['idEnt'],
+            $row['idCla']
+        );
     }
 
-    public function update($utilisateur) {
-        $query = "UPDATE Utilisateur SET 
-                  nomUti = ?, preUti = ?, mailUti = ?, altUti = ?, telUti = ?, adrUti = ?, cpUti = ?, vilUti = ?, 
-                  logUti = ?, mdpUti = ?, idTut = ?, idSpe = ?, idTypeuti = ?, idMaitapp = ?, idEnt = ?, idCla = ? 
-                  WHERE idUti = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param(
-            "ssssssssssssiiii",
+    // Méthode pour mettre à jour un utilisateur
+    public function update(Utilisateur $utilisateur): void {
+        $sql = "UPDATE Utilisateur SET 
+                nomUti = ?, preUti = ?, mailUti = ?, altUti = ?, telUti = ?, adrUti = ?, cpUti = ?, vilUti = ?, 
+                logUti = ?, mdpUti = ?, idTut = ?, idSpe = ?, idTypeuti = ?, idMaitapp = ?, idEnt = ?, idCla = ?
+                WHERE idUti = ?";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
             $utilisateur->getNomUti(),
             $utilisateur->getPreUti(),
             $utilisateur->getMailUti(),
@@ -91,22 +99,24 @@ class UtilisateurDAO  {
             $utilisateur->getIdEnt(),
             $utilisateur->getIdCla(),
             $utilisateur->getIdUti()
-        );
-        return $stmt->execute();
+        ]);
     }
 
-    public function delete($id) {
-        $query = "DELETE FROM Utilisateur WHERE idUti = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $id);
-        return $stmt->execute();
+    // Méthode pour supprimer un utilisateur par son ID
+    public function delete(int $id): void {
+        $sql = "DELETE FROM Utilisateur WHERE idUti = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$id]);
     }
 
-    public function findAll() {
-        $query = "SELECT * FROM Utilisateur";
-        $result = $this->conn->query($query);
+    // Méthode pour récupérer tous les utilisateurs
+    public function getAll(): array {
+        $sql = "SELECT * FROM Utilisateur";
+        $result = $this->db->query($sql);
+        $utilisateursData = $result->fetchAll(PDO::FETCH_ASSOC);
+
         $utilisateurs = [];
-        while ($row = $result->fetch_assoc()) {
+        foreach ($utilisateursData as $row) {
             $utilisateurs[] = new Utilisateur(
                 $row['idUti'],
                 $row['nomUti'],
@@ -127,7 +137,7 @@ class UtilisateurDAO  {
                 $row['idCla']
             );
         }
+
         return $utilisateurs;
     }
 }
-

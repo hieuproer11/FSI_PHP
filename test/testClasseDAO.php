@@ -1,73 +1,103 @@
 <?php
 
-// Inclure les classes nécessaires
-use DAO\ClasseDAO;
-use BO\Classe;
-
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\ClasseDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Classe.php';
+require_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Classe.php'; // Inclure le fichier du BO
+require_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\ClasseDAO.php'; // Inclure le fichier du DAO
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
 
-// Créer une instance de la connexion PDO
-$conn = ConnexionBDD();
+use BO\Classe;
+use DAO\ClasseDAO;
 
-// Créer une instance de ClasseDAO
-$classeDAO = new ClasseDAO($conn);
+try {
+    // Connexion à la base de données
+    $conn = ConnexionBDD();
 
-// Test de la méthode create()
+    // === Tests pour Classe ===
+    echo "=== Tests pour Classe ===\n";
+    $classeDAO = new ClasseDAO($conn);
 
-/* echo "Test de la méthode create :\n";
-$classe = new Classe(3, "Classe A");
-if ($classeDAO->create($classe)) {
-    echo "Classe créée avec succès.\n";
-} else {
-    echo "Échec de la création de la classe.\n";
-}
-
-// Test de la méthode read()
-echo "\nTest de la méthode read :\n";
-$retrievedClasse = $classeDAO->read(1); // ID à tester
-if ($retrievedClasse) {
-    echo "Classe récupérée avec succès :\n";
-    echo "ID : " . $retrievedClasse->getIdCla() . "\n";
-    echo "Nom : " . $retrievedClasse->getNomCla() . "\n";
-} else {
-    echo "Aucune classe trouvée avec cet ID.\n";
-}
+    // --- TEST : Création d'une Classe ---
+    echo "\nTEST: Création d'une Classe\n";
+    $classe = new Classe(16, "Test16");
+    $classeDAO->create($classe);
+    echo "Classe créée : " . $classe->getNomCla() . "\n";
 
 
-// Test de la méthode update()
-echo "\nTest de la méthode update :\n";
-if ($retrievedClasse) {
-    $retrievedClasse->setNomCla("Classe A Modifiée");
-    if ($classeDAO->update($retrievedClasse)) {
-        echo "Classe mise à jour avec succès.\n";
+    // --- TEST : Lecture d'une Classe par ID ---
+    echo "\nTEST: Lecture d'une Classe par ID\n";
+    $idClasse = 16; // Remplacez par l'ID de la classe que vous souhaitez récupérer
+    $retrievedClasse = $classeDAO->getById($idClasse);
+
+    if ($retrievedClasse) {
+        echo "Classe récupérée : \n";
+        echo "ID: " . $retrievedClasse->getIdCla() . "\n";
+        echo "Nom: " . $retrievedClasse->getNomCla() . "\n";
     } else {
-        echo "Échec de la mise à jour de la classe.\n";
+        echo "Erreur : Aucun classe trouvé avec l'ID " . $idClasse . ".\n";
     }
-} else {
-    echo "Impossible de tester la mise à jour : classe non trouvée.\n";
-}
 
-// Test de la méthode delete()
-echo "\nTest de la méthode delete :\n";
-if ($classeDAO->delete(1)) {
-    echo "Classe supprimée avec succès.\n";
-} else {
-    echo "Échec de la suppression de la classe.\n";
-}
-*/
+    // --- TEST : Mise à jour d'une Classe ---
+    echo "\nTEST: Mise à jour d'une Classe\n";
 
-// Test de la méthode findAll()
-echo "\nTest de la méthode findAll :\n";
-$allClasses = $classeDAO->findAll();
-if (!empty($allClasses)) {
-    echo "Toutes les classes récupérées avec succès :\n";
-    foreach ($allClasses as $class) {
-        echo "ID : " . $class->getIdCla() . " - ";
-        echo "Nom : " . $class->getNomCla() . "\n";
+    // Récupération de la Classe à mettre à jour
+    $retrievedClasse = $classeDAO->getById($idClasse);
+
+    if ($retrievedClasse) {
+        // Afficher les données actuelles avant mise à jour
+        echo "Classe avant mise à jour :\n";
+        echo "ID: " . $retrievedClasse->getIdCla() . "\n";
+        echo "Nom: " . $retrievedClasse->getNomCla() . "\n";
+
+        // Modifier les données de la Classe
+        $retrievedClasse->setNomCla("Informatique");
+
+        // Mise à jour dans la base de données
+        if ($classeDAO->update($retrievedClasse)) {
+            echo "Mise à jour effectuée avec succès !\n";
+
+            // Vérification des nouvelles données
+            $updatedClasse = $classeDAO->getById($idClasse);
+            if ($updatedClasse) {
+                echo "Classe après mise à jour :\n";
+                echo "ID: " . $updatedClasse->getIdCla() . "\n";
+                echo "Nouveau nom: " . $updatedClasse->getNomCla() . "\n";
+            } else {
+                echo "Erreur : Impossible de récupérer les données après la mise à jour.\n";
+            }
+        } else {
+            echo "Erreur : La mise à jour de la classe a échoué.\n";
+        }
+    } else {
+        echo "Erreur : Aucun classe trouvé avec l'ID $idClasse.\n";
     }
-} else {
-    echo "Aucune classe trouvée.\n";
-}
 
+    // --- TEST : Suppression d'une Classe ---
+    echo "\nTEST: Suppression d'une Classe\n";
+
+    // Suppression de la Classe
+    if ($classeDAO->delete($idClasse)) {
+        echo "Classe supprimée avec succès !\n";
+
+        // Vérification de la suppression
+        $deletedClasse = $classeDAO->getById($idClasse);
+        if ($deletedClasse) {
+            echo "Erreur : La classe n'a pas été supprimée.\n";
+        } else {
+            echo "La classe a bien été supprimée.\n";
+        }
+    } else {
+        echo "Erreur : échec de la suppression de la classe.\n";
+    }
+
+
+    // --- TEST : Récupération de toutes les Classes ---
+    echo "\nTEST: Récupération de toutes les Classes\n";
+    $classes = $classeDAO->getAll();
+    foreach ($classes as $classe) {
+        echo "ID: " . $classe->getIdCla() . " - Nom: " . $classe->getNomCla() . "\n";
+    }
+
+
+
+} catch (Exception $e) {
+    echo "Erreur : " . $e->getMessage() . "\n";
+}
