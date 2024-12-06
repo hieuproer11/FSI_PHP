@@ -15,7 +15,7 @@ try {
 
     // Créer une instance de SpecialiteDAO
     $specialiteDAO = new DAO\SpecialiteDAO($conn);
-
+/*
     // --- TEST : Création d'une nouvelle spécialité ---
     echo "\nTEST: Création d'une nouvelle spécialité\n";
     $specialite = new Specialite(18, "Informatique"); // Passer null pour l'ID, il sera généré par la base
@@ -24,7 +24,7 @@ try {
 
     // --- TEST : Récupération d'une spécialité par ID ---
     echo "\nTEST: Récupération d'une spécialité par ID\n";
-    $idSpecialite = 1; // Remplacer par un ID valide de spécialité dans la base
+    $idSpecialite = 2; // Remplacer par un ID valide de spécialité dans la base
     $specialiteRecuperee = $specialiteDAO->getById($idSpecialite);
     if ($specialiteRecuperee) {
         echo "Spécialité récupérée :\n";
@@ -44,9 +44,10 @@ try {
         echo "Aucune spécialité trouvée.\n";
     }
 
+
     // --- TEST : Mise à jour d'une spécialité ---
     echo "\nTEST: Mise à jour d'une spécialité\n";
-    $idSpecialite = 1; // Remplacer par un ID valide
+    $idSpecialite = 20; // Remplacer par un ID valide
     $specialiteAUpdater = $specialiteDAO->getById($idSpecialite);
 
     if ($specialiteAUpdater) {
@@ -72,10 +73,10 @@ try {
     } else {
         echo "Erreur : Spécialité avec l'ID $idSpecialite non trouvée.\n";
     }
-
+*/
     // --- TEST : Suppression d'une spécialité ---
     echo "\nTEST: Suppression d'une spécialité\n";
-    $idToDelete = 1; // Remplacer par l'ID d'une spécialité à supprimer
+    $idToDelete = 20; // Remplacer par l'ID d'une spécialité à supprimer
     $specialiteDAO->delete($idToDelete);
 
     // Vérification de la suppression

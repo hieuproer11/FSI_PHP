@@ -82,7 +82,6 @@ class EntrepriseDAO {
                 $row['cpEnt']
             );
         }
-
         return $entreprises;
     }
 }
