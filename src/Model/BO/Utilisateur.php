@@ -18,7 +18,7 @@ class Utilisateur {
     private ?int $idSpe = null;
     private ?int $idTypeuti = null;
     private ?int $idMaitapp = null;
-    private ?int $idEnt = null;
+    private ?Entreprise $idEnt = null;
     private ?int $idCla = null;
 
 
@@ -284,21 +284,6 @@ class Utilisateur {
         $this->idMaitapp = $idMaitapp;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getIdEnt()
-    {
-        return $this->idEnt;
-    }
-
-    /**
-     * @param mixed $idEnt
-     */
-    public function setIdEnt($idEnt): void
-    {
-        $this->idEnt = $idEnt;
-    }
 
     /**
      * @return mixed
@@ -314,6 +299,22 @@ class Utilisateur {
     public function setIdCla($idCla): void
     {
         $this->idCla = $idCla;
+    }
+
+    /**
+     * @return Entreprise|null
+     */
+    public function getIdEnt(): ?Entreprise
+    {
+        return $this->idEnt;
+    }
+
+    /**
+     * @param Entreprise|null $idEnt
+     */
+    public function setIdEnt(?Entreprise $idEnt): void
+    {
+        $this->idEnt = $idEnt;
     }
 
     /**

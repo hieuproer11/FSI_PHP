@@ -19,7 +19,7 @@ $etudiantDAO = new EtudiantDAO($conn);
 $typeUti = new TypeUtilisateurDAO($conn);
 $idUti = $typeUti->getById(1);
 if($idUti){
-    $Etu = $etudiantDAO->getById(1);
+    $Etu = $etudiantDAO->getById(4);
 }else{
     echo 'erreur, vous etes pas le bon utilisateur';
 }
@@ -41,32 +41,41 @@ if($idUti){
     <div class="main-content">
         <div class="content-card informations-eleve">
             <h2>Informations élève</h2>
-            <form method="post">
+            <form method="post" action="../../src/traitModifEtu.php">
+                //hidden method to mask client side
+                <input type="hidden" name = "idUti" value="<?php echo $Etu->getIdUti(); ?>">
+
+                //
                 <div class="form-group">
-                    <input type="text" placeholder="<?php echo $Etu->getPreUti(); ?>">
+                    <input type="text" name = "preUti" placeholder="<?php echo $Etu->getPreUti(); ?>">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" placeholder="<?php echo $Etu->getNomUti(); ?>">
+                    <input type="text" name = "nomUti" placeholder="<?php echo $Etu->getNomUti(); ?>">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" placeholder="<?php echo $Etu->getAdrUti(); ?>">
+                    <input type="text" name = "adrUti" placeholder="<?php echo $Etu->getAdrUti(); ?>">
                 </div>
 
                 <div class="form-group">
-                    <input type="email" placeholder="<?php echo $Etu->getMailUti(); ?>">
+                    <input type="email" name = "mailUti" placeholder="<?php echo $Etu->getMailUti(); ?>">
                 </div>
 
                 <div class="form-group">
-                    <input type="number" placeholder="<?php echo $Etu->getTelUti(); ?>">
+                    <input type="number" name = "telUti" placeholder="<?php echo $Etu->getTelUti(); ?>">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" placeholder="<?php echo $Etu->getEntreprise()->getNomEnt();?>">
+                    <input type="text" name = "nomEnt" placeholder="<?php echo $Etu->getEntreprise()->getNomEnt();?>">
                 </div>
+
                 <div class="form-group">
-                    <input type="text" placeholder="<?php echo $Etu->getEntreprise()->getAdrEnt();?>">
+                    <input type="text" name = "adrEnt" placeholder="<?php echo $Etu->getEntreprise()->getAdrEnt();?>">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name = "altUti" placeholder="<?php echo $Etu->getAltUti();?>">
                 </div>
 
                 <button type="submit" class="submit-btn">Modifier</button>
