@@ -1,10 +1,10 @@
 <?php
 
 namespace DAO;
-
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
 use BO\Utilisateur;
 use PDO;
-
+use BO\Entreprise;
 class UtilisateurDAO {
 
     private PDO $db;
@@ -42,6 +42,9 @@ class UtilisateurDAO {
     }
 
     // Méthode pour récupérer un utilisateur par son ID
+
+    //method getById pour etudiant
+
     public function getById(int $id): ?Utilisateur {
         $sql = "SELECT * FROM Utilisateur WHERE idUti = ?";
         $stmt = $this->db->prepare($sql);
@@ -73,13 +76,14 @@ class UtilisateurDAO {
         );
     }
 
+
+
     // Méthode pour mettre à jour un utilisateur
     public function update(Utilisateur $utilisateur): void {
         $sql = "UPDATE Utilisateur SET 
                 nomUti = ?, preUti = ?, mailUti = ?, altUti = ?, telUti = ?, adrUti = ?, cpUti = ?, vilUti = ?, 
                 logUti = ?, mdpUti = ?, idTut = ?, idSpe = ?, idTypeuti = ?, idMaitapp = ?, idEnt = ?, idCla = ?
                 WHERE idUti = ?";
-
         $stmt = $this->db->prepare($sql);
         $stmt->execute([
             $utilisateur->getNomUti(),

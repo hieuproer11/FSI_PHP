@@ -14,5 +14,4 @@ function connectBdd(array $infoBdd): ?\PDO
     $db = new \PDO($dsn, $myusername, $mypassword);
     // renvoi de votre object PDO
     return $db;
-
 }

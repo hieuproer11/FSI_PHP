@@ -39,8 +39,8 @@ try {
     );
     $utilisateurDAO->create($utilisateur);
     echo "Utilisateur créé avec succès !\n";
+*/
 
-    // --- TEST : Récupération d'un utilisateur par ID ---
     echo "\nTEST: Récupération d'un utilisateur par ID\n";
     $idUtilisateur = 1; // Remplacer par un ID valide
     $utilisateurRecupere = $utilisateurDAO->getById($idUtilisateur);
@@ -50,8 +50,10 @@ try {
     } else {
         echo "Erreur : Utilisateur avec l'ID " . $idUtilisateur . " non trouvé.\n";
     }
-*/
+
+
     // --- TEST : Récupération de tous les utilisateurs ---
+    /*
     echo "\nTEST: Récupération de tous les utilisateurs\n";
     $allUtilisateurs = $utilisateurDAO->getAll();
     if (!empty($allUtilisateurs)) {

@@ -7,21 +7,22 @@ class Utilisateur {
     private string $nomUti;
     private string $preUti;
     private string $mailUti;
-    private bool $altUti;
+    private ?bool $altUti = null;
     private string $telUti;
     private string $adrUti;
-    private string $cpUti;
-    private string $vilUti;
-    private string $logUti;
-    private string $mdpUti;
-    private int $idTut;
-    private int $idSpe;
-    private int $idTypeuti;
-    private int $idMaitapp;
-    private int $idEnt;
-    private int $idCla;
+    private ?string $cpUti = null;
+    private ?string $vilUti = null;
+    private ?string $logUti = null;
+    private ?string $mdpUti = null;
+    private ?int $idTut = null;
+    private ?int $idSpe = null;
+    private ?int $idTypeuti = null;
+    private ?int $idMaitapp = null;
+    private ?int $idEnt = null;
+    private ?int $idCla = null;
 
-    public function __construct($idUti, $nomUti, $preUti, $mailUti, $altUti, $telUti, $adrUti, $cpUti, $vilUti, $logUti, $mdpUti, $idTut, $idSpe, $idTypeuti, $idMaitapp, $idEnt, $idCla) {
+
+    public function __construct($idUti, $preUti, $nomUti, $adrUti, $mailUti, $telUti, $altUti, $cpUti, $vilUti, $logUti, $mdpUti, $idTut, $idSpe, $idTypeuti, $idMaitapp, $idEnt, $idCla) {
         $this->idUti = $idUti;
         $this->nomUti = $nomUti;
         $this->preUti = $preUti;
@@ -41,11 +42,11 @@ class Utilisateur {
         $this->idCla = $idCla;
     }
 
-    // Getters et setters
+        // Getters et setters
 
-    /**
-     * @return mixed
-     */
+        /**
+         * @return mixed
+         */
     public function getIdUti()
     {
         return $this->idUti;
@@ -314,4 +315,8 @@ class Utilisateur {
     {
         $this->idCla = $idCla;
     }
+
+    /**
+     * @return Entreprise
+     */
 }
