@@ -19,11 +19,13 @@ $etudiantDAO = new EtudiantDAO($conn);
 $typeUti = new TypeUtilisateurDAO($conn);
 $idUti = $typeUti->getById(1);
 if($idUti){
-    $Etu = $etudiantDAO->getById(4);
+    $Etu = $etudiantDAO->getById(1);
 }else{
     echo 'erreur, vous etes pas le bon utilisateur';
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -34,18 +36,19 @@ if($idUti){
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
- <?php include('../pages/HeaderEleve.php'); ?>
+    <?php include('../pages/HeaderEleve.php'); ?>
 <div class = "container">
-   <?php include('../pages/SidebarEleve.php'); ?>
+    <?php include('../pages/SidebarEleve.php'); ?>
+
     <div class="main-content">
         <div class="content-card informations-eleve">
             <h2>Informations élève</h2>
             <form method="post" action="../../src/traitModifEtu.php">
-                //hidden method to mask client side
-                <input type="hidden" name = "idUti" value="<?php echo $Etu->getIdUti(); ?>">
 
-                //
+                    <input type="hidden" name = "idUti" value="<?php echo $Etu->getIdUti(); ?>">
+
                 <div class="form-group">
                     <input type="text" name = "preUti" placeholder="<?php echo $Etu->getPreUti(); ?>">
                 </div>

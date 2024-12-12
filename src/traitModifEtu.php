@@ -26,7 +26,6 @@ $altUti =$_POST['altUti'];
 $nomEnt =$_POST['nomEnt'];
 $adrEnt =$_POST['adrEnt'];
 
-
 //
 $liste = array (
     'idUti' => $idUti,

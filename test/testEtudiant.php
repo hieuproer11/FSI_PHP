@@ -3,6 +3,8 @@ include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\UtilisateurDAO.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Utilisateur.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Etudiant.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Specialite.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Classe.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\EtudiantDAO.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
 
@@ -12,7 +14,7 @@ try {
 
     // Créer une instance de UtilisateurDAO
     $etudiantDAO = new DAO\EtudiantDAO($conn);
-/*
+
     echo "\nTEST: Récupération d'un utilisateur par ID\n";
     $idEtu = 1; // Remplacer par un ID valide
     $etudiantRecupere = $etudiantDAO->getById($idEtu);
@@ -22,8 +24,8 @@ try {
     } else {
         echo "Erreur : Utilisateur avec l'ID " . $idEtu . " non trouvé.\n";
     }
-*/
 
+/*
     echo "\nTEST: Mise à jour d'un tuteur\n";
     $idEtu = 1; // Remplacer par un ID valide
     $etudiantAUpdater = $etudiantDAO->getById($idEtu);
@@ -55,6 +57,18 @@ try {
     } else {
         echo "Erreur : Tuteur avec l'ID $idEtu non trouvé.\n";
     }
+*/
+
+    $allEtudiants = $etudiantDAO->getAll();
+    if (!empty($allEtudiants)) {
+        foreach ($allEtudiants as $etudiant) {
+            echo "ID: " . $etudiant->getIdUti() . " | Nom: " . $etudiant->getNomUti() . " | Email: " . $etudiant->getMailUti() . "| Specialite: ". $etudiant->getSpecialite()->getNomSpe     () . " | Classe: " . $etudiant->getClasse()->getNomCla(); "\n";
+        }
+        var_dump($etudiant);
+    } else {
+        echo "Aucun utilisateur trouvé.\n";
+    }
+
 }catch (Exception $e) {
     echo "Erreur : " . $e->getMessage() . "\n";
 }
