@@ -1,7 +1,8 @@
 <?php
 
 namespace BO;
-
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Utilisateur.php';
+use BO\Utilisateur;
 class Etudiant extends Utilisateur
 {
 

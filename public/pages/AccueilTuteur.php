@@ -1,3 +1,23 @@
+<?php
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Etudiant.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\EtudiantDAO.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\TypeUtilisateur.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\TypeUtilisateurDAO.php';
+
+use DAO\etudiantDAO;
+use DAO\TypeUtilisateurDAO;
+
+$conn = ConnexionBDD();
+$etudiantDAO = new etudiantDAO($conn);
+$typeUti = new TypeUtilisateurDAO($conn);
+$idUti = $typeUti->getById(1);
+if($idUti){
+    $etudiants = $etudiantDAO->getAll();
+}
+?>
+<!DOCTYPE html>
+<html lang="fr">
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -24,32 +44,36 @@
                     <th>Prénom</th>
                     <th>Téléphone</th>
                     <th>Mail</th>
-                    <th>Spécialité
-                        <i class="fa-solid fa-sort"></i>
-                    </th>
-                    <th>Classe
-                        <i class="fa-solid fa-sort"></i>
-                    </th>
+                    <th>Spécialité</th>
+                    <th>Classe</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <button type="button" class="edit-btn">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-                        <button type="button" class="view-btn" onclick="window.location.href='EditInformations.php'">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </td>
-                </tr>
+                <?php if (!empty($etudiants)): ?>
+                    <?php foreach ($etudiants as $etudiant): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($etudiant->getNomUti()) ?></td>
+                            <td><?= htmlspecialchars($etudiant->getPreUti()) ?></td>
+                            <td><?= htmlspecialchars($etudiant->getTelUti()) ?></td>
+                            <td><?= htmlspecialchars($etudiant->getMailUti()) ?></td>
+                            <td><?= htmlspecialchars($etudiant->getSpecialite()->getNomSpe()) ?></td>
+                            <td><?= htmlspecialchars($etudiant->getClasse()->getNomCla()) ?></td>
+                            <td>
+                                <button type="button" class="edit-btn">
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                                <button type="button" class="view-btn" onclick="window.location.href='EditInformations.php'">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="7">Aucun étudiant trouvé.</td>
+                    </tr>
+                <?php endif; ?>
                 </tbody>
             </table>
         </div>

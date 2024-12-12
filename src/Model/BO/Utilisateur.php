@@ -18,7 +18,7 @@ class Utilisateur {
     private ?int $idSpe = null;
     private ?int $idTypeuti = null;
     private ?int $idMaitapp = null;
-    private ?Entreprise $idEnt = null;
+    private ?int $idEnt = null;
     private ?int $idCla = null;
 
 

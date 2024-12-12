@@ -69,16 +69,24 @@ h2 {
 
 .collapse-button {
     position: absolute;
-    width: 50vw;
-   l: 50vh;
-    bottom: 20px;
+    width: 50px; /* Taille du cercle */
+    height: 50px; /* Taille du cercle */
+    bottom: 20px; /* Position en bas */
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    border-radius: 50%;
+    display: flex; /* Active Flexbox */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    border-radius: 50%; /* Cercle */
     cursor: pointer;
 }
+.collapse-icon {
+    font-size: 16px; /* Ajuste la taille de l'icône si besoin */
+    color: white; /* Couleur de l'icône */
+}
+
+
 
 /* Main Content */
 .main-content {
@@ -125,16 +133,19 @@ h2 {
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 80%;
+    width: 90%;
     max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto; /* Permet le défilement si nécessaire */
+    box-sizing: border-box;
 }
 
 /* Table */
 .students-table {
     width: 100%;
-    border-collapse: collapse;
-    align-content: center;
-
+    min-width: 800px; /* Largeur minimum pour éviter une compression excessive */
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 .students-table th,
@@ -142,15 +153,37 @@ h2 {
     border: 1px solid #E3E6F0;
     text-align: left;
     padding: 12px 15px;
+    white-space: nowrap;
 }
 
 .students-table th {
+    background: #f8f9fc;
     font-weight: 600;
     color: #666;
 }
 
 .students-table tbody tr:hover {
     background-color: #f9f9f9;
+}
+
+/* Colonnes spécifiques */
+.students-table td:last-child {
+    text-align: center;
+    min-width: 100px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .content-card {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .students-table th,
+    .students-table td {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
 }
 
 /* Buttons */
