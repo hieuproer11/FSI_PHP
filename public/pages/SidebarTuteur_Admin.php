@@ -10,6 +10,6 @@
     <ul class="nav-links">
         <li><a href="AccueilTuteur.php">Liste des étudiants</a></li>
         <li><a href="InformationsTuteurs.php">Mes informations</a></li>
-        <li><a href="#">Alertes</a></li>
+        <li><a href="Alerte.php">Alertes</a></li>
     </ul>
 </nav>

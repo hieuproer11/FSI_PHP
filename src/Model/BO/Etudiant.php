@@ -17,13 +17,15 @@ class Etudiant extends Utilisateur
         string $mailUti,
         string $telUti,
         bool $altUti,
+        string $cpUti,
+        string $vilUti,
         Entreprise $entreprise,
         Specialite $specialite,
         Classe $classe
     ) {
         // Appeler le constructeur parent pour initialiser les propriétés héritées
         parent::__construct($idUti, $preUti, $nomUti, $adrUti, $mailUti, $telUti, $altUti,
-            null,null,null,null,null,null,null,
+            $cpUti,$vilUti,null,null,null,null,null,
             null,null,null,$entreprise,$specialite,$classe);
         $this->entreprise = $entreprise;
         $this->specialite = $specialite;

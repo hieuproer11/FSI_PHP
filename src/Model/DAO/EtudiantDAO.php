@@ -3,7 +3,6 @@ namespace DAO;
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Specialite.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Classe.php';
-
 use BO\Entreprise;
 use BO\Specialite;
 use BO\Classe;
@@ -27,6 +26,8 @@ class EtudiantDAO
                         U.mailUti,
                         U.telUti,
                         U.altUti,
+                        U.cpUti,
+                        U.vilUti,
                         E.nomEnt,
                         E.adrEnt 
                 FROM Utilisateur U 
@@ -49,6 +50,8 @@ class EtudiantDAO
             $row['mailUti'],
             $row['telUti'],
             $row['altUti'],
+            $row['cpUti'],
+            $row['vilUti'],
             $entreprise,
             $specialite,
             $classe
@@ -90,6 +93,8 @@ class EtudiantDAO
 	                    U.telUti,
                         U.mailUti,
                         U.altUti,
+                        U.cpUti,
+                        U.vilUti,
                         S.nomSpe,
                         C.nomCla 
                 From Utilisateur U inner join Specialite S on U.idSpe = S.idSpe
@@ -109,6 +114,8 @@ class EtudiantDAO
                 $row['mailUti'],
                 $row['telUti'],
                 $row['altUti'],
+                $row['cpUti'],
+                $row['vilUti'],
                 $entreprise,
                 $specialite,
                 $classe
