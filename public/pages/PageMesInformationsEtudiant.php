@@ -18,7 +18,7 @@ $etudiantDAO = new EtudiantDAO($conn);
 $typeUti = new TypeUtilisateurDAO($conn);
 $idUti = $typeUti->getById(1);
 if($idUti){
-    $Etu = $etudiantDAO->getById(1);
+    $Etu = $etudiantDAO->getById(2);
 }else{
     echo 'erreur, vous etes pas le bon utilisateur';
 }

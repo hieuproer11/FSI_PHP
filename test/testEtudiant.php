@@ -2,6 +2,8 @@
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\UtilisateurDAO.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Utilisateur.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Etudiant.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan1.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan2.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Specialite.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Classe.php';
@@ -16,14 +18,15 @@ try {
     $etudiantDAO = new DAO\EtudiantDAO($conn);
 
     echo "\nTEST: Récupération d'un utilisateur par ID\n";
-    $idEtu = 1; // Remplacer par un ID valide
+    $idEtu = 2; // Remplacer par un ID valide
     $etudiantRecupere = $etudiantDAO->getById($idEtu);
     if ($etudiantRecupere) {
         echo "Utilisateur récupéré :\n";
-        echo "ID: " . $etudiantRecupere->getIdUti() . " | Nom: " . $etudiantRecupere->getNomUti() . " | Email: " . $etudiantRecupere->getAdrUti() . "\n";
+        echo "ID: " . $etudiantRecupere->getIdUti() . " | Nom: " . $etudiantRecupere->getNomUti() .  " | Date Limite: " . $etudiantRecupere->getBilan1()->getDatelimiteBil() ."\n";
     } else {
         echo "Erreur : Utilisateur avec l'ID " . $idEtu . " non trouvé.\n";
     }
+    var_dump($etudiantRecupere);
 
 /*
     echo "\nTEST: Mise à jour d'un tuteur\n";
@@ -58,17 +61,17 @@ try {
         echo "Erreur : Tuteur avec l'ID $idEtu non trouvé.\n";
     }
 */
-
+/*
     $allEtudiants = $etudiantDAO->getAll();
     if (!empty($allEtudiants)) {
         foreach ($allEtudiants as $etudiant) {
-            echo "ID: " . $etudiant->getIdUti() . " | Nom: " . $etudiant->getNomUti() . " | Email: " . $etudiant->getMailUti() . "| Specialite: ". $etudiant->getSpecialite()->getNomSpe     () . " | Classe: " . $etudiant->getClasse()->getNomCla(); "\n";
+            echo "ID: " . $etudiant->getIdUti() . " | Nom: " . $etudiant->getNomUti() . " | Email: " . $etudiant->getMailUti() . "| Specialite: ". $etudiant->getSpecialite()->getNomSpe     () . " | Date Limite: " . $etudiant->getBilan1()->getDatelimiteBil(); "\n";
         }
         var_dump($etudiant);
     } else {
         echo "Aucun utilisateur trouvé.\n";
     }
-
+*/
 }catch (Exception $e) {
     echo "Erreur : " . $e->getMessage() . "\n";
 }

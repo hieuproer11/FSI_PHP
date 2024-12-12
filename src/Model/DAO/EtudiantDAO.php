@@ -4,7 +4,9 @@ include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Specialite.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Classe.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan1.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan2.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan2DAO.php';
 
 use BO\Bilan1;
 use BO\Bilan2;
@@ -12,6 +14,8 @@ use BO\Entreprise;
 use BO\Specialite;
 use BO\Classe;
 use BO\Etudiant;
+use DAO\Bilan1DAO;
+use DAO\Bilan2DAO;
 use PDO;
 
 class EtudiantDAO
@@ -34,9 +38,15 @@ class EtudiantDAO
                         U.cpUti,
                         U.vilUti,
                         E.nomEnt,
-                        E.adrEnt
+                        E.adrEnt,
+                        B1.idBil1,
+                        B2.idBil2
                 FROM Utilisateur U 
-                inner join Entreprise E on U.idEnt = E.idEnt
+                 join Entreprise E on U.idEnt = E.idEnt
+                 join Realiser1 R1 on U.idUti = R1.idUti
+                 join Realiser2 R2 on U.idUti = R2.idUti
+                 join Bilan1 B1 on R1.idBil1 = B1.idBil1
+                 join Bilan2 B2 on R2.idBil2 = B2.idBil2
                 WHERE U.idUti = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$id]);
@@ -44,8 +54,10 @@ class EtudiantDAO
         $entreprise = new Entreprise(0,$row['nomEnt'],$row['adrEnt'],'','');
         $classe = new Classe(0,'');
         $specialite = new Specialite(0,'');
-        $bilan1 = new Bilan1(0,0,0,0,0,'','','');
-        $bilan2 = new Bilan2(0,0,0,0,'','','');
+        $daoBilan1 = new Bilan1DAO($this->db);
+        $bilan1 = $daoBilan1->getById($row['idBil1']);
+        $daoBilan2 = new Bilan2DAO($this->db);
+        $bilan2 = $daoBilan2->getById($row['idBil2']);
         if (!$row) {
             return null;
         }
