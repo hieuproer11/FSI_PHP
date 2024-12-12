@@ -111,11 +111,13 @@ $alertesFinales = verifierAlertes($bilans1, $bilans2, $alertes);
             <table class="alertes-table">
                 <thead>
                 <tr>
+                    <th>Nom d'eleve</th>
+                    <th>Prenom d'eleve</th>
                     <th>Date de visite Bilan 1</th>
                     <th>Date limite Bilan 1</th>
                     <th>Date de visite Bilan 2</th>
                     <th>Date limite Bilan 2</th>
-                    <th>Type d'alerte</th>
+
                 </tr>
                 </thead>
                 <tbody>
