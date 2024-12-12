@@ -12,7 +12,6 @@ include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\TypeUtilisateurDAO.php';
 use DAO\TypeUtilisateurDAO;
 use DAO\EtudiantDAO;
 use BO\Etudiant;
-use BO\Entreprise;
 
 $conn = ConnexionBDD();
 $etudiantDAO = new EtudiantDAO($conn);
@@ -47,38 +46,38 @@ if($idUti){
             <h2>Informations élève</h2>
             <form method="post" action="../../src/traitModifEtu.php">
 
-                    <input type="hidden" name = "idUti" value="<?php echo $Etu->getIdUti(); ?>">
+                    <input required type="hidden" name = "idUti" value="<?php echo $Etu->getIdUti(); ?>">
 
                 <div class="form-group">
-                    <input type="text" name = "preUti" placeholder="<?php echo $Etu->getPreUti(); ?>">
+                    <input required  type="text" name = "preUti" value="<?php echo $Etu->getPreUti(); ?>">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name = "nomUti" placeholder="<?php echo $Etu->getNomUti(); ?>">
+                    <input required  type="text" name = "nomUti" value="<?php echo $Etu->getNomUti(); ?>">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name = "adrUti" placeholder="<?php echo $Etu->getAdrUti(); ?>">
+                    <input required  type="text" name = "adrUti" value="<?php echo $Etu->getAdrUti(); ?>">
                 </div>
 
                 <div class="form-group">
-                    <input type="email" name = "mailUti" placeholder="<?php echo $Etu->getMailUti(); ?>">
+                    <input required  type="email" name = "mailUti" value="<?php echo $Etu->getMailUti(); ?>">
                 </div>
 
                 <div class="form-group">
-                    <input type="number" name = "telUti" placeholder="<?php echo $Etu->getTelUti(); ?>">
+                    <input required  type="number" name = "telUti" value="<?php echo $Etu->getTelUti(); ?>">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name = "nomEnt" placeholder="<?php echo $Etu->getEntreprise()->getNomEnt();?>">
+                    <input required  type="text" name = "nomEnt" value="<?php echo $Etu->getEntreprise()->getNomEnt();?>">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name = "adrEnt" placeholder="<?php echo $Etu->getEntreprise()->getAdrEnt();?>">
+                    <input required  type="text" name = "adrEnt" value="<?php echo $Etu->getEntreprise()->getAdrEnt();?>">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name = "altUti" placeholder="<?php echo $Etu->getAltUti();?>">
+                    <input required  type="text" name = "altUti" value="<?php echo $Etu->getAltUti();?>">
                 </div>
 
                 <button type="submit" class="submit-btn">Modifier</button>
