@@ -1,6 +1,7 @@
 <?php
 
 namespace DAO;
+include_once "C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan2.php";
 
 use BO\Bilan2;
 use PDO;

@@ -1,7 +1,7 @@
 <?php
 
 namespace DAO;
-
+include_once "C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan1.php";
 use BO\Bilan1;
 use PDO;
 
@@ -97,3 +97,4 @@ class Bilan1DAO {
         return $bilans;
     }
 }
+

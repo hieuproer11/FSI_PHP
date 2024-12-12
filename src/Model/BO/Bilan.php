@@ -4,10 +4,10 @@ namespace BO;
 
 class Bilan {
     protected int $idBil;
-    protected float $notentBil;
-    protected float $notdossBil;
-    protected float $notorBil;
-    protected float $moyBil;
+    protected ?float $notentBil = null;  // Peut être null
+    protected ?float $notdossBil = null; // Peut être null
+    protected ?float $notorBil = null;   // Peut être null
+    protected ?float $moyBil = null;     // Peut être null
     protected string $remarqueBil;
     protected string $datevisiteBil;
 
@@ -21,7 +21,6 @@ class Bilan {
         $this->datevisiteBil = $datevisiteBil;
     }
 
-    // Getters et setters
     public function getIdBil() { return $this->idBil; }
     public function setIdBil($idBil) { $this->idBil = $idBil; }
 
