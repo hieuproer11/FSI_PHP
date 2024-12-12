@@ -3,6 +3,11 @@ namespace DAO;
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Specialite.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Classe.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan1.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan2.php';
+
+use BO\Bilan1;
+use BO\Bilan2;
 use BO\Entreprise;
 use BO\Specialite;
 use BO\Classe;
@@ -29,7 +34,7 @@ class EtudiantDAO
                         U.cpUti,
                         U.vilUti,
                         E.nomEnt,
-                        E.adrEnt 
+                        E.adrEnt
                 FROM Utilisateur U 
                 inner join Entreprise E on U.idEnt = E.idEnt
                 WHERE U.idUti = ?";
@@ -39,6 +44,8 @@ class EtudiantDAO
         $entreprise = new Entreprise(0,$row['nomEnt'],$row['adrEnt'],'','');
         $classe = new Classe(0,'');
         $specialite = new Specialite(0,'');
+        $bilan1 = new Bilan1(0,0,0,0,0,'','','');
+        $bilan2 = new Bilan2(0,0,0,0,'','','');
         if (!$row) {
             return null;
         }
@@ -54,7 +61,9 @@ class EtudiantDAO
             $row['vilUti'],
             $entreprise,
             $specialite,
-            $classe
+            $classe,
+            $bilan1,
+            $bilan2
         );
     }
 
@@ -106,6 +115,8 @@ class EtudiantDAO
             $entreprise = new Entreprise(0,'','','','');
             $classe = new Classe(0, $row['nomCla']);
             $specialite = new Specialite(0,$row['nomSpe']);
+            $bilan1 = new Bilan1(0,0,0,0,0,'','','');
+            $bilan2 = new Bilan2(0,0,0,0,'','','');
             $etudiants[] = new Etudiant(
                 $row['idUti'],
                 $row['preUti'],
@@ -118,7 +129,9 @@ class EtudiantDAO
                 $row['vilUti'],
                 $entreprise,
                 $specialite,
-                $classe
+                $classe,
+                $bilan1,
+                $bilan2
             );
         }
                 return $etudiants;
