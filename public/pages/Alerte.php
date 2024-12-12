@@ -74,7 +74,12 @@ $alertes = verifierAlertes($bilans1, $bilans2);
             <table class="alertes-table">
                 <thead>
                 <tr>
-                    <th>Alertes actuelle</th>
+                    <th>Nom de l'éléve</th>
+                    <th>Prénom de l'éléve</th>
+                    <th>Date de visiste bilan 1</th>
+                    <th>Date de visiste bilan 2</th>
+                    <th>Date limite bilan 1</th>
+                    <th>Date limite bilan 2</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -86,6 +91,11 @@ $alertes = verifierAlertes($bilans1, $bilans2);
                     <?php foreach ($alertes as $alerte): ?>
                         <tr>
                             <td><?php echo htmlspecialchars($alerte); ?></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>

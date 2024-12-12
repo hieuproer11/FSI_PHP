@@ -166,7 +166,7 @@ h2 {
     background-color: #f9f9f9;
 }
 
-/* Colonnes spécifiques */
+
 .students-table td:last-child {
     text-align: center;
     min-width: 100px;
@@ -383,4 +383,51 @@ h1 {
 
 .submit-btn2:hover{
     background-color: var(--secondary-color);
+}
+
+/*Alerte*/
+
+.alertes-table {
+    width: 100%;
+    min-width: 800px; /* Largeur minimum pour éviter une compression excessive */
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.alertes-table th,
+.alertes-table td {
+    border: 1px solid #E3E6F0;
+    text-align: left;
+    padding: 12px 15px;
+    white-space: nowrap;
+}
+
+.alertes-table th {
+    background: #f8f9fc;
+    font-weight: 600;
+    color: #666;
+}
+
+.alertes-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+
+.alertes-table td:last-child {
+    text-align: center;
+    min-width: 100px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .content-card {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .alertes-table th,
+    .alertes-table td {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
 }
