@@ -4,9 +4,9 @@ namespace BO;
 class Entreprise {
     private int $idEnt;
     private string $nomEnt;
-    private string $adrEnt;
-    private string $vilEnt;
-    private string $cpEnt;
+    private ?string $adrEnt = null;
+    private ?string $vilEnt = null;
+    private ?string $cpEnt = null;
 
     public function __construct($idEnt, $nomEnt, $adrEnt, $vilEnt, $cpEnt) {
         $this->idEnt = $idEnt;

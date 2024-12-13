@@ -108,6 +108,8 @@ try {
     }
 */
 
+    $daoUti = $utilisateurDAO->findByLogin('Login_1','Password_1');
+    var_dump($daoUti);
 
 } catch (Exception $e) {
     echo "Erreur : " . $e->getMessage() . "\n";

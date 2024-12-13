@@ -14,6 +14,7 @@ use BO\Entreprise;
 use BO\Specialite;
 use BO\Classe;
 use BO\Etudiant;
+use BO\Utilisateur;
 use DAO\Bilan1DAO;
 use DAO\Bilan2DAO;
 use PDO;
@@ -119,7 +120,8 @@ class EtudiantDAO
                         S.nomSpe,
                         C.nomCla 
                 From Utilisateur U inner join Specialite S on U.idSpe = S.idSpe
-                inner join Classe C on U.idCla = C.idCla;";
+                inner join Classe C on U.idCla = C.idCla
+                WHERE U.idTypeuti = 1";
         $result = $this->db->query($sql);
         $etudiantData = $result->fetchAll(\PDO::FETCH_ASSOC);
         $etudiants = [];

@@ -12,16 +12,11 @@ include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\TypeUtilisateurDAO.php';
 use DAO\TypeUtilisateurDAO;
 use DAO\EtudiantDAO;
 use BO\Etudiant;
-
 $conn = ConnexionBDD();
 $etudiantDAO = new EtudiantDAO($conn);
 $typeUti = new TypeUtilisateurDAO($conn);
-$idUti = $typeUti->getById(1);
-if($idUti){
-    $Etu = $etudiantDAO->getById(2);
-}else{
-    echo 'erreur, vous etes pas le bon utilisateur';
-}
+$Etu = $etudiantDAO->getById(3);
+//(int)$_GET['idUti']
 ?>
 
 
@@ -46,7 +41,7 @@ if($idUti){
             <h2>Informations élève</h2>
             <form method="post" action="../../src/traitModifEtu.php">
 
-                    <input required type="hidden" name = "idUti" value="<?php echo $Etu->getIdUti(); ?>">
+                    <input type="hidden" name = "idUti" value="<?php echo $Etu->getIdUti(); ?>">
 
                 <div class="form-group">
                     <input required  type="text" name = "preUti" value="<?php echo $Etu->getPreUti(); ?>">

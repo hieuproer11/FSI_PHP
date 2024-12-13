@@ -4,12 +4,12 @@ namespace BO;
 
 class Utilisateur {
     private int $idUti;
-    private string $nomUti;
-    private string $preUti;
-    private string $mailUti;
+    private ?string $nomUti = null;
+    private ?string $preUti = null;
+    private ?string $mailUti = null;
     private ?bool $altUti = null;
-    private string $telUti;
-    private string $adrUti;
+    private ?string $telUti = null;
+    private ?string $adrUti = null;
     private ?string $cpUti = null;
     private ?string $vilUti = null;
     private ?string $logUti = null;
