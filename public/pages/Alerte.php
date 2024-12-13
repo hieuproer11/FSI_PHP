@@ -17,68 +17,52 @@ $bilan1DAO = new Bilan1DAO($conn);
 $bilan2DAO = new Bilan2DAO($conn);
 $alerteDAO = new AlerteDAO($conn);
 
-// Récupération des bilans
+// Récupération des données nécessaires
 $bilans1 = $bilan1DAO->getAll();
 $bilans2 = $bilan2DAO->getAll();
-
-// Récupération des alertes (qui contiennent les dates limites)
 $alertes = $alerteDAO->getAll();
 
-// Fonction pour vérifier les alertes sur les bilans
+// Fonction pour vérifier les alertes
 function verifierAlertes($bilans1, $bilans2, $alertes) {
     $alertesResult = [];
     $dateCourante = date('Y-m-d');
 
-    // Vérification des alertes pour les bilans 1
     foreach ($bilans1 as $bilan1) {
         foreach ($alertes as $alerte) {
-            // Alerte pour Bilan 1
-            $alerteBilan1 = [];
+            // Vérification des alertes pour le Bilan 1
             if (strtotime($bilan1->getDatevisiteBil()) < strtotime($dateCourante)) {
-                $alerteBilan1 = [
+                $alertesResult[] = [
                     'date_visite_bilan_1' => $bilan1->getDatevisiteBil(),
                     'date_limite_bilan_1' => $alerte->getDatelimbil1Al(),
-                    'alerte' => "La date de visite entreprise pour le Bilan 1 (ID : " . $bilan1->getIdBil() . ") est en retard."
+                    'alerte' => "La date de visite entreprise pour le Bilan 1 (ID : {$bilan1->getIdBil()}) est en retard."
                 ];
             }
             if ($bilan1->getNotentBil() === null && strtotime($alerte->getDatelimbil1Al()) < strtotime($dateCourante)) {
-                $alerteBilan1 = [
+                $alertesResult[] = [
                     'date_visite_bilan_1' => $bilan1->getDatevisiteBil(),
                     'date_limite_bilan_1' => $alerte->getDatelimbil1Al(),
-                    'alerte' => "La note de Bilan 1 (ID : " . $bilan1->getIdBil() . ") est non renseignée."
+                    'alerte' => "La note de Bilan 1 (ID : {$bilan1->getIdBil()}) est non renseignée."
                 ];
-            }
-
-            // Ajouter l'alerte pour le Bilan 1 si elle existe
-            if (!empty($alerteBilan1)) {
-                $alertesResult[] = $alerteBilan1;
             }
         }
     }
 
-    // Vérification des alertes pour les bilans 2
     foreach ($bilans2 as $bilan2) {
         foreach ($alertes as $alerte) {
-            // Alerte pour Bilan 2
-            $alerteBilan2 = [];
+            // Vérification des alertes pour le Bilan 2
             if (empty($bilan2->getSujmemBil2())) {
-                $alerteBilan2 = [
+                $alertesResult[] = [
                     'date_visite_bilan_2' => $bilan2->getDatevisiteBil(),
                     'date_limite_bilan_2' => $alerte->getDatelimbil2Al(),
-                    'alerte' => "Le sujet de mémoire est manquant pour le Bilan 2 (ID : " . $bilan2->getIdBil() . ")."
+                    'alerte' => "Le sujet de mémoire est manquant pour le Bilan 2 (ID : {$bilan2->getIdBil()})."
                 ];
             }
             if ($bilan2->getNotdossBil() === null && strtotime($alerte->getDatelimbil2Al()) < strtotime($dateCourante)) {
-                $alerteBilan2 = [
+                $alertesResult[] = [
                     'date_visite_bilan_2' => $bilan2->getDatevisiteBil(),
                     'date_limite_bilan_2' => $alerte->getDatelimbil2Al(),
-                    'alerte' => "La note de Bilan 2 (ID : " . $bilan2->getIdBil() . ") est non renseignée."
+                    'alerte' => "La note de Bilan 2 (ID : {$bilan2->getIdBil()}) est non renseignée."
                 ];
-            }
-
-            // Ajouter l'alerte pour le Bilan 2 si elle existe
-            if (!empty($alerteBilan2)) {
-                $alertesResult[] = $alerteBilan2;
             }
         }
     }
@@ -86,6 +70,7 @@ function verifierAlertes($bilans1, $bilans2, $alertes) {
     return $alertesResult;
 }
 
+// Appel de la fonction pour récupérer les alertes
 $alertesFinales = verifierAlertes($bilans1, $bilans2, $alertes);
 ?>
 
@@ -104,20 +89,17 @@ $alertesFinales = verifierAlertes($bilans1, $bilans2, $alertes);
 <div class="container">
     <?php include('../pages/SidebarTuteur_Admin.php'); ?>
 
-    <!-- Main Content -->
     <main class="main-content">
         <h2>Liste des alertes pour les bilans</h2>
         <div class="content-card">
             <table class="alertes-table">
                 <thead>
                 <tr>
-                    <th>Nom d'eleve</th>
-                    <th>Prenom d'eleve</th>
                     <th>Date de visite Bilan 1</th>
                     <th>Date limite Bilan 1</th>
                     <th>Date de visite Bilan 2</th>
                     <th>Date limite Bilan 2</th>
-
+                    <th>Type d'alerte</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -128,10 +110,10 @@ $alertesFinales = verifierAlertes($bilans1, $bilans2, $alertes);
                 <?php else: ?>
                     <?php foreach ($alertesFinales as $alerte): ?>
                         <tr>
-                            <td><?php echo !empty($alerte['date_visite_bilan_1']) ? htmlspecialchars($alerte['date_visite_bilan_1']) : ''; ?></td>
-                            <td><?php echo !empty($alerte['date_limite_bilan_1']) ? htmlspecialchars($alerte['date_limite_bilan_1']) : ''; ?></td>
-                            <td><?php echo !empty($alerte['date_visite_bilan_2']) ? htmlspecialchars($alerte['date_visite_bilan_2']) : ''; ?></td>
-                            <td><?php echo !empty($alerte['date_limite_bilan_2']) ? htmlspecialchars($alerte['date_limite_bilan_2']) : ''; ?></td>
+                            <td><?php echo htmlspecialchars($alerte['date_visite_bilan_1'] ?? ''); ?></td>
+                            <td><?php echo htmlspecialchars($alerte['date_limite_bilan_1'] ?? ''); ?></td>
+                            <td><?php echo htmlspecialchars($alerte['date_visite_bilan_2'] ?? ''); ?></td>
+                            <td><?php echo htmlspecialchars($alerte['date_limite_bilan_2'] ?? ''); ?></td>
                             <td><?php echo htmlspecialchars($alerte['alerte']); ?></td>
                         </tr>
                     <?php endforeach; ?>
