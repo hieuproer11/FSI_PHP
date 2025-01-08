@@ -28,6 +28,8 @@ try {
     }
     var_dump($etudiantRecupere);
 
+
+
 /*
     echo "\nTEST: Mise à jour d'un tuteur\n";
     $idEtu = 1; // Remplacer par un ID valide

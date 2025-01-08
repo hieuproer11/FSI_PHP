@@ -41,6 +41,24 @@ class UtilisateurDAO {
         ]);
     }
 
+    public function findByLogin(String $login, String $mdp ){
+
+        $sql = "SELECT  U.idUti, U.mdpUti, U.logUti, T.typeutiTypeuti 
+                FROM utilisateur U inner join type_d_utilisateur T ON U.idTypeuti = T.idTypeuti
+                WHERE U.logUti Like ? AND U.mdpUti Like ?";
+        $login1 = "%{$login}%";
+        $mdp1 = "%{$mdp}%";
+        $params = array("%$login%", "%$mdp%");
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        var_dump($row['logUti']);
+        if(!$row){
+            return null;
+        }
+        return $row;
+    }
+
     // Méthode pour récupérer un utilisateur par son ID
 
     //method getById pour etudiant
