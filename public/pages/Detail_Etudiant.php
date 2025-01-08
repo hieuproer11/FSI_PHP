@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bilan1 = $etudiant->getBilan1() ? $bilan1DAO->getById($etudiant->getBilan1()->getIdBil()) : null;
             $bilan2 = $etudiant->getBilan2() ? $bilan2DAO->getById($etudiant->getBilan2()->getIdBil()) : null;
         } else {
-            $message = "Étudiant non trouvé pour l'ID $idEtudiant.";
+            $message = "Étudiant non trouvé pour l'ID $idEtudiant. l'ID rentrer ne doit pas correspondre avec un etudiant";
         }
     } else {
         $message = "Veuillez entrer un ID étudiant.";
