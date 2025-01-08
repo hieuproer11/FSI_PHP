@@ -1,6 +1,5 @@
 <?php
-// Import des classes nécessaires
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\EtudiantDAO.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan2DAO.php';
@@ -28,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $etudiant = $etudiantDAO->getById((int)$idEtudiant);
 
         if ($etudiant) {
-            $bilan1 = $bilan1DAO->getById($etudiant->getBilan1()->getIdBil());
-            $bilan2 = $bilan2DAO->getById($etudiant->getBilan2()->getIdBil());
+            $bilan1 = $etudiant->getBilan1() ? $bilan1DAO->getById($etudiant->getBilan1()->getIdBil()) : null;
+            $bilan2 = $etudiant->getBilan2() ? $bilan2DAO->getById($etudiant->getBilan2()->getIdBil()) : null;
         } else {
             $message = "Étudiant non trouvé pour l'ID $idEtudiant.";
         }
@@ -57,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main class="main-content">
         <h2>Détails de l'étudiant</h2>
 
-        <!-- Formulaire pour entrer l'ID de l'étudiant -->
         <form method="POST" action="" class="id-form">
             <label for="idEtudiant">Entrez l'ID de l'étudiant :</label>
             <input type="number" name="idEtudiant" id="idEtudiant" required>
@@ -70,7 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <?php if ($etudiant): ?>
             <div class="content-card">
-                <!-- Tableau des informations personnelles -->
                 <h3>Informations personnelles</h3>
                 <table class="alertes-table">
                     <thead>
@@ -84,16 +81,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </thead>
                     <tbody>
                     <tr>
-                        <td><?php echo htmlspecialchars($etudiant->getNom()); ?></td>
-                        <td><?php echo htmlspecialchars($etudiant->getPrenom()); ?></td>
-                        <td><?php echo htmlspecialchars($etudiant->getAdresse()); ?></td>
-                        <td><?php echo htmlspecialchars($etudiant->getMail()); ?></td>
-                        <td><?php echo htmlspecialchars($etudiant->getTelephone()); ?></td>
+                        <td><?php echo htmlspecialchars($etudiant->getNomUti()); ?></td>
+                        <td><?php echo htmlspecialchars($etudiant->getPreUti()); ?></td>
+                        <td><?php echo htmlspecialchars($etudiant->getAdrUti()); ?></td>
+                        <td><?php echo htmlspecialchars($etudiant->getMailUti()); ?></td>
+                        <td><?php echo htmlspecialchars($etudiant->getTelUti()); ?></td>
                     </tr>
                     </tbody>
                 </table>
 
-                <!-- Tableau des informations sur l'entreprise -->
                 <h3>Informations sur l'entreprise</h3>
                 <table class="alertes-table">
                     <thead>
@@ -105,12 +101,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <tbody>
                     <tr>
                         <td><?php echo htmlspecialchars($etudiant->getEntreprise()->getNomEnt()); ?></td>
-                        <td><?php echo htmlspecialchars($etudiant->getEntreprise()->getAdresse()); ?></td>
+                        <td><?php echo htmlspecialchars($etudiant->getEntreprise()->getAdrEnt()); ?></td>
                     </tr>
                     </tbody>
                 </table>
 
-                <!-- Tableau des bilans -->
                 <h3>Bilan 1</h3>
                 <table class="alertes-table">
                     <thead>
