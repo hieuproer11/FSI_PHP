@@ -7,13 +7,13 @@ include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\TypeUtilisateurDAO.php';
 
 use DAO\etudiantDAO;
 use DAO\TypeUtilisateurDAO;
+session_start();
+$id_session=$_SESSION['idUti'];
 
 $conn = ConnexionBDD();
 $etudiantDAO = new etudiantDAO($conn);
 $typeUti = new TypeUtilisateurDAO($conn);
-if($idUti){
-    $etudiants = $etudiantDAO->getAll();
-}
+$etudiants = $etudiantDAO->getAll();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -26,6 +26,7 @@ if($idUti){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+
 <?php include('../pages/HeaderTuteur.php'); ?>
 <div class="container">
     <?php include('../pages/SidebarTuteur_Admin.php'); ?>
