@@ -37,7 +37,7 @@ class Etudiant extends Utilisateur
         $this->classe = $classe;
         $this->bilan1 = $bilan1;
         $this->bilan2 = $bilan2;
-     }
+    }
 
 
     /**

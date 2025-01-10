@@ -89,6 +89,44 @@ function verifierAlertes($bilans1, $bilans2, $alertes) {
 $alertesFinales = verifierAlertes($bilans1, $bilans2, $alertes);
 ?>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

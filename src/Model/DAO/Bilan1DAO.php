@@ -15,7 +15,7 @@ class Bilan1DAO {
 
     // Méthode pour créer un Bilan1
     public function create(Bilan1 $bilan): void {
-        $sql = "INSERT INTO Bilan1 (notentBil1, notdossBil1, notorBil1, moyBil1, remarqueBil1, datevisiteBil1) 
+        $sql = "INSERT INTO Bilan1 (notentBil1, notdossBil1, notorBil1, moyBil1, remarqueBil1, datevisiteBil1)
                 VALUES ( ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([

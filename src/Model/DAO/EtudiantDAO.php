@@ -1,11 +1,14 @@
 <?php
 namespace DAO;
+
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Specialite.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Classe.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan1.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan2.php';
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Etudiant.php'; // Ajout pour inclure la classe Etudiant
+include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php';
 include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan2DAO.php';
 
 use BO\Bilan1;
@@ -13,7 +16,7 @@ use BO\Bilan2;
 use BO\Entreprise;
 use BO\Specialite;
 use BO\Classe;
-use BO\Etudiant;
+use BO\Etudiant; // Assurez-vous que cette classe existe
 use BO\Utilisateur;
 use DAO\Bilan1DAO;
 use DAO\Bilan2DAO;
@@ -28,7 +31,7 @@ class EtudiantDAO
         $this->db = $db;
     }
 
-    public function getById(int $id): ?Etudiant{
+    public function getById(int $id): ?Etudiant {
         $sql = "SELECT  U.idUti,
                         U.nomUti,
                         U.preUti,
@@ -49,12 +52,18 @@ class EtudiantDAO
                  join Bilan1 B1 on R1.idBil1 = B1.idBil1
                  join Bilan2 B2 on R2.idBil2 = B2.idBil2
                 WHERE U.idUti = ?";
+
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$id]);
         $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-        $entreprise = new Entreprise(0,$row['nomEnt'],$row['adrEnt'],'','');
-        $classe = new Classe(0,'');
-        $specialite = new Specialite(0,'');
+
+        if (!$row) {
+            return null; // Si aucun résultat, retournez null
+        }
+
+        $entreprise = new Entreprise(0, $row['nomEnt'], $row['adrEnt'], '', '');
+        $classe = new Classe(0, '');
+        $specialite = new Specialite(0, '');
         $daoBilan1 = new Bilan1DAO($this->db);
         $bilan1 = $daoBilan1->getById($row['idBil1']);
         $daoBilan2 = new Bilan2DAO($this->db);
@@ -62,6 +71,7 @@ class EtudiantDAO
         if (!$row) {
             return null;
         }
+
         return new Etudiant(
             $row['idUti'],
             $row['preUti'],
@@ -80,9 +90,8 @@ class EtudiantDAO
         );
     }
 
-
-    public function update($liste){
-        $sql = "UPDATE Utilisateur U Join Entreprise E ON U.idEnt = E.idENT 
+    public function update($liste) {
+        $sql = "UPDATE Utilisateur U JOIN Entreprise E ON U.idEnt = E.idEnt
                 SET U.preUti = :preUti,
                     U.nomUti = :nomUti,
                     U.adrUti = :adrUti,
@@ -94,23 +103,22 @@ class EtudiantDAO
                 WHERE U.idUti = :idUti";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([
-                'idUti' =>  $liste['idUti'],
-                'preUti' => $liste['preUti'],
-                'nomUti' => $liste['nomUti'],
-                'adrUti' => $liste['adrUti'],
-                'mailUti'=> $liste['mailUti'],
-                'telUti' => $liste['telUti'],
-                'altUti' => $liste['altUti'],
-                'nomEnt' => $liste['nomEnt'],
-                'adrEnt' => $liste['adrEnt']
-            ]);
+            'idUti' => $liste['idUti'],
+            'preUti' => $liste['preUti'],
+            'nomUti' => $liste['nomUti'],
+            'adrUti' => $liste['adrUti'],
+            'mailUti' => $liste['mailUti'],
+            'telUti' => $liste['telUti'],
+            'altUti' => $liste['altUti'],
+            'nomEnt' => $liste['nomEnt'],
+            'adrEnt' => $liste['adrEnt']
+        ]);
     }
 
-    public function getAll() : array{
-        $sql = " SELECT U.idUti, 
+    public function getAll(): array {
+        $sql = "SELECT U.idUti,
                         U.nomUti, 
                         U.preUti,
-                        U.nomUti,
                         U.adrUti,
 	                    U.telUti,
                         U.mailUti,
@@ -119,18 +127,21 @@ class EtudiantDAO
                         U.vilUti,
                         S.nomSpe,
                         C.nomCla 
-                From Utilisateur U inner join Specialite S on U.idSpe = S.idSpe
-                inner join Classe C on U.idCla = C.idCla
+                FROM Utilisateur U
+                INNER JOIN Specialite S ON U.idSpe = S.idSpe
+                INNER JOIN Classe C ON U.idCla = C.idCla
                 WHERE U.idTypeuti = 1";
+
         $result = $this->db->query($sql);
         $etudiantData = $result->fetchAll(\PDO::FETCH_ASSOC);
         $etudiants = [];
+
         foreach ($etudiantData as $row) {
-            $entreprise = new Entreprise(0,'','','','');
+            $entreprise = new Entreprise(0, '', '', '', '');
             $classe = new Classe(0, $row['nomCla']);
-            $specialite = new Specialite(0,$row['nomSpe']);
-            $bilan1 = new Bilan1(0,0,0,0,0,'','','');
-            $bilan2 = new Bilan2(0,0,0,0,'','','');
+            $specialite = new Specialite(0, $row['nomSpe']);
+            $bilan1 = new Bilan1(0, 0, 0, 0, 0, '', '', '');
+            $bilan2 = new Bilan2(0, 0, 0, 0, '', '', '');
             $etudiants[] = new Etudiant(
                 $row['idUti'],
                 $row['preUti'],
@@ -148,13 +159,7 @@ class EtudiantDAO
                 $bilan2
             );
         }
-                return $etudiants;
-}
 
-
-
-
-
-
-
+        return $etudiants;
+    }
 }

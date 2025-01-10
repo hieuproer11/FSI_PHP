@@ -11,13 +11,10 @@ use DAO\TypeUtilisateurDAO;
 $conn = ConnexionBDD();
 $etudiantDAO = new etudiantDAO($conn);
 $typeUti = new TypeUtilisateurDAO($conn);
-$idUti = $typeUti->getById(1);
 if($idUti){
     $etudiants = $etudiantDAO->getAll();
 }
 ?>
-<!DOCTYPE html>
-<html lang="fr">
 <!DOCTYPE html>
 <html lang="fr">
 <head>

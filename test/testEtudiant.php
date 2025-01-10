@@ -22,7 +22,7 @@ try {
     $etudiantRecupere = $etudiantDAO->getById($idEtu);
     if ($etudiantRecupere) {
         echo "Utilisateur récupéré :\n";
-        echo "ID: " . $etudiantRecupere->getIdUti() . " | Nom: " . $etudiantRecupere->getNomUti() .  " | Date Limite: " . $etudiantRecupere->getBilan1()->getDatelimiteBil() ."\n";
+        echo "ID: " . $etudiantRecupere->getIdUti() . " | Nom: " . $etudiantRecupere->getNomUti() .  " | Date Limite: " . $etudiantRecupere->getBilan1()->getDatelimiteBil() . " | Note oral: " . $etudiantRecupere->getBilan1()->getNotorBil() . "\n";
     } else {
         echo "Erreur : Utilisateur avec l'ID " . $idEtu . " non trouvé.\n";
     }

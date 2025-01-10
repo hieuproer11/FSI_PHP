@@ -12,10 +12,15 @@ include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\TypeUtilisateurDAO.php';
 use DAO\TypeUtilisateurDAO;
 use DAO\EtudiantDAO;
 use BO\Etudiant;
+session_start();
+$id_session=$_SESSION['idUti'];
+
 $conn = ConnexionBDD();
 $etudiantDAO = new EtudiantDAO($conn);
 $typeUti = new TypeUtilisateurDAO($conn);
-$Etu = $etudiantDAO->getById(3);
+$Etu = $etudiantDAO->getById($id_session);
+
+
 //(int)$_GET['idUti']
 ?>
 
@@ -35,7 +40,6 @@ $Etu = $etudiantDAO->getById(3);
     <?php include('../pages/HeaderEleve.php'); ?>
 <div class = "container">
     <?php include('../pages/SidebarEleve.php'); ?>
-
     <div class="main-content">
         <div class="content-card informations-eleve">
             <h2>Informations élève</h2>
