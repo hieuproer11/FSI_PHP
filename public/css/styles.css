@@ -433,7 +433,7 @@ h1 {
     }
 }
 
-.btnvert{
+.btnvert {
     background: var(--primary-color);
     color: #000000;
     border-style: none;
@@ -442,49 +442,55 @@ h1 {
     border-radius: 10px;
     font-size: 18px;
     margin: 10px;
-/* user-friendly */
-.tab-header {
-    background-color: #f9f9f9;
-    color: #333;
-    padding: 10px 15px;
-    cursor: pointer;
-    text-align: center;
-    border-bottom: 2px solid transparent;
-}
+    /* user-friendly */
 
-/* Effet au survol */
-.tab-header:hover {
-    background-color: #e0e0e0;
-    border-bottom: 2px solid #45a049;
-}
+    .tab-header {
+        background-color: #f9f9f9;
+        color: #333;
+        padding: 10px 15px;
+        cursor: pointer;
+        text-align: center;
+        border-bottom: 2px solid transparent;
+    }
 
-.btngris{
-    background: rgba(62, 136, 73, 0.5);
-    color: rgba(62, 136, 73, 0.75);
-    border-style: none;
-    height: 30px;
-    width: 80px;
-    border-radius: 10px;
-    font-size: 18px;
-    margin: 10px;
-/* Onglet actif (sélectionné) */
-.tab-header.active-tab {
-    background-color: #45a049;
-    color: white;
-    border-bottom: 2px solid #388E3C;
-    font-weight: bold;
-}
+    /* Effet au survol */
 
-.add-btn {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    font-size: 14px;
-    margin-left: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    padding: 5px 8px;
-}
-.add-btn:hover {
-    background-color: #388E3C;
+    .tab-header:hover {
+        background-color: #e0e0e0;
+        border-bottom: 2px solid #45a049;
+    }
+
+    .btngris {
+        background: rgba(62, 136, 73, 0.5);
+        color: rgba(62, 136, 73, 0.75);
+        border-style: none;
+        height: 30px;
+        width: 80px;
+        border-radius: 10px;
+        font-size: 18px;
+        margin: 10px;
+        /* Onglet actif (sélectionné) */
+
+        .tab-header.active-tab {
+            background-color: #45a049;
+            color: white;
+            border-bottom: 2px solid #388E3C;
+            font-weight: bold;
+        }
+
+        .add-btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 14px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            padding: 5px 8px;
+        }
+
+        .add-btn:hover {
+            background-color: #388E3C;
+        }
+    }
 }
