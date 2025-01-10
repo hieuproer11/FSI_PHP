@@ -432,3 +432,41 @@ h1 {
         font-size: 14px;
     }
 }
+
+/* user-friendly */
+.tab-header {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 10px 15px;
+    cursor: pointer;
+    text-align: center;
+    border-bottom: 2px solid transparent;
+}
+
+/* Effet au survol */
+.tab-header:hover {
+    background-color: #e0e0e0;
+    border-bottom: 2px solid #45a049;
+}
+
+/* Onglet actif (sélectionné) */
+.tab-header.active-tab {
+    background-color: #45a049;
+    color: white;
+    border-bottom: 2px solid #388E3C;
+    font-weight: bold;
+}
+
+.add-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 14px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px 8px;
+}
+.add-btn:hover {
+    background-color: #388E3C;
+}

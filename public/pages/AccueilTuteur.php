@@ -8,16 +8,18 @@ include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\TypeUtilisateurDAO.php';
 use DAO\etudiantDAO;
 use DAO\TypeUtilisateurDAO;
 
+session_start();
+$id_session=$_SESSION['idUti'];
+
 $conn = ConnexionBDD();
 $etudiantDAO = new etudiantDAO($conn);
 $typeUti = new TypeUtilisateurDAO($conn);
-$idUti = $typeUti->getById(1);
+$idUti = $typeUti->getById((int)$_GET['idUti']);
 if($idUti){
     $etudiants = $etudiantDAO->getAll();
 }
 ?>
-<!DOCTYPE html>
-<html lang="fr">
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

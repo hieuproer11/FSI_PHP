@@ -4,7 +4,9 @@
     </div>
     <div class="header-right">
         <div class="disconnect-btn">
-            <a href="PageConnexion.html"> <i class="fa-solid fa-right-from-bracket"></i> Se déconnecter</a>
+            <a href="PageConnexion.html"> <i class="fa-solid fa-right-from-bracket"></i>
+                Se déconnecter
+            </a>
         </div>
     </div>
 </header>
