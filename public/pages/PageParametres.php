@@ -55,7 +55,7 @@ $tuteurs = $tuteurDAO->getAll();
                     </th>
                     <th id="tabTuteur" class="tab-header" onclick="setActiveTab('tabTuteur')">
                         Ajouter un tuteur
-                        <button class="add-btn" onclick="openForm('formTuteur')">
+                        <button class="add-btn" onclick="openFormInNewTab()">
                             <i class="fa-solid fa-plus"></i>
                         </button>
                     </th>
@@ -128,12 +128,13 @@ $tuteurs = $tuteurDAO->getAll();
                             <td><?= htmlspecialchars($tuteur->getTelTut()) ?></td>
                             <td><?= htmlspecialchars($tuteur->getMailTut()) ?></td>
                             <td>
-                                <button type="button" class="edit-btn">
+                                <a href ="PageModifierTuteur.php?idTut=<?= $tuteur->getIdTut(); ?>" class="edit-btn">
                                     <i class="fa-solid fa-pen"></i>
-                                </button>
-                                <button type="button" class="view-btn">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
+                                </a>
+                                <a href="PageDeleteTuteur.php?idTut=<?php echo $tuteur->getIdTut(); ?>"
+                                   onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce tuteur ?');">
+                                    <i class="fa-solid fa-trash-can" style="color: red;"></i>
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -196,6 +197,10 @@ $tuteurs = $tuteurDAO->getAll();
         activeTab.classList.add('active-tab');
 
         showSection(tabId);
+    }
+    function openFormInNewTab() {
+        // Ouvre le formulaire dans un nouvel onglet
+        window.open("PageAjouterTuteur.php", "_blank");
     }
 
     function showSection(section) {

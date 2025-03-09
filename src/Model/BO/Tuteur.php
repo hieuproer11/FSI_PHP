@@ -3,7 +3,7 @@
 namespace BO;
 
 class Tuteur {
-    private int $idTut;
+    private ?int $idTut;
     private string $preTut;
     private string $nomTut;
     private string $telTut;
