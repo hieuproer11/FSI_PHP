@@ -141,7 +141,7 @@ $tuteurs = $tuteurDAO->getAll();
                                 <a href ="PageModifierTuteur.php?idTut=<?= $tuteur->getIdTut(); ?>" class="edit-btn">
                                     <i class="fa-solid fa-pen"></i>
                                 </a>
-                                <a href="PageDeleteTuteur.php?idTut=<?php echo $tuteur->getIdTut(); ?>"
+                                <a href="../../src/traitDeleteTut.php?idTut=<?php echo $tuteur->getIdTut(); ?>"
                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce tuteur ?');">
                                     <i class="fa-solid fa-trash-can" style="color: red;"></i>
                                 </a>

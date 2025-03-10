@@ -14,7 +14,7 @@ if (isset($_GET['idTut']) && !empty($_GET['idTut'])) {
 
     try {
         $tuteurDAO->delete($idTut);
-        header('Location: PageParametres.php?delete=success'); // Redirection après suppression
+        header('Location: ../public/pages/PageParametres.php?delete=success'); // Redirection après suppression
         exit();
     } catch (Exception $e) {
         die("Erreur lors de la suppression : " . $e->getMessage());
