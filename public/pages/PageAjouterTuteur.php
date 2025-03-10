@@ -9,7 +9,16 @@ use DAO\EtudiantDAO;
 use DAO\TuteurDAO;
 session_start();
 $id_session=$_SESSION['idUti'];
-
+if (!isset($_SESSION['idUti'])) {
+    /* Empêcher le cache du navigateur
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    */
+    // Redirige vers la page de connexion
+    header("Location: PageConnexion.html");
+    exit();
+}
 $conn = ConnexionBDD();
 $tuteurDAO = new TuteurDAO($conn);
 ?>
@@ -28,7 +37,6 @@ $tuteurDAO = new TuteurDAO($conn);
 <body>
 <?php include('../pages/HeaderTuteur.php'); ?>
 <div class = "container">
-    <?php include('../pages/SidebarTuteur_Admin.php'); ?>
     <div class="main-content">
         <div class="content-card informations-eleve">
             <h2>Ajouter un tuteur</h2>
@@ -54,7 +62,6 @@ $tuteurDAO = new TuteurDAO($conn);
                     <label for="mailTut">Adresse e-mail :</label>
                     <input required type="email" name="mailTut" id="mailTut" placeholder="Exemple : jean.dupont@mail.com">
                 </div>
-
                 <button type="submit" class="submit-btn">Ajouter</button>
             </form>
         </div>

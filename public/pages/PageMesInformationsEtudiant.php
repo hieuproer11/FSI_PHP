@@ -13,6 +13,17 @@ use DAO\TypeUtilisateurDAO;
 use DAO\EtudiantDAO;
 use BO\Etudiant;
 session_start();
+if (!isset($_SESSION['idUti'])) {
+    /* Empêcher le cache du navigateur
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    */
+    // Redirige vers la page de connexion
+    header("Location: PageConnexion.html");
+    exit();
+}
+
 $id_session=$_SESSION['idUti'];
 
 $conn = ConnexionBDD();

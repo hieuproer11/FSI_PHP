@@ -8,8 +8,18 @@ include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\TypeUtilisateurDAO.php';
 use DAO\etudiantDAO;
 use DAO\TypeUtilisateurDAO;
 session_start();
-$id_session=$_SESSION['idUti'];
 
+$id_session=$_SESSION['idUti'];
+if (!isset($_SESSION['idUti'])) {
+    /* Empêcher le cache du navigateur
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    */
+    // Redirige vers la page de connexion
+    header("Location: PageConnexion.html");
+    exit();
+}
 $conn = ConnexionBDD();
 $etudiantDAO = new etudiantDAO($conn);
 $typeUti = new TypeUtilisateurDAO($conn);

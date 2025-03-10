@@ -8,6 +8,16 @@ include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\TuteurDAO.php';
 use DAO\EtudiantDAO;
 use DAO\TuteurDAO;
 session_start();
+if (!isset($_SESSION['idUti'])) {
+    /* Empêcher le cache du navigateur
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    */
+    // Redirige vers la page de connexion
+    header("Location: PageConnexion.html");
+    exit();
+}
 $id_session=$_SESSION['idUti'];
 
 $conn = ConnexionBDD();
@@ -40,7 +50,7 @@ $tuteurs = $tuteurDAO->getAll();
 <body>
 <?php include('../pages/HeaderAdmin.php'); ?>
 <div class="container">
-    <?php include('../pages/SidebarTuteur_Admin.php'); ?>
+    <?php include('../pages/SidebarAdmin.php'); ?>
     <main class="main-content">
         <h2>Paramètres</h2>
         <div class="content-card">

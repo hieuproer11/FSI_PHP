@@ -9,6 +9,16 @@ use DAO\EtudiantDAO;
 use DAO\TuteurDAO;
 session_start();
 $id_session=$_SESSION['idUti'];
+if (!isset($_SESSION['idUti'])) {
+    /* Empêcher le cache du navigateur
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    */
+    // Redirige vers la page de connexion
+    header("Location: PageConnexion.html");
+    exit();
+}
 
 $conn = ConnexionBDD();
 $tuteurDAO = new TuteurDAO($conn);
@@ -34,7 +44,7 @@ if (!$tuteur) {
 <body>
 <?php include('../pages/HeaderTuteur.php'); ?>
 <div class = "container">
-    <?php include('../pages/SidebarTuteur_Admin.php'); ?>
+    <?php include('../pages/SidebarAdmin.php'); ?>
     <div class="main-content">
         <div class="content-card informations-eleve">
             <h2>Modifier le tuteur</h2>
