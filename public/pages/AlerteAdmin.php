@@ -91,42 +91,6 @@ $alertesFinales = verifierAlertes($bilans1, $bilans2, $alertes);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -138,9 +102,9 @@ $alertesFinales = verifierAlertes($bilans1, $bilans2, $alertes);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<?php include('../pages/HeaderTuteur.php'); ?>
+<?php include('../pages/HeaderAdmin.php'); ?>
 <div class="container">
-    <?php include('../pages/SidebarTuteur_Admin.php'); ?>
+    <?php include('../pages/SidebarAdmin.php'); ?>
 
     <!-- Main Content -->
     <main class="main-content">

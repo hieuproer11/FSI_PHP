@@ -230,6 +230,9 @@ $tuteurs = $tuteurDAO->getAll();
             case 'tabAffTut':
                 document.getElementById('affectation').classList.remove('hidden');
                 break;
+            case 'tabGen':
+                window.location.href='PageParametresGeneraux.php';
+                break;
         }
     }
 

@@ -26,13 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['supprimer'])) {
         $idEtudiant = $_POST['idEtudiant'] ?? null;
         if ($idEtudiant) {
-            $suppression = $etudiantDAO->deleteEtudiant((int)$idEtudiant);
+            $suppression = $etudiantDAO->delete((int)$idEtudiant);
             $message = $suppression ? "Suppression réussie." : "Erreur lors de la suppression.";
         }
     } elseif (isset($_POST['ajouter'])) {
-        $etudiantDAO->ajouterEtudiant($_POST);
+        $etudiantDAO->create($_POST);
     } elseif (isset($_POST['modifier'])) {
-        $etudiantDAO->modifierEtudiant($_POST);
+        $etudiantDAO->update($_POST);
     }
 }
 ?>
@@ -47,9 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-<?php include('../pages/HeaderTuteur.php'); ?>
+<?php include('../pages/HeaderAdmin.php'); ?>
 <div class="container">
-    <?php include('../pages/SidebarTuteur_Admin.php'); ?>
+    <?php include('../pages/SidebarAdmin.php'); ?>
     <main class="main-content">
         <h2>Gestion des Étudiants</h2>
 

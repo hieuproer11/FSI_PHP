@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<?php include('../pages/HeaderTuteur.php'); ?>
+<?php include('../pages/HeaderAdmin.php'); ?>
 <div class="container">
-    <?php include('../pages/SidebarTuteur.php'); ?>
+    <?php include('../pages/SidebarAdmin.php'); ?>
 
     <div class="main-content">
         <div class="content-card informations-eleve">
@@ -38,8 +38,8 @@
                 <div class="form-group">
                     <input type="text" placeholder="Spécialité">
                 </div>
-                    <?php $idetud = $_GET['idUti']; ?>
-                <button type="button" class="submit-btn2" onclick="window.location.href='PageBilan1Tuteur.php?idUti=<?php echo $idetud ?>'">
+                <?php $idetud = $_GET['idUti']; ?>
+                <button type="button" class="submit-btn2" onclick="window.location.href='PageBilan1Admin.php?idUti=<?php echo $idetud ?>'">
                     Accèder aux bilans
                 </button>
             </form>

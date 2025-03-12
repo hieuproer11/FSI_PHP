@@ -4,12 +4,12 @@
     </div>
     <div class="header-right">
         <div class="setting-icon">
-            <a href="#" class="gear-icon">
+            <a href="PageParametres.php" class="gear-icon">
                 <i class="fa-solid fa-gear fa-lg" style="color: #333333;"></i>
             </a>
         </div>
         <div class="notification-icon">
-            <a href="#" class="bell-icon">
+            <a href="AlerteAdmin.php" class="bell-icon">
                 <i class="fa-solid fa-bell"></i>
             </a>
         </div>

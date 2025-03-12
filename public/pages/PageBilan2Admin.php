@@ -15,7 +15,7 @@ if (!$conn) {
 $bilan2DAO = new Bilan2DAO($conn);
 $idetu = $_GET['idUti'];
 
-    $bilans = $bilan2DAO->getById($idetu);
+$bilans = $bilan2DAO->getById($idetu);
 
 ?>
 <!DOCTYPE html>
@@ -29,9 +29,9 @@ $idetu = $_GET['idUti'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <?php include('../pages/HeaderTuteur.php'); ?>
+<?php include('../pages/HeaderAdmin.php'); ?>
 <div class="container">
-    <?php include('../pages/SidebarTuteur.php'); ?>
+    <?php include('../pages/SidebarAdmin.php'); ?>
 
     <main class="main-content">
         <h2>Bilan 2</h2>
@@ -44,33 +44,35 @@ $idetu = $_GET['idUti'];
                     <th>Note d'oral</th>
                     <th>Moyenne</th>
                     <th>Remarques</th>
+                    <th>Sujet de mémoire</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php if (!empty($bilans)): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($bilans->getDatevisiteBil()) ?></td>
-                            <td><?= htmlspecialchars($bilans->getNotdossBil()) ?></td>
-                            <td><?= htmlspecialchars($bilans->getNotorBil()) ?></td>
-                            <td><?= htmlspecialchars($bilans->getMoyBil()) ?></td>
-                            <td><?= htmlspecialchars($bilans->getRemarqueBil()) ?></td>
-                        </tr>
+                    <tr>
+                        <td><?= htmlspecialchars($bilans->getDatevisiteBil()) ?></td>
+                        <td><?= htmlspecialchars($bilans->getNotdossBil()) ?></td>
+                        <td><?= htmlspecialchars($bilans->getNotorBil()) ?></td>
+                        <td><?= htmlspecialchars($bilans->getMoyBil()) ?></td>
+                        <td><?= htmlspecialchars($bilans->getRemarqueBil()) ?></td>
+                        <td><?= htmlspecialchars($bilans->getSujmemBil2()) ?></td>
+                    </tr>
                 <?php else: ?>
                     <tr>
                         <td colspan="6">Aucun étudiant trouvé.</td>
                     </tr>
                 <?php endif; ?>
                 </tbody>
-                <button type="button" class="btngris" onclick="window.location.href='PageBilan1Tuteur.php?idUti=<?php echo $idetu ?>'">
-                Bilan 1
+                <button type="button" class="btngris" onclick="window.location.href='PageBilan1Admin.php?idUti=<?php echo $idetu ?>'">
+                    Bilan 1
                 </button>
                 <button type="button" class="btnvert">
                     Bilan 2
                 </button>
-                <button type="button" class="btnvert" onclick="window.location.href='PageAjoutBilan2.php?idUti=<?php echo $idetu ?>'">
+                <button type="button" class="btnvert" onclick="window.location.href='PageAjoutBilan2Admin.php?idUti=<?php echo $idetu ?>'">
                     Ajouter
                 </button>
-                <button type="button" class="btngris" onclick="window.location.href='PageModifBilan2.php?idUti=<?php echo $idetu ?>&idBil=<?php echo $bilans->getIdBil(); ?>'">
+                <button type="button" class="btngris" onclick="window.location.href='PageModifBilan2Admin.php?idUti=<?php echo $idetu ?>&idBil=<?php echo $bilans->getIdBil(); ?>'">
                     Modifier
                 </button>
             </table>

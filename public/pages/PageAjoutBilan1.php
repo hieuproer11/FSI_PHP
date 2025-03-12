@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<?php include('../pages/HeaderTuteur.php'); ?>
+<?php include('../pages/HeaderAdmin.php'); ?>
 <div class="container">
-<?php include('../pages/SidebarTuteur_Admin.php'); ?>
+    <?php include('../pages/SidebarAdmin.php'); ?>
 
     <div class="content-card">
         <h2>Ajouter des notes</h2>
 
         <!--<form class="info-form" method="post" action="PageBilan1Tuteur.php?idUti=1">-->
-            <form class="info-form" method="post" action="PageAjoutBilan.php">
+        <form class="info-form" method="post" action="PageAjoutBilan1Admin.php?idUti=<?php echo $_GET['idUti']; ?>">
 
             <div class="form-group">
                 <label for="note-dossier">Note de dossier</label>
@@ -47,17 +47,21 @@
             <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
 
                 <input type="submit" value="Ajouter" class="btnvert" name="add" id="add">
-                <input type="submit" value="Retour" class="btngris" name="back">
+                <input type="button" value="Retour" class="btngris" onclick="window.location.href='PageBilan1Admin.php?idUti=<?php echo $_GET['idUti']; ?>'">
 
             </div>
         </form>
         <?php
         include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
         include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan.php';
+        include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Realisation1.php';
         include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php';
+        include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Realisation1DAO.php';
 
         use BO\Bilan1;
         use DAO\Bilan1DAO;
+        use DAO\Realisation1DAO;
+        use BO\Realisation1;
 
 
         $conn = ConnexionBDD();
@@ -66,24 +70,34 @@
         }
 
         $bilan1DAO = new Bilan1DAO($conn);
-        $liéDAO = new RealiserDAO($conn);
-        $liébo =new Realiser();
+        $realisation1DAO = new Realisation1DAO($conn);
         $idetu = $_GET['idUti'];
 
 
-
         if(isset($_POST['add'])){
-            $bilanbo = new Bilan1(0,0,0,0,0,"","",);
-            $bilanbo->setNotentBil(floatval($_POST['note-entreprise']));
-            $bilanbo->setNotdossBil(floatval($_POST['note-dossier']));
-            $bilanbo->setNotorBil(floatval($_POST['note-oral']));
-            $bilanbo->setRemarqueBil($_POST['appreciation']);
-            $bilanbo->setDatevisiteBil($_POST['date-visite']);
-            $bilanbo->setMoyBil(($bilanbo->getNotentBil()+ $bilanbo->getNotdossBil()+$bilanbo-> getNotorBil())/3);
-            $bilan1DAO->create($bilanbo);
+            if(isset($_POST['note-dossier']) && isset($_POST['note-oral']) && isset($_POST['note-entreprise']) && isset($_POST['date-visite']) && isset($_POST['appreciation'])){
+                $bilanbo = new Bilan1(0,0,0,0,0,"","",);
+                $bilanbo->setNotentBil(floatval($_POST['note-entreprise']));
+                $bilanbo->setNotdossBil(floatval($_POST['note-dossier']));
+                $bilanbo->setNotorBil(floatval($_POST['note-oral']));
+                $bilanbo->setRemarqueBil($_POST['appreciation']);
+                $bilanbo->setDatevisiteBil($_POST['date-visite']);
+                $bilanbo->setMoyBil(($bilanbo->getNotentBil()+ $bilanbo->getNotdossBil()+$bilanbo-> getNotorBil())/3);
+                $bilan1DAO->create($bilanbo);
+
+                $real = new Realisation1($bilanbo->getIdBil(), $idetu);
+
+                $real->setIdBil1($bilanbo->getIdBil());
+                $real->setIdUti($idetu);
+
+                var_dump($real);
+                ////
+                ///
+                /// regler le probleme d id donc recupere l id du bilan creer pour le mettre dans le create de realisation
+                $realisation1DAO->create($real);
+            }
         }
-        $liébo->setIdUti($idetu);
-        $liébo->setIdBil1($idetu);
-        $liéDAO->create($liébo);
+
+
         ?>
     </div>
