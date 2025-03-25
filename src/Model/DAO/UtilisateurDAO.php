@@ -5,6 +5,7 @@ include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
 use BO\Utilisateur;
 use PDO;
 use BO\Entreprise;
+
 class UtilisateurDAO {
 
     private PDO $db;
@@ -48,11 +49,10 @@ class UtilisateurDAO {
                 WHERE U.logUti Like ? AND U.mdpUti Like ?";
         $login1 = "%{$login}%";
         $mdp1 = "%{$mdp}%";
-        $params = array("%$login%", "%$mdp%");
+        $params = array($login, $mdp);
         $stmt = $this->db->prepare($sql);
         $stmt->execute($params);
         $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-        var_dump($row['logUti']);
         if(!$row){
             return null;
         }
