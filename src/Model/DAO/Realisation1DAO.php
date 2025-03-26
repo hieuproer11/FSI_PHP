@@ -27,4 +27,25 @@ class Realisation1DAO {
         }
     }
 
+    public function findByIdUti(int $idUti): ?Realisation1 {
+        $sql = "SELECT * FROM Realiser1 WHERE idUti = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$idUti]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return null;
+        }
+        return new Realisation1(
+            $row['idUti'],
+            $row['idBil1']
+        );
+    }
+
+    public function delete(int $idUti): void {
+        $sql = "DELETE FROM Realiser1 WHERE idUti = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$idUti]);
+    }
+
 }
