@@ -43,16 +43,24 @@ class UtilisateurDAO {
 
     public function findByLogin(String $login, String $mdp ){
 
-        $sql = "SELECT  U.idUti, U.mdpUti, U.logUti, T.typeutiTypeuti 
+        $sql = "SELECT U.*, B1.*,B2.*,C.*,E.*,M.*,Tu.*, Re1.*, Re2.*, S.*, T.typeutiTypeuti 
                 FROM utilisateur U inner join type_d_utilisateur T ON U.idTypeuti = T.idTypeuti
-                WHERE U.logUti Like ? AND U.mdpUti Like ?";
+                		   		   inner join classe C On U.idCla = C.idCla
+                                   inner join specialite s on S.idSpe = U.idSpe
+                                   inner join entreprise E On U.idEnt = E.idEnt
+                                   inner join maitre_d_apprentissage M On U.idMaitapp = M.idMaitapp
+                                   inner join tuteur Tu On U.idTut = Tu.idTut
+                                   inner join realiser1 Re1 on U.idUti = Re1.idUti
+                                   inner join realiser2 Re2 on U.idUti = Re2.idUti
+                                   inner join bilan1 B1 on Re1.idBil1 = B1.idBil1
+                                   inner join bilan2 B2 on Re2.idBil2 = B2.idBil2
+                WHERE U.logUti Like ? AND U.mdpUti Like ?  AND U.idTypeuti = 1";
         $login1 = "%{$login}%";
         $mdp1 = "%{$mdp}%";
         $params = array("%$login%", "%$mdp%");
         $stmt = $this->db->prepare($sql);
         $stmt->execute($params);
         $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-        var_dump($row['logUti']);
         if(!$row){
             return null;
         }
@@ -60,7 +68,6 @@ class UtilisateurDAO {
     }
 
     // Méthode pour récupérer un utilisateur par son ID
-
     //method getById pour etudiant
 
     public function getById(int $id): ?Utilisateur {
