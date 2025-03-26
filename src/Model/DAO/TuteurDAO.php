@@ -26,7 +26,7 @@ class TuteurDAO {
     }
 
     // Méthode pour récupérer un tuteur par ID
-    public function getById(int $idTut): ?Tuteur {
+    public function getById(int $idTut){
         $sql = "SELECT * FROM Tuteur WHERE idTut = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$idTut]);

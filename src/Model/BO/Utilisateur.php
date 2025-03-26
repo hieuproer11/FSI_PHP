@@ -55,7 +55,7 @@ class Utilisateur {
     /**
      * @param mixed $idUti
      */
-    public function setIdUti($idUti): void
+    public function setIdUti($idUti)
     {
         $this->idUti = $idUti;
     }
@@ -71,7 +71,7 @@ class Utilisateur {
     /**
      * @param mixed $nomUti
      */
-    public function setNomUti($nomUti): void
+    public function setNomUti($nomUti)
     {
         $this->nomUti = $nomUti;
     }
@@ -87,7 +87,7 @@ class Utilisateur {
     /**
      * @param mixed $preUti
      */
-    public function setPreUti($preUti): void
+    public function setPreUti($preUti)
     {
         $this->preUti = $preUti;
     }
@@ -103,7 +103,7 @@ class Utilisateur {
     /**
      * @param mixed $mailUti
      */
-    public function setMailUti($mailUti): void
+    public function setMailUti($mailUti)
     {
         $this->mailUti = $mailUti;
     }
@@ -119,7 +119,7 @@ class Utilisateur {
     /**
      * @param mixed $altUti
      */
-    public function setAltUti($altUti): void
+    public function setAltUti($altUti)
     {
         $this->altUti = $altUti;
     }
@@ -135,7 +135,7 @@ class Utilisateur {
     /**
      * @param mixed $telUti
      */
-    public function setTelUti($telUti): void
+    public function setTelUti($telUti)
     {
         $this->telUti = $telUti;
     }
@@ -151,7 +151,7 @@ class Utilisateur {
     /**
      * @param mixed $adrUti
      */
-    public function setAdrUti($adrUti): void
+    public function setAdrUti($adrUti)
     {
         $this->adrUti = $adrUti;
     }
@@ -167,7 +167,7 @@ class Utilisateur {
     /**
      * @param mixed $cpUti
      */
-    public function setCpUti($cpUti): void
+    public function setCpUti($cpUti)
     {
         $this->cpUti = $cpUti;
     }
@@ -183,7 +183,7 @@ class Utilisateur {
     /**
      * @param mixed $vilUti
      */
-    public function setVilUti($vilUti): void
+    public function setVilUti($vilUti)
     {
         $this->vilUti = $vilUti;
     }
@@ -199,7 +199,7 @@ class Utilisateur {
     /**
      * @param mixed $logUti
      */
-    public function setLogUti($logUti): void
+    public function setLogUti($logUti)
     {
         $this->logUti = $logUti;
     }
@@ -215,7 +215,7 @@ class Utilisateur {
     /**
      * @param mixed $mdpUti
      */
-    public function setMdpUti($mdpUti): void
+    public function setMdpUti($mdpUti)
     {
         $this->mdpUti = $mdpUti;
     }
@@ -223,7 +223,7 @@ class Utilisateur {
     /**
      * @return mixed
      */
-    public function getIdTut()
+    public function getITutd()
     {
         return $this->idTut;
     }
@@ -231,7 +231,7 @@ class Utilisateur {
     /**
      * @param mixed $idTut
      */
-    public function setIdTut($idTut): void
+    public function setIdTut($idTut)
     {
         $this->idTut = $idTut;
     }
@@ -247,7 +247,7 @@ class Utilisateur {
     /**
      * @param mixed $idSpe
      */
-    public function setIdSpe($idSpe): void
+    public function setIdSpe($idSpe)
     {
         $this->idSpe = $idSpe;
     }
@@ -263,7 +263,7 @@ class Utilisateur {
     /**
      * @param mixed $idTypeuti
      */
-    public function setIdTypeuti($idTypeuti): void
+    public function setIdTypeuti($idTypeuti)
     {
         $this->idTypeuti = $idTypeuti;
     }
@@ -279,7 +279,7 @@ class Utilisateur {
     /**
      * @param mixed $idMaitapp
      */
-    public function setIdMaitapp($idMaitapp): void
+    public function setIdMaitapp($idMaitapp)
     {
         $this->idMaitapp = $idMaitapp;
     }
@@ -296,7 +296,7 @@ class Utilisateur {
     /**
      * @param mixed $idCla
      */
-    public function setIdCla($idCla): void
+    public function setIdCla($idCla)
     {
         $this->idCla = $idCla;
     }
@@ -304,7 +304,7 @@ class Utilisateur {
     /**
      * @return Entreprise|null
      */
-    public function getIdEnt(): ?Entreprise
+    public function getIdEnt()
     {
         return $this->idEnt;
     }
@@ -312,7 +312,7 @@ class Utilisateur {
     /**
      * @param Entreprise|null $idEnt
      */
-    public function setIdEnt(?Entreprise $idEnt): void
+    public function setIdEnt(?Entreprise $idEnt)
     {
         $this->idEnt = $idEnt;
     }
