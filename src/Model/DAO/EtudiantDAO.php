@@ -31,6 +31,7 @@ class EtudiantDAO
         $this->db = $db;
     }
 
+
     public function getById(int $id): ?Etudiant {
         $sql = "SELECT  U.idUti,
                         U.nomUti,
@@ -162,4 +163,26 @@ class EtudiantDAO
 
         return $etudiants;
     }
+
+    public function create(array $data): bool {
+        $sql = "INSERT INTO Utilisateur (nomUti, preUti, adrUti, mailUti, telUti, altUti, cpUti, vilUti, idTypeUti) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            $data['nomUti'],
+            $data['preUti'],
+            $data['adrUti'] ?? null,
+            $data['mailUti'],
+            $data['telUti'] ?? null,
+            $data['altUti'] ?? null,
+            $data['cpUti'] ?? null,
+            $data['vilUti'] ?? null
+        ]);
+    }
+
+    public function delete(int $idEtudiant): bool {
+        $sql = "DELETE FROM Utilisateur WHERE idUti = ?";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$idEtudiant]);
+    }
+
 }

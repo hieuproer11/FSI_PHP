@@ -4,6 +4,7 @@ namespace BO;
 
 class Realisation2
 {
+
     private int $idUti;
     private int $idBil2;
 
@@ -32,5 +33,4 @@ class Realisation2
     {
         $this->idBil2 = $idBil2;
     }
-
 }

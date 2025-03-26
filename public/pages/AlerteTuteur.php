@@ -140,7 +140,7 @@ $alertesFinales = verifierAlertes($bilans1, $bilans2, $alertes);
 <body>
 <?php include('../pages/HeaderTuteur.php'); ?>
 <div class="container">
-    <?php include('../pages/SidebarTuteur_Admin.php'); ?>
+    <?php include('../pages/SidebarTuteur.php'); ?>
 
     <!-- Main Content -->
     <main class="main-content">

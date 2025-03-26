@@ -11,7 +11,7 @@
 <body>
 <?php include('../pages/HeaderTuteur.php'); ?>
 <div class="container">
-    <?php include('../pages/SidebarTuteur_Admin.php'); ?>
+    <?php include('../pages/SidebarTuteur.php'); ?>
 
     <div class="main-content">
         <div class="content-card informations-eleve">

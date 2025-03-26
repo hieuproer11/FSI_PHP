@@ -8,9 +8,11 @@
         <img src="../img/FSI_logo.png" alt="Logo">
     </div>
     <ul class="nav-links">
-        <li><a href="PageAccueilAdmin.php">Tableau de bord</a></li>
-        <li><a href="PageParametres.php">Paramètres</a></li>
-        <li><a href="#">Mes informations</a></li>
-        <li><a href="Alerte.php">Alertes</a></li>
+        <li><a href="PageAccueilAdmin.php">Tableau De Bord</a></li>
+        <li><a href="PageListeDesEtuAdmin.php">Liste des étudiants</a></li>
+        <li><a href="PageMesInformationsAdmin.php">Mes informations</a></li>
+        <li><a href="AlerteAdmin.php">Alertes</a></li>
+        <li><a href="PageAffectation.php">Affectation</a></li>
+        <li><a href="PageGestionEtudiant.php">Gestion Étudiant</a></li>
     </ul>
 </nav>

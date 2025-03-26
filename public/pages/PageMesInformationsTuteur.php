@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $tuteurDAO->update($tuteur);
 
         // Rafraîchir la page avec un message de succès
-        header("Location: InformationsTuteurs.php?success=1");
+        header("Location: PageMesInformationsTuteur.php?success=1");
         exit;
     } else {
         $error = "Tous les champs doivent être remplis.";
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <?php include('../pages/HeaderTuteur.php'); ?>
 <div class="container">
-    <?php include('../pages/SidebarTuteur_Admin.php'); ?>
+    <?php include('../pages/SidebarTuteur.php'); ?>
     <main class="main-content">
         <h2>Mes informations</h2>
 

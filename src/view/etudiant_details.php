@@ -11,7 +11,7 @@
 <body>
 <?php include('../pages/HeaderTuteur.php'); ?>
 <div class="container">
-    <?php include('../pages/SidebarTuteur_Admin.php'); ?>
+    <?php include('../pages/SidebarTuteur.php'); ?>
 
     <main class="main-content">
         <h2>Détails de l'étudiant</h2>

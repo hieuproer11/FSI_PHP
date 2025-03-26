@@ -8,18 +8,8 @@ include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\TypeUtilisateurDAO.php';
 use DAO\etudiantDAO;
 use DAO\TypeUtilisateurDAO;
 session_start();
-
 $id_session=$_SESSION['idUti'];
-if (!isset($_SESSION['idUti'])) {
-    /* Empêcher le cache du navigateur
-    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-    header("Cache-Control: post-check=0, pre-check=0", false);
-    header("Pragma: no-cache");
-    */
-    // Redirige vers la page de connexion
-    header("Location: PageConnexion.html");
-    exit();
-}
+
 $conn = ConnexionBDD();
 $etudiantDAO = new etudiantDAO($conn);
 $typeUti = new TypeUtilisateurDAO($conn);
@@ -37,9 +27,9 @@ $etudiants = $etudiantDAO->getAll();
 </head>
 <body>
 
-<?php include('../pages/HeaderTuteur.php'); ?>
+<?php include('../pages/HeaderAdmin.php'); ?>
 <div class="container">
-    <?php include('../pages/SidebarTuteur.php'); ?>
+    <?php include('../pages/SidebarAdmin.php'); ?>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -71,7 +61,7 @@ $etudiants = $etudiantDAO->getAll();
                                 <button type="button" class="edit-btn" onclick="window.location.href='EditInformations.php?idUti=<?php echo $etudiant->getIdUti()?>'">
                                     <i class="fa-solid fa-pen"></i>
                                 </button>
-                                <button type="button" class="view-btn" onclick="window.location.href='PageInformationsEleve.php?idUti=<?php echo $etudiant->getIdUti()?>'">
+                                <button type="button" class="view-btn" onclick="window.location.href='PageInformationsEleveAdmin.php?idUti=<?php echo $etudiant->getIdUti()?>'">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </button>
                             </td>

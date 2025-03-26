@@ -27,10 +27,4 @@ class Realisation1DAO {
         }
     }
 
-
-    ////////
-    ///findbyiduti()
-    /// Select * from realisation1 where iduti = ?
-    ///
-    /// delete()
 }

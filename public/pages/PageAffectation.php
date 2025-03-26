@@ -51,9 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-<?php include('../pages/HeaderTuteur.php'); ?>
+<?php include('../pages/HeaderAdmin.php'); ?>
 <div class="container">
-    <?php include('../pages/SidebarTuteur_Admin.php'); ?>
+    <?php include('../pages/SidebarAdmin.php'); ?>
     <main class="main-content">
         <h2>Affectation Tuteur-Étudiant</h2>
 

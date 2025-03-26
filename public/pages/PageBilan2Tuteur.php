@@ -31,7 +31,7 @@ $idetu = $_GET['idUti'];
 <body>
     <?php include('../pages/HeaderTuteur.php'); ?>
 <div class="container">
-    <?php include('../pages/SidebarTuteur_Admin.php'); ?>
+    <?php include('../pages/SidebarTuteur.php'); ?>
 
     <main class="main-content">
         <h2>Bilan 2</h2>
@@ -66,6 +66,12 @@ $idetu = $_GET['idUti'];
                 </button>
                 <button type="button" class="btnvert">
                     Bilan 2
+                </button>
+                <button type="button" class="btnvert" onclick="window.location.href='PageAjoutBilan2.php?idUti=<?php echo $idetu ?>'">
+                    Ajouter
+                </button>
+                <button type="button" class="btngris" onclick="window.location.href='PageModifBilan2.php?idUti=<?php echo $idetu ?>&idBil=<?php echo $bilans->getIdBil(); ?>'">
+                    Modifier
                 </button>
             </table>
         </div>
