@@ -1,7 +1,7 @@
 <?php
 
 namespace DAO;
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
+require_once __DIR__ . '/../BO/Entreprise.php';
 use BO\Utilisateur;
 use PDO;
 use BO\Entreprise;
@@ -55,7 +55,7 @@ class UtilisateurDAO {
                                    inner join realiser2 Re2 on U.idUti = Re2.idUti
                                    inner join bilan1 B1 on Re1.idBil1 = B1.idBil1
                                    inner join bilan2 B2 on Re2.idBil2 = B2.idBil2
-                WHERE U.logUti Like ? AND U.mdpUti Like ?  AND U.idTypeuti = 1";
+                WHERE U.logUti Like ? AND U.mdpUti Like ? ";
         $login1 = "%{$login}%";
         $mdp1 = "%{$mdp}%";
         $params = array($login, $mdp);

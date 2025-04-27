@@ -5,9 +5,9 @@ use DAO\UtilisateurDAO;
 use BO\Utilisateur;
 
 // Inclure les fichiers nécessaires
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\UtilisateurDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Utilisateur.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
+require_once __DIR__ . '/../src/Model/DAO/UtilisateurDAO.php';
+require_once __DIR__ . '/../src/Model/BO/Utilisateur.php';
+require_once __DIR__ . '/../src/Model/bddManager.php'; // Connexion à la base de données
 
 try {
     // Créer une instance de la connexion PDO

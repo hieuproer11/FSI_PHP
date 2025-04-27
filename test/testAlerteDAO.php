@@ -5,9 +5,9 @@ use BO\Alerte;
 use DAO\AlerteDAO;
 
 // Inclure les fichiers nécessaires
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\AlerteDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Alerte.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
+require_once __DIR__ . '/../src/Model/DAO/AlerteDAO.php';
+require_once __DIR__ . '/../src/Model/BO/Alerte.php';
+require_once __DIR__ . '/../src/Model/bddManager.php'; // Connexion à la base de données
 
 try {
     // Créer une instance de la connexion PDO

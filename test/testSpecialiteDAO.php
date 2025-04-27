@@ -5,9 +5,9 @@ use DAO\SpecialiteDAO;
 use BO\Specialite;
 
 // Inclure les fichiers nécessaires
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\SpecialiteDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Specialite.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
+require_once __DIR__ . '/../src/Model/DAO/SpecialiteDAO.php';
+require_once __DIR__ . '/../src/Model/BO/Specialite.php';
+require_once __DIR__ . '/../src/Model/bddManager.php'; // Connexion à la base de données
 
 try {
     // Créer une instance de la connexion PDO

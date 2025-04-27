@@ -1,7 +1,7 @@
 <?php
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Utilisateur.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\UtilisateurDAO.php';
+require_once __DIR__ . '/../src/Model/bddManager.php';
+require_once __DIR__ . '/../src/Model/BO/Utilisateur.php';
+require_once __DIR__ . '/../src/Model/DAO/UtilisateurDAO.php';
 
 use DAO\UtilisateurDAO;
 
@@ -17,7 +17,7 @@ $mdp = $_POST['mdp'];
 
 $daoUti = $utilisateurDAO->findByLogin($login,$mdp);
 if($daoUti == null || empty($_POST['login']) || empty($_POST['mdp']) ){
-    header('Location:../public/pages/PageConnexion.html');
+    header('Location:../public/pages/PageConnexion.php');
 } else {
     $_SESSION['idUti'] = $daoUti['idUti'];
     if($daoUti['typeutiTypeuti'] == 'Etudiant'){

@@ -1,12 +1,12 @@
 <?php
 
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Utilisateur.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\UtilisateurDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Etudiant.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\EtudiantDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\EntrepriseDAO.php';
+require_once __DIR__ . '/../src/Model/bddManager.php';
+require_once __DIR__ . '/../src/Model/BO/Utilisateur.php';
+require_once __DIR__ . '/../src/Model/DAO/UtilisateurDAO.php';
+require_once __DIR__ . '/../src/Model/BO/Etudiant.php';
+require_once __DIR__ . '/../src/Model/DAO/EtudiantDAO.php';
+require_once __DIR__ . '/../src/Model/BO/Entreprise.php';
+require_once __DIR__ . '/../src/Model/DAO/EntrepriseDAO.php';
 
 use DAO\EtudiantDAO;
 use DAO\EntrepriseDAO;

@@ -1,9 +1,9 @@
 <?php
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Realisation2.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan2DAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Realisation2DAO.php';
+require_once __DIR__ . '/../../src/Model/bddManager.php';
+require_once __DIR__ . '/../../src/Model/BO/Bilan.php';
+require_once __DIR__ . '/../../src/Model/BO/Realisation2.php';
+require_once __DIR__ . '/../../src/Model/DAO/Bilan2DAO.php';
+require_once __DIR__ . '/../../src/Model/DAO/Realisation2DAO.php';
 
 use BO\Bilan2;
 use DAO\Bilan2DAO;

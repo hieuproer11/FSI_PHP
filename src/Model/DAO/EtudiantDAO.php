@@ -1,15 +1,15 @@
 <?php
 namespace DAO;
 
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Specialite.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Classe.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan1.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan2.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Etudiant.php'; // Ajout pour inclure la classe Etudiant
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan2DAO.php';
+require_once __DIR__ . '/../BO/Entreprise.php';
+require_once __DIR__ . '/../BO/Specialite.php';
+require_once __DIR__ . '/../BO/Classe.php';
+require_once __DIR__ . '/../BO/Bilan1.php';
+require_once __DIR__ . '/../DAO/Bilan1DAO.php';
+require_once __DIR__ . '/../BO/Bilan2.php';
+require_once __DIR__ . '/../BO/Etudiant.php'; // Ajout pour inclure la classe Etudiant
+require_once __DIR__ . '/../DAO/Bilan1DAO.php';
+require_once __DIR__ . '/../DAO/Bilan2DAO.php';
 
 use BO\Bilan1;
 use BO\Bilan2;

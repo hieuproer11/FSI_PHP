@@ -1,8 +1,8 @@
 <?php
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\EtudiantDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan2DAO.php';
+require_once __DIR__ . '/../../src/Model/bddManager.php';
+require_once __DIR__ . '/../../src/Model/DAO/EtudiantDAO.php';
+require_once __DIR__ . '/../../src/Model/DAO/Bilan1DAO.php';
+require_once __DIR__ . '/../../src/Model/DAO/Bilan2DAO.php';
 
 use DAO\EtudiantDAO;
 use DAO\Bilan1DAO;

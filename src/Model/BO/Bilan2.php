@@ -2,7 +2,7 @@
 
 namespace BO;
 
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan.php';
+require_once __DIR__ . '/Bilan.php';
 
 class Bilan2 extends Bilan {
     private ?string $sujmemBil2;

@@ -1,9 +1,9 @@
 <?php
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\EtudiantDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\TuteurDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Tuteur.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Etudiant.php';
+require_once __DIR__ . '/../../src/Model/bddManager.php';
+require_once __DIR__ . '/../../src/Model/DAO/EtudiantDAO.php';
+require_once __DIR__ . '/../../src/Model/DAO/TuteurDAO.php';
+require_once __DIR__ . '/../../src/Model/BO/Tuteur.php';
+require_once __DIR__ . '/../../src/Model/BO/Etudiant.php';
 
 use DAO\EtudiantDAO;
 use DAO\TuteurDAO;

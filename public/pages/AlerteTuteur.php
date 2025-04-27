@@ -1,11 +1,11 @@
 <?php
 // Import des classes nécessaires
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Alerte.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\AlerteDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan2DAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan.php';
+require_once __DIR__ . '/../../src/Model/BO/Alerte.php';
+require_once __DIR__ . '/../../src/Model/DAO/AlerteDAO.php';
+require_once __DIR__ . '/../../src/Model/bddManager.php'; // Connexion à la base de données
+require_once __DIR__ . '/../../src/Model/DAO/Bilan1DAO.php';
+require_once __DIR__ . '/../../src/Model/DAO/Bilan2DAO.php';
+require_once __DIR__ . '/../../src/Model/BO/Bilan.php';
 
 use DAO\AlerteDAO;
 use DAO\Bilan1DAO;

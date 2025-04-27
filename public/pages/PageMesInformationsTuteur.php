@@ -1,8 +1,8 @@
 <?php
 session_start();
-include_once '../../src/Model/bddManager.php';
-include_once '../../src/Model/DAO/TuteurDAO.php';
-include_once '../../src/Model/BO/Tuteur.php';
+require_once __DIR__ . '/../../src/Model/bddManager.php';
+require_once __DIR__ . '/../../src/Model/DAO/TuteurDAO.php';
+require_once __DIR__ . '/../../src/Model/BO/Tuteur.php';
 
 // Connexion à la base
 $conn = ConnexionBDD();
@@ -11,7 +11,7 @@ $tuteurDAO = new DAO\TuteurDAO($conn);
 // Vérification de l'authentification
 $idUti = $_SESSION['idUti'] ?? null;
 if (!$idUti) {
-    header("Location: PageConnexion.html");
+    header("Location: PageConnexion.php");
     exit;
 }
 

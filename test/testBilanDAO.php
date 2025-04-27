@@ -1,10 +1,10 @@
 <?php
 
-require_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan1.php'; // Inclure les fichiers des BO
-require_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan2.php';
-require_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php'; // Inclure les fichiers des DAO
-require_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan2DAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
+require_once __DIR__ . '/../src/Model/BO/Bilan1.php'; // Inclure les fichiers des BO
+require_once __DIR__ . '/../src/Model/BO/Bilan2.php';
+require_once __DIR__ . '/../src/Model/DAO/Bilan1DAO.php'; // Inclure les fichiers des DAO
+require_once __DIR__ . '/../src/Model/DAO/Bilan2DAO.php';
+require_once __DIR__ . '/../src/Model/bddManager.php'; // Connexion à la base de données
 
 use BO\Bilan1;
 use BO\Bilan2;

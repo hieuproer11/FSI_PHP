@@ -1,8 +1,8 @@
 <?php
 
-require_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Classe.php'; // Inclure le fichier du BO
-require_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\ClasseDAO.php'; // Inclure le fichier du DAO
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
+require_once __DIR__ . '/../src/Model/BO/Classe.php'; // Inclure le fichier du BO
+require_once __DIR__ . '/../src/Model/DAO/ClasseDAO.php'; // Inclure le fichier du DAO
+require_once __DIR__ . '/../src/Model/bddManager.php'; // Connexion à la base de données
 
 use BO\Classe;
 use DAO\ClasseDAO;

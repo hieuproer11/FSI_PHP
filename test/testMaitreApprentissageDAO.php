@@ -5,9 +5,9 @@ use DAO\MaitreApprentissageDAO;
 use BO\MaitreApprentissage;
 
 // Connexion à la base de données
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\MaitreApprentissage.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\MaitreApprentissageDAO.php';
+require_once __DIR__ . '/../src/Model/bddManager.php'; // Connexion à la base de données
+require_once __DIR__ . '/../src/Model/BO/MaitreApprentissage.php';
+require_once __DIR__ . '/../src/Model/DAO/MaitreApprentissageDAO.php';
 
 try {
     // Créer une instance de la connexion PDO

@@ -1,7 +1,7 @@
 <?php
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php';
+require_once __DIR__ . '/../../src/Model/bddManager.php';
+require_once __DIR__ . '/../../src/Model/BO/Bilan.php';
+require_once __DIR__ . '/../../src/Model/DAO/Bilan1DAO.php';
 
 use DAO\Bilan1DAO;
 

@@ -1,5 +1,5 @@
 <?php
-require_once '../src/Model/bddManager.php';
+require_once __DIR__ . '/../src/Model/bddManager.php';
 
 function testConnexionBDD(): void
 {

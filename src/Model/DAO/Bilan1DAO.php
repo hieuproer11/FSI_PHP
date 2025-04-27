@@ -1,7 +1,7 @@
 <?php
 
 namespace DAO;
-include_once "C:\wamp64\www\FSI_PHP\src\Model\BO\Bilan1.php";
+require_once __DIR__ . "/../BO/Bilan1.php";
 use BO\Bilan1;
 use PDO;
 

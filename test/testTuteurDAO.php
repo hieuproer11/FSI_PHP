@@ -5,9 +5,9 @@ use DAO\TuteurDAO;
 use BO\Tuteur;
 
 // Inclure les fichiers nécessaires
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\TuteurDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Tuteur.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
+require_once __DIR__ . '/../src/Model/DAO/TuteurDAO.php';
+require_once __DIR__ . '/../src/Model/BO/Tuteur.php';
+require_once __DIR__ . '/../src/Model/bddManager.php'; // Connexion à la base de données
 
 try {
     // Créer une instance de la connexion PDO

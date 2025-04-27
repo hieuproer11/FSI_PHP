@@ -7,18 +7,18 @@ if (!isset($_SESSION['idUti'])) {
     header("Pragma: no-cache");
     */
     // Redirige vers la page de connexion
-    header("Location: PageConnexion.html");
+    header("Location: PageConnexion.php");
     exit();
 }
 
-include_once '../../src/Model/bddManager.php';
-include_once '../../src/Model/DAO/EtudiantDAO.php';
+require_once __DIR__ . '/../../src/Model/bddManager.php';
+require_once __DIR__ . '/../../src/Model/DAO/EtudiantDAO.php';
 
 use DAO\EtudiantDAO;
 
 // Vérifier si l'étudiant est bien connecté
 if (!isset($_SESSION['idUti'])) {
-    header('Location: PageConnexion.html');
+    header('Location: PageConnexion.php');
     exit();
 }
 

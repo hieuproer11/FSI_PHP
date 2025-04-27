@@ -1,7 +1,7 @@
 <?php
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Tuteur.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\TuteurDAO.php';
+require_once __DIR__ . '/../src/Model/bddManager.php';
+require_once __DIR__ . '/../src/Model/BO/Tuteur.php';
+require_once __DIR__ . '/../src/Model/DAO/TuteurDAO.php';
 use DAO\TuteurDAO;
 use BO\Tuteur;
 

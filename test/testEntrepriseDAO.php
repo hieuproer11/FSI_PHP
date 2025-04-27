@@ -5,9 +5,9 @@ use BO\Entreprise;
 use DAO\EntrepriseDAO;
 
 // Inclure les fichiers nécessaires
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\EntrepriseDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\BO\Entreprise.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
+require_once __DIR__ . '/../src/Model/DAO/EntrepriseDAO.php';
+require_once __DIR__ . '/../src/Model/BO/Entreprise.php';
+require_once __DIR__ . '/../src/Model/bddManager.php'; // Connexion à la base de données
 
 try {
     // Créer une instance de la connexion PDO
