@@ -1,9 +1,9 @@
 <?php
 // Import des classes nécessaires
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\bddManager.php'; // Connexion à la base de données
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\EtudiantDAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan1DAO.php';
-include_once 'C:\wamp64\www\FSI_PHP\src\Model\DAO\Bilan2DAO.php';
+require_once __DIR__ . '/../Model/bddManager.php'; // Connexion à la base de données
+require_once __DIR__ . '/../Model/DAO/EtudiantDAO.php';
+require_once __DIR__ . '/../Model/DAO/Bilan1DAO.php';
+require_once __DIR__ . '/../Model/DAO/Bilan2DAO.php';
 
 use DAO\EtudiantDAO;
 use DAO\Bilan1DAO;
