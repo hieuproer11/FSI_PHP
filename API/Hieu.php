@@ -3,11 +3,11 @@
 
 
 
-include_once '../src/Model/bddManager.php';
-include_once '../src/Model/DAO/UtilisateurDAO.php';
-include_once '../src/Model/BO/Bilan.php';
-include_once '../src/Model/BO/Bilan1.php';
-include_once '../src/Model/BO/Bilan2.php';
+require_once __DIR__ . '/../src/Model/bddManager.php';
+require_once __DIR__ . '/../src/Model/DAO/UtilisateurDAO.php';
+require_once __DIR__ . '/../src/Model/BO/Bilan.php';
+require_once __DIR__ . '/../src/Model/BO/Bilan1.php';
+require_once __DIR__ .'/../src/Model/BO/Bilan2.php';
 use DAO\UtilisateurDAO;
 
 header('Content-Type: application/json');

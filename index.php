@@ -1,2 +1,2 @@
 <?php
-header("public/pages/PageConnexion.php");
+header("Location: public/pages/PageConnexion.php");
