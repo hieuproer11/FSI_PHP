@@ -68,6 +68,32 @@ class UtilisateurDAO {
         return $row;
     }
 
+    public function findEtud(String $login, String $mdp ){
+
+        $sql = "SELECT U.*, B1.*,B2.*,C.*,E.*,M.*,Tu.*, Re1.*, Re2.*, S.*, T.typeutiTypeuti 
+                FROM Utilisateur U inner join Type_d_utilisateur T ON U.idTypeuti = T.idTypeuti
+                		   		   inner join Classe C On U.idCla = C.idCla
+                                   inner join Specialite S on S.idSpe = U.idSpe
+                                   inner join Entreprise E On U.idEnt = E.idEnt
+                                   inner join Maitre_d_apprentissage M On U.idMaitapp = M.idMaitapp
+                                   inner join Tuteur Tu On U.idTut = Tu.idTut
+                                   inner join Realiser1 Re1 on U.idUti = Re1.idUti
+                                   inner join Realiser2 Re2 on U.idUti = Re2.idUti
+                                   inner join Bilan1 B1 on Re1.idBil1 = B1.idBil1
+                                   inner join Bilan2 B2 on Re2.idBil2 = B2.idBil2
+                WHERE U.logUti Like ? AND U.mdpUti Like ? AND T.idTypeuti = 1 ";
+        $login1 = "%{$login}%";
+        $mdp1 = "%{$mdp}%";
+        $params = array($login, $mdp);
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if(!$row){
+            return null;
+        }
+        return $row;
+    }
+
     public function verifmdp(String $login, String $mdp ){
         $sql = "SELECT  U.idUti, U.mdpUti, U.logUti, T.typeutiTypeuti 
                 FROM utilisateur U inner join type_d_utilisateur T ON U.idTypeuti = T.idTypeuti
